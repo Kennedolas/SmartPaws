@@ -89,7 +89,7 @@ Agradecimento especial ás pessoas que estão fazendo esse projeto acontecer:
     </td>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/175540283?s=400&u=f81d1e2a25b03ca4005ecb21ecc49ef74168671e&v=4" width="100px;" alt="Foto do Samuel Kennedy"/><br>
+        <img src="https://avatars.githubusercontent.com/u/175540283?s=400&u=e9a397c972934768b3fa248b050cfd5995cbd27b&v=4" width="100px;" alt="Foto do Samuel Kennedy"/><br>
         <sub>
           <b>Samuel Kennedy</b>
         </sub>
