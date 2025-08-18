@@ -21,7 +21,7 @@ Pensando em todos os apaixonados por animais, a plataforma conecta donos, intere
 
 ## Objetivo do Projeto
 
- A **SmartPaws** é muito mais que um site: é um **espaço** feito para **cuidar** e **mimar** os **animais de estimação!** Nosso **objetivo** é promover o **bem-estar**, a **saúde** e a **felicidade dos pets**, oferecendo **produtos** e **serviços** de **qualidade**, de forma acessível e prática. 🐶🐱
+ A **SmartPaws** é um **espaço** feito para **cuidar** e **mimar** os **animais de estimação!** Nosso **objetivo** é promover o **bem-estar**, a **saúde** e a **felicidade dos pets**, oferecendo **produtos** e **serviços** de **qualidade**, de forma acessível e prática. 🐶🐱
 
 Pensando em todos os **apaixonados por animais**, a SmartPaws conecta donos, adotantes e defensores da causa animal, proporcionando uma experiência completa para cuidar de cada pet com **amor e responsabilidade.** ❤️
 
