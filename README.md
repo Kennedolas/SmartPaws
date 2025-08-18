@@ -72,13 +72,13 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
 ---
 ##  Colaboradores
 
-Agradecimento especial ás pessoas que estão fazendo esse projeto acontecer:
+Agradecimento especial às pessoas que estão fazendo este projeto acontecer:
 
 <table>
   <tr>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/181789211?v=4" width="100px;" alt="Foto do Felipe de Morais no GitHub"/><br>
+        <img src="https://avatars.githubusercontent.com/u/181789211?v=4" width="70pc;" alt="Foto do Felipe de Morais no GitHub"/><br>
         <sub>
           <b>Felipe de Morais</b>
         </sub>
@@ -86,7 +86,7 @@ Agradecimento especial ás pessoas que estão fazendo esse projeto acontecer:
     </td>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/211712685?v=4" width="100px;" alt="Foto da Nicolly Almeida"/><br>
+        <img src="https://avatars.githubusercontent.com/u/211712685?v=4" width="70pc;" alt="Foto da Nicolly Almeida"/><br>
         <sub>
           <b>Nicolly Almeida</b>
         </sub>
@@ -94,7 +94,7 @@ Agradecimento especial ás pessoas que estão fazendo esse projeto acontecer:
     </td>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/175540283?s=400&u=e9a397c972934768b3fa248b050cfd5995cbd27b&v=4" width="100px;" alt="Foto do Samuel Kennedy"/><br>
+        <img src="https://avatars.githubusercontent.com/u/175540283?s=400&u=e9a397c972934768b3fa248b050cfd5995cbd27b&v=4" width="70pc;" alt="Foto do Samuel Kennedy"/><br>
         <sub>
           <b>Samuel Kennedy</b>
         </sub>
@@ -102,7 +102,7 @@ Agradecimento especial ás pessoas que estão fazendo esse projeto acontecer:
     </td>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/178948135?v=4" width="100px;" alt="Foto do Henrique Duarte no GitHub"/><br>
+        <img src="https://avatars.githubusercontent.com/u/178948135?v=4" width="70pc;" alt="Foto do Henrique Duarte no GitHub"/><br>
         <sub>
           <b>Henrique Duarte</b>
         </sub>
@@ -110,7 +110,7 @@ Agradecimento especial ás pessoas que estão fazendo esse projeto acontecer:
     </td>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/207481101?v=4" width="100px;" alt="Foto do Matheus Carvalho no GitHub"/><br>
+        <img src="https://avatars.githubusercontent.com/u/207481101?v=4" width="70px;" alt="Foto do Matheus Carvalho no GitHub"/><br>
         <sub>
           <b>Matheus Carvalho</b>
         </sub>
@@ -118,7 +118,3 @@ Agradecimento especial ás pessoas que estão fazendo esse projeto acontecer:
     </td>
   </tr>
 </table>
-
-<p align="center">
-  Feito com carinho pela equipe SmartPaws🐾
-</p>
