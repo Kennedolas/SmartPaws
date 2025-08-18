@@ -1,2 +1,7 @@
-O SmartPaws é um site em desenvolvimento voltado para o bem-estar e a saúde dos animais de estimação. Nosso objetivo é criar uma plataforma acessível, com informações, produtos e serviços para ajudar donos a cuidarem melhor de seus pets.
-O projeto contará com uma seção exclusiva para adoção de animais, conectando interessados a doadores, ONGs e abrigos de resgate. Estamos firmando parcerias com essas organizações para garantir um fluxo constante de animais disponíveis e aumentar as chances de cada pet encontrar um lar. Além disso, realizaremos campanhas de apoio a animais abandonados, oferecendo abrigo temporário e cuidados básicos até que sejam adotados.
+<p align="center">
+  <img src="IMG/logoprincipal.png" alt="Logo SmartPaws" width="100%" style="max-width:1920px; height:auto;"/>
+</p>
+
+
+[![Issues](https://img.shields.io/github/issues/Kennedolas/SmartPaws)](https://github.com/Kennedolas/SmartPaws/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/Kennedolas/SmartPaws)](https://github.com/Kennedolas/SmartPaws/commits)
