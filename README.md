@@ -66,3 +66,8 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
 </p>
 
 ---
+
+
+<p align="center">
+  Feito com carinho pela equipe SmartPaws🐾
+</p>
