@@ -8,10 +8,10 @@
 
 ---
 ## Sumário
-- [Sobre o projeto](#smartpaws)
-- [Objetivo do Projeto](#objetivo-do-projeto)
-- [Tecnologias e Programas que serão utilizadas](#tecnologias-e-programas-que-serão-utilizadas)
-- [Layout do Projeto](#layout-do-projeto)
+ [Sobre o projeto](#smartpaws)
+ [Objetivo do Projeto](#objetivo-do-projeto)
+ [Tecnologias e Programas que serão utilizadas](#tecnologias-e-programas-que-serão-utilizadas)
+ [Layout do Projeto](#layout-do-projeto)
 
 # SmartPaws  
 
