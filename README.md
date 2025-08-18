@@ -5,6 +5,11 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/Kennedolas/SmartPaws)](https://github.com/Kennedolas/SmartPaws/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/Kennedolas/SmartPaws)](https://github.com/Kennedolas/SmartPaws/commits)
+[![HTML5](https://img.shields.io/badge/HTML5-%23E34F26?style=flat&logo=html5&logoColor=white)]()
+[![CSS3](https://img.shields.io/badge/CSS3-%231572B6?style=flat&logo=css3&logoColor=white)]()
+[![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=flat&logo=javascript&logoColor=black)]()
+[![Figma](https://img.shields.io/badge/Figma-%2300C1F4?style=flat&logo=figma&logoColor=white)](https://www.figma.com/design/cW6zFr5IelIl4pf9LfZ4D9/SmartPaws?node-id=0-1&p=f&t=rWcuvNlkUXWchLfU-0)
+
 ---
 ## Sumário
  - [Sobre o projeto](#smartpaws)
