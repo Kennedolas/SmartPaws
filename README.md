@@ -2,9 +2,16 @@
   <img src="IMG/logoprincipal.png" alt="Logo SmartPaws" width="100%" style="max-width:1920px; height:auto;"/>
 </p>
 
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/Kennedolas/SmartPaws)](https://github.com/Kennedolas/SmartPaws/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/Kennedolas/SmartPaws)](https://github.com/Kennedolas/SmartPaws/commits)
+
 ---
+## Sumário
+- [Sobre o projeto](#smartpaws)
+- [Objetivo do Projeto](#objetivo-do-projeto)
+- [Tecnologias e Programas que serão utilizadas](#tecnologias-e-programas-que-serão-utilizadas)
+- [Layout do Projeto](#layout-do-projeto)
 
 # SmartPaws  
 
@@ -42,11 +49,20 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
 ## Tecnologias e Programas que serão utilizadas
 
 <p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="60" height="60" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="60" height="60" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="60" height="60" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="60" height="60" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="60" height="60" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="60" height="60" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="60" height="60" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="60" height="60" />
+</p>
+
+---
+## Layout do Projeto
+
+### Tela Inicial
+<p align="center">
+  <img src="IMG/telainicial.png" alt="Tela inicial do projeto" width="600"/>
 </p>
 
 ---
