@@ -5,7 +5,6 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/Kennedolas/SmartPaws)](https://github.com/Kennedolas/SmartPaws/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/Kennedolas/SmartPaws)](https://github.com/Kennedolas/SmartPaws/commits)
-
 ---
 ## Sumário
  - [Sobre o projeto](#smartpaws)
