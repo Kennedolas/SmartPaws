@@ -66,7 +66,54 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
 </p>
 
 ---
+##  Colaboradores
 
+Agradecimento especial ás pessoas que estão fazendo esse projeto acontecer:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#" title="defina o título do link">
+        <img src="https://avatars.githubusercontent.com/u/181789211?v=4" width="100px;" alt="Foto do Felipe de Morais no GitHub"/><br>
+        <sub>
+          <b>Felipe de Morais</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#" title="defina o título do link">
+        <img src="https://avatars.githubusercontent.com/u/211712685?v=4" width="100px;" alt="Foto da Nicolly Almeida"/><br>
+        <sub>
+          <b>Nicolly Almeida</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#" title="defina o título do link">
+        <img src="https://avatars.githubusercontent.com/u/175540283?s=400&u=f81d1e2a25b03ca4005ecb21ecc49ef74168671e&v=4" width="100px;" alt="Foto do Samuel Kennedy"/><br>
+        <sub>
+          <b>Samuel Kennedy</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#" title="defina o título do link">
+        <img src="https://avatars.githubusercontent.com/u/178948135?v=4" width="100px;" alt="Foto do Henrique Duarte no GitHub"/><br>
+        <sub>
+          <b>Henrique Duarte</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#" title="defina o título do link">
+        <img src="https://avatars.githubusercontent.com/u/207481101?v=4" width="100px;" alt="Foto do Matheus Carvalho no GitHub"/><br>
+        <sub>
+          <b>Matheus Carvalho</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
 <p align="center">
   Feito com carinho pela equipe SmartPaws🐾
