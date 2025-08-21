@@ -8,7 +8,7 @@
 [![HTML5](https://img.shields.io/badge/HTML5-%23E34F26?style=flat&logo=html5&logoColor=white)]()
 [![CSS3](https://img.shields.io/badge/CSS3-%231572B6?style=flat&logo=css3&logoColor=white)]()
 [![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=flat&logo=javascript&logoColor=black)]()
-[![Figma](https://img.shields.io/badge/Figma-%2300C1F4?style=flat&logo=figma&logoColor=white)](https://www.figma.com/design/cW6zFr5IelIl4pf9LfZ4D9/SmartPaws?node-id=0-1&p=f&t=rWcuvNlkUXWchLfU-0)
+[![Figma](https://img.shields.io/badge/Figma-%2300C1F4?style=flat&logo=figma&logoColor=white)](https://www.figma.com/proto/4IJIlsc2hRUAVpvrSk72Q7/New-SmartPaws?node-id=1-70&p=f&t=hjQA8vS6kuVE2vUI-0&scaling=contain&content-scaling=fixed&page-id=0%3A1)
 
 ---
 ## Sumário
