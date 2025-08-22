@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="IMG/logoprincipal.png" alt="Logo SmartPaws" width="100%" style="max-width:1920px; height:auto;"/>
+  <img src="static/images/logos/logoprincipal.png" alt="Logo SmartPaws" width="100%" style="max-width:1920px; height:auto;"/>
 </p>
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
@@ -69,7 +69,7 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
 
 ### Tela Inicial
 <p align="center">
-  <img src="IMG/telainicial1.png" alt="Tela inicial do projeto" width="600"/>
+  <img src="static/images/logos/telainicial1.png" alt="Tela inicial do projeto" width="600"/>
 </p>
 
 ---
