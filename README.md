@@ -72,6 +72,11 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
   <img src="prototipagem/telainicial1.png" alt="Tela inicial do projeto" width="600"/>
 </p>
 
+### Tela de Login
+<p align="center">
+  <img src="prototipagem/teladelogin.png" alt="Tela inicial do projeto" width="600"/>
+</p>
+
 ---
 ##  Colaboradores
 
@@ -120,4 +125,10 @@ Agradecimento especial às pessoas que estão fazendo este projeto acontecer:
       </a>
     </td>
   </tr>
+  <td align="center">
+      <a href="#" title="defina o título do link">
+        <img src="https://avatars.githubusercontent.com/u/214049324?v=4" width="70pc;" alt="Foto do Henri de Sá no GitHub"/><br>
+        <sub>
+          <b>Henri de Sá</b>
+        </sub>
 </table>
