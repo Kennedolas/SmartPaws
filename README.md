@@ -92,12 +92,22 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
   <img src="prototipagem/Teladeadocao.png" alt="Tela inicial do projeto" width="600"/>
 </p>
 
-### ------------------
 <p align="center">
   <img src="prototipagem/Teladeadocao2.png" alt="Tela inicial do projeto" width="600"/>
 </p>
 
----
+### Vídeo de amostra do protótipo
+<p align="center">
+
+
+
+https://github.com/user-attachments/assets/4a197105-8215-4242-b2cd-aed17cd11633
+
+
+
+</p>
+
+
 ##  Colaboradores
 
 Agradecimento especial às pessoas que estão fazendo este projeto acontecer:
