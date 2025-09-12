@@ -87,6 +87,16 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
   <img src="prototipagem/teladecademp.png" alt="Tela inicial do projeto" width="600"/>
 </p>
 
+### Tela de Adoção
+<p align="center">
+  <img src="prototipagem/Teladeadocao.png" alt="Tela inicial do projeto" width="600"/>
+</p>
+
+### Tela de Adoção - 2
+<p align="center">
+  <img src="prototipagem/Teladeadocao2.png" alt="Tela inicial do projeto" width="600"/>
+</p>
+
 ---
 ##  Colaboradores
 
