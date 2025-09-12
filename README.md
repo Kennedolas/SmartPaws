@@ -72,6 +72,11 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
   <img src="prototipagem/telainicial1.png" alt="Tela inicial do projeto" width="600"/>
 </p>
 
+### 
+<p align="center">
+  <img src="prototipagem/Telainicial2.png" alt="Tela inicial do projeto" width="600"/>
+</p>
+
 ### Tela de Login
 <p align="center">
   <img src="prototipagem/teladelogin.png" alt="Tela inicial do projeto" width="600"/>
