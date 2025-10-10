@@ -5,6 +5,7 @@
 /*BODY*/
 body {
     margin: 0;
+    overflow-x: hidden; /* Medida de segurança para forçar a remoção de qualquer rolagem horizontal */
 }
 
 /*CONFIGURAÇÕES DO TOPO DA PÁGINA*/
@@ -13,10 +14,12 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    padding: 10px 20px;
+    padding: 10px 20px; /* Adicionado um padding para espaçamento */
+    box-sizing: border-box;
 }
 .logo_cima {
     width: 20%;
+    min-width: 150px;
 }
 #barra_pesquisa {
     padding: 1%;
@@ -64,6 +67,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 90px;
+    padding-left: 0; /* Remove padding padrão do ul */
 }
 ul {
     list-style: none;
@@ -100,25 +104,44 @@ li a {
     background-color: #ab8262;
     font-family: 'Signika SC', sans-serif;
     font-size: 14px;
+    border: 2px solid transparent;
+    transition: background-color 0.4s, color 0.4s, border-color 0.4s, 
+                transform 0.4s ease-out, box-shadow 0.4s ease-out; 
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+.caixas_pequenas p:hover {
+    background-color: #fff;
+    color: #ab8262;
+    border-color: #ab8262;
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
 }
 .caixas_pequenas p span {
     font-weight: 900;
     font-family: "Montserrat", sans-serif;
 }
 
-/* MAIS PROCURADOS*/
-h3 {
+/* MAIS PROCURADOS - CORRIGIDO */
+.container_titulo {
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
     text-align: left;
-    margin-left: 325px;
+}
+h3 {
     font-family: "Luckiest Guy", cursive;
     font-weight: normal;
     font-size: 32px;
+    margin-left: 0;
 }
 .container_mais_procurados {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -50px;
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha se necessário */
+    margin-top: -20px;
+    width: 100%;
 }
 .mais_procurado {
     display: flex;
@@ -126,7 +149,7 @@ h3 {
     align-items: center;
     padding: 10px;
     margin: 0 0px;
-    width: 10%;
+    flex: 0 1 200px; /* ALTERAÇÃO APLICADA AQUI */
 }
 .mais_procurado a {
     display: inline-block;
@@ -209,16 +232,19 @@ h3 {
     pointer-events: none;
 }
 
-/*  FUTURO CARROSSEL */
+/* FUTURO CARROSSEL - CORRIGIDO */
 .container_carrossel {
     position: relative;
     margin-top: 40px;
+    width: 90%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .carrossel {
     gap: 10px;
     display: flex;
     overflow-x: auto;
-    margin-left: 120px;
 }
 .carrossel::-webkit-scrollbar {
     display: none;
@@ -232,8 +258,7 @@ h3 {
 }
 /* FIM */
 
-
-/*CONTAINER CATEGORIAS*/
+/*CONTAINER CATEGORias*/
 .container_categorias {
     display: flex;
     justify-content: center;
@@ -411,11 +436,9 @@ h3 {
     white-space: nowrap;
     border-radius: 20px;
     font-weight: bold; 
-    
     border: 2px solid transparent;
     transition: all 0.4s ease;
 }
-
 
 .cadastre a:hover {
     background-color: #fff;
@@ -428,6 +451,8 @@ h3 {
     .container_topo {
         flex-direction: column;
         gap: 10px;
+        padding-top: 50px; /* Aumenta o espaço no topo para os ícones */
+        padding-right: 0px;
     }
     .container_topo img {
         width: 50%;
@@ -437,6 +462,7 @@ h3 {
         transform: none;
         width: 60%;
         height: 40px;
+        order: 3; /* Muda a ordem para a barra de pesquisa vir por último */
     }
     .entre_cadastre {
         text-align: center;
@@ -445,12 +471,19 @@ h3 {
         align-items: center;
         width: 60%;
         height: 40px;
+        order: 2; /* Ordem do botão */
     }
+    /* ALTERAÇÃO PRINCIPAL APLICADA AQUI */
     .carrinho_perfil {
         position: absolute;
         display: flex;
         justify-content: space-between;
-        gap: 500px;
+        width: 100%;
+        top: 15px;
+        left: 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        gap: 0;
     }
     a .carrinho {
         width: 50px;
@@ -462,7 +495,8 @@ h3 {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 90px;
+        gap: 30px; /* Diminuído para caber melhor */
+        flex-wrap: wrap; /* Permite que os itens quebrem a linha */
     }
     .caixas_pequenas {
         display: grid;
@@ -598,54 +632,11 @@ h3 {
     transition: width 0.3s ease-in-out;
 }
 
-
 .container_paginas li:not(.has-dropdown) a:hover::after {
     width: 100%;
 }
 
-
-
-
-.caixas_pequenas p {
-    padding: 15px;
-    border-radius: 10px;
-    color: white;
-    background-color: #ab8262;
-    font-family: 'Signika SC', sans-serif;
-    font-size: 14px;
-    
-    border: 2px solid transparent;
-    
-    transition: background-color 0.4s, color 0.4s, border-color 0.4s, 
-                transform 0.4s ease-out, box-shadow 0.4s ease-out; 
-    cursor: pointer;
-    
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-}
-
-.caixas_pequenas p:hover {
-    background-color: #fff;
-    color: #ab8262;
-    border-color: #ab8262;
-    
-    
-    transform: scale(1.05); 
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
-}
-
-.caixas_pequenas p span {
-    font-weight: 900;
-    font-family: "Montserrat", sans-serif;
-}
-
-
-
-
-/* ANIMAÇÃO DA COMUNITY */
-
 /* --- INÍCIO: ESTILOS DO BOTÃO VOLTAR AO TOPO --- */
-
 #back-to-top-btn {
     position: fixed; 
     bottom: 20px;
@@ -662,7 +653,6 @@ h3 {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-
    
     opacity: 0;
     visibility: hidden;
@@ -677,5 +667,4 @@ h3 {
     pointer-events: auto; 
     transform: translateY(0); 
 }
-
 /* --- FIM: ESTILOS DO BOTÃO VOLTAR AO TOPO --- */
