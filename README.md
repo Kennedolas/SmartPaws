@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="static/images/logos/logoprincipal.png" alt="Logo SmartPaws" width="100%" style="max-width:1920px; height:auto;"/>
+  <img src="IMG/Logo SmartPaws.png" alt="Logo SmartPaws" width="100%" style="max-width:1920px; height:auto;"/>
 </p>
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
@@ -9,6 +9,11 @@
 [![CSS3](https://img.shields.io/badge/CSS3-%231572B6?style=flat&logo=css3&logoColor=white)]()
 [![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=flat&logo=javascript&logoColor=black)]()
 [![Figma](https://img.shields.io/badge/Figma-%2300C1F4?style=flat&logo=figma&logoColor=white)](https://www.figma.com/proto/4IJIlsc2hRUAVpvrSk72Q7/New-SmartPaws?node-id=1-70&p=f&t=hjQA8vS6kuVE2vUI-0&scaling=contain&content-scaling=fixed&page-id=0%3A1)
+https://img.shields.io/bstats/servers/:pluginid
+
+
+
+
 
 ---
 ## Sumário
