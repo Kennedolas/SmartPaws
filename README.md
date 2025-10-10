@@ -20,6 +20,7 @@
  - [Objetivo do Projeto](#objetivo-do-projeto)
  - [Tecnologias e Programas que serão utilizadas](#tecnologias-e-programas-que-serão-utilizadas)
  - [Layout do Projeto](#layout-do-projeto)
+ - [Confira a SmartPaws em ação!🐾](https://kennedolas.github.io/SmartPaws/index.html)
 
 # SmartPaws  
 
@@ -58,7 +59,7 @@ Na SmartPaws, acreditamos que cada pet merece amor, cuidado e proteção. Por is
 
 <p align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="60" height="60" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="60" height="60" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"( width="60" height="60"( />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="60" height="60" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="60" height="60" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="60" height="60" />
