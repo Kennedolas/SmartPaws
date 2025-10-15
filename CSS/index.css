@@ -62,7 +62,7 @@ body {
     padding: 0.1vw;
     background-color: #ab8262;
 }
-.container_paginas ul{
+.container_paginas .paginas{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -491,7 +491,7 @@ h3 {
     a .perfil {
         width: 35px;
     }
-    .container_paginas ul{
+    .container_paginas .paginas{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -569,6 +569,11 @@ h3 {
 .has-dropdown {
     position: relative;
 }
+.has-dropdown a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .has-dropdown > a::after {
     content: '▾';
     display: inline-block;
@@ -580,6 +585,7 @@ h3 {
     transform: rotate(180deg);
 }
 .dropdown-menu {
+    flex-direction: column;
     position: absolute;
     top: 100%;
     right: 1;
@@ -620,7 +626,7 @@ h3 {
     padding-bottom: 8px; 
 }
 
-.container_paginas li:not(.has-dropdown) a::after {
+.container_paginas li:not(.has-dropdown) li::after {
     content: '';
     position: absolute;
     bottom: 0;
