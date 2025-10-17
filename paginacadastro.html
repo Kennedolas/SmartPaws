@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPaws</title>
+    <link rel="stylesheet" href="CSS/paginacadastro.css">
+</head>
+<body>
+
+     <div class="topo">
+        <div class="clique">
+        <a href="index.html">
+            <img class="logo" src="img/New_Logo_Smart_Paws_20250909_201807_0000.png" alt="logo">
+        </a>
+    </div> 
+        <div class="seguranca">
+        <img class="cadeado" src="img/cadeado.png.png" alt="cadeado">
+        <h3>AMBIENTE SEGURO</h3>
+        </div>
+    </div>
+    <br><br>
+    <div class="mensagem">
+    <h1>CRIAR UMA CONTA</h1>
+    </div>
+    <div class="listacadastro">
+    <ul>
+        <li>Pessoa Física</li>
+        <li>Pessoa Jurídica</li>
+    </ul>
+    </div>
+    <br><br>
+    <div class="linha">
+    <hr>
+    </div>
+    <form action="index.html" method="get">
+    <div class="textonome">
+    <p>NOME E SOBRENOME</p>
+    </div>
+    <br>
+    <div class="nome">
+    <input type="text" id="text" name="nome" placeholder="DIGITE O SEU NOME E SOBRENOME" required> 
+    </div>
+    <br>
+    <div class="textoemail">
+    <p>E-MAIL</p>
+    </div>
+    <br>
+    <div class="email">
+    <input type="email" id="email" name="email" placeholder="DIGITE O SEU EMAIL" required>
+    </div> 
+    <br>
+    <div class="textocelular">
+    <p>CELULAR</p>
+    </div>
+    <br>
+    <div class="celular">
+    <input 
+    type="text" 
+    id="tel" 
+    name="celular" 
+    placeholder="DDD + CELULAR"
+    maxlength="11"
+    pattern="\d{11}"
+    required>
+    </div>
+    <br>
+    <div class="textotelefone">
+    <p>TELEFONE(OPCIONAL)</p>
+    </div>
+    <br>
+    <div class="telefone">
+    <input 
+    type="tel" 
+    id="tel" 
+    name="telefone" 
+    placeholder="DDD + TELEFONE" 
+    maxlength="11"
+    pattern="\d{11}"
+    >
+    </div>
+    <br>
+    <div class="textosexo">
+    <p>SEXO(OPCIONAL)</p>
+    </div>
+    <br>
+    <div class="sexo">
+    <input list="opcoes" id="sexo" name="sexo" placeholder="SELECIONE OU DIGITE">
+    <datalist id="opcoes">
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+        <option value="Outros">Outros</option>
+    </datalist>
+    </div>
+    <br>
+    <div class="textodata">
+    <p>DATA DE NASCIMENTO(OPCIONAL)</p>  
+    </div>
+    <br>
+    <div class="data">
+    <input type="date" id="date" name="data" placeholder="DIGITE A SUA DATA DE NASCIMENTO" required>
+    </div>
+    <br>
+    <div class="textocpf">
+    <p>CPF</p>
+    </div>
+    <br>
+    <div class="cpf">
+    <input 
+    type="text"
+    id="cpf"
+    name="cpf"
+    placeholder="DIGITE O SEU CPF"
+    maxlength="11"
+    pattern="\d{11}"
+    required
+    >
+    </div> 
+    <br>
+    <div class="textosenha">
+    <p>SENHA</p>
+    </div>
+    <br>
+    <div class="senha">
+    <input type="password"
+    id="senha"
+    name="senha"
+    placeholder="DIGITE SUA SENHA"
+    minlength="8"
+    required>
+    </div>
+    <br>
+    <div class="textoconfirmar">
+    <p>CONFIRMAR A SENHA</p>
+    </div>
+    <br>
+    <div class="confirmarsenha">
+    <input type="password"
+    id="confirmarsenha"
+    name="confirmarsenha"
+    placeholder="CONFIRME SUA SENHA"
+    minlength="8"
+    required
+    >
+    </div> 
+    <div class="lista">
+    <p>PADRÃO DE SENHA</p>
+    <ul>
+        <li>Mínimo de 8 caracteres.</li>
+        <li>Letras maiúsculas e minúsculas.</li>
+        <li>Números</li>
+    </ul>
+    </div>
+    <br><br><br>
+    <div class="entrar">
+    <button type="submit">CRIAR CONTA</button>
+    </div>
+
+    </form>
+    <br>
+   
+    
+</body>
+</html>
