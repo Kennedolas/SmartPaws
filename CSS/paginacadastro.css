@@ -4,20 +4,19 @@
 *{
     margin: 0;
     padding: 0;
-
 }
-.topo{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #ab8262;
-  height: 60%;
-  width: 100%;
-  color: white;
-  font-size: 60%;
-  font-family: 'montserrat';
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px;    
+    background-color: #ab8262;
+    width: 100%;
+    color: white;
+    font-family: 'montserrat';
+    box-sizing: border-box; 
 }
-
 .seguranca{
     display: flex;
     align-items: center;
@@ -25,16 +24,22 @@
     margin-right: 10px;
     gap: 5px;
 }
-
-.cadeado{
-    width: 3%;
-} 
-
-.logo{
-    width: 20%;
-    padding: 5px;
+.logo img{
+    width: 260px;
 }
-
+.cadeado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    margin-bottom: 2px;
+}
+.ambiente-seguro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -15px;
+}
 .mensagem{
     text-align: center;
     color: #ab8262;
@@ -42,7 +47,6 @@
     font-family: 'montserrat';
     font-weight: bold;
 }
-
 .listacadastro{
     position: absolute;
     left: 35%;
@@ -52,14 +56,12 @@
     font-size: 10px;
     padding: 5px;
 }
-
 .linha{
     margin-left: 35%;
     height: 5px;
     width: 30%;
 
 }
-
 .textonome{
     position: absolute;
     left: 35%;
@@ -69,12 +71,10 @@
     font-size: 10px;
     padding: 5px;
 }
-
 .nome{
     display: flex;
     justify-content: center;
 }
-
 .nome input{
     border-color: #ab8262;
     text-align: center;
@@ -83,7 +83,6 @@
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
 .textoemail{
     position: absolute;
     left: 35%;
@@ -93,12 +92,10 @@
     font-size: 10px;
     padding: 5px;
 }
-
 .email{
     display: flex;
     justify-content: center;
 }
-
 .email input{
     border-color: #ab8262;
     text-align: center;
@@ -107,7 +104,6 @@
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
 .textocelular{
     position: absolute;
     left: 35%;
@@ -117,12 +113,10 @@
     font-size: 10px;
     padding: 5px;
 }
-
 .celular{
     display: flex;
     justify-content: center;
 }
-
 .celular input{
     border-color: #ab8262;
     text-align: center;
@@ -131,7 +125,6 @@
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
 .textotelefone{
     position: absolute;
     left: 35%;
@@ -141,12 +134,10 @@
     font-size: 10px;
     padding: 5px;
 }
-
 .telefone{
     display: flex;
     justify-content: center;
 }
-
 .telefone input{
     border-color: #ab8262;
     text-align: center;
@@ -155,7 +146,6 @@
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
 .textosexo{
     position: absolute;
     left: 35%;
@@ -165,12 +155,10 @@
     font-size: 10px;
     padding: 5px;
 }
-
 .sexo{
     display: flex;
     justify-content: center;
 }
-
 .sexo input{
      border-color: #ab8262;
     text-align: center;
@@ -179,7 +167,6 @@
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
 .textodata{
     position: absolute;
     left: 35%;
@@ -189,12 +176,10 @@
     font-size: 10px;
     padding: 5px;
 }
-
 .data{
     display: flex;
     justify-content: center;
 }
-
 .data input{
     border-color: #ab6262;
     text-align: center;
@@ -203,7 +188,6 @@
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
 .textocpf{
     position: absolute;
     left: 35%;
@@ -213,13 +197,11 @@
     font-size: 10px;
     padding: 5px;
 }
-
-.cpf{
+.cpf {
     display: flex;
     justify-content: center;
 }
-
-.cpf input{
+.cpf input {
     border-color: #ab8262;
     text-align: center;
     height: 30px;
@@ -227,8 +209,7 @@
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
-.textosenha{
+.textosenha {
     position: absolute;
     left: 35%;
     color: #ab8262;
@@ -237,13 +218,11 @@
     font-size: 10px;
     padding: 5px;
 }
-
-.senha{
+.senha {
     display: flex;
     justify-content: center;
 }
-
-.senha input{
+.senha input {
     border-color: #ab8262;
     text-align: center;
     height: 30px;
@@ -251,8 +230,7 @@
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
-.textoconfirmar{
+.textoconfirmar {
     position: absolute;
     left: 35%;
     color: #ab8262;
@@ -261,12 +239,10 @@
     font-size: 10px;
     padding: 5px;
 }
-
-.confirmarsenha{
+.confirmarsenha {
     display: flex;
     justify-content: center;
 }
-
 .confirmarsenha input{
     border-color: #ab8262;
     text-align: center;
@@ -275,13 +251,11 @@
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
 .entrar{
     display: flex;
     justify-content: center;
 }
-
-.entrar button{
+.entrar button {
   display: inline-block;
   text-align: center;
   font-size: 15px;
@@ -296,16 +270,13 @@
   font-family: 'montserrat';
   font-weight: bold;
   transition: 0.5s; 
-  
 }
-
 .entrar button:hover {
   background-color: white;
   color: #ab8262;
   border: 2px solid #ab8262;
 }
-
-.lista{
+.lista {
     position: absolute;
     left: 35%;
     color: #ab8262;
