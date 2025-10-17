@@ -5,31 +5,24 @@
     margin: 0;
     padding: 0;
 }
-
-
 a{
     color: #ab8262;
 }
-
+.logo img{
+    width: 260px;
+}
 .topo {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    padding: 10px 20px;
-    .topo > a {
-    width: 20%; 
-    flex-shrink: 0; 
-}
-    
-    
+    padding: 10px 20px;    
     background-color: #ab8262;
     width: 100%;
     color: white;
     font-family: 'montserrat';
     box-sizing: border-box; 
 }
-
 .seguranca{
     display: flex;
     align-items: center;
@@ -37,15 +30,18 @@ a{
     margin-right: 10px;
     gap: 5px;
 }
-
 .cadeado{
-    width: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    margin-bottom: 2px;
 }
-
-.logo {
-    width: 25%; 
+.ambiente-seguro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 .mensagem{
     text-align: center;
     color: #ab8262;
@@ -53,12 +49,10 @@ a{
     font-family: 'montserrat';
     font-weight: bold;
 }
-
 .email{
     display: flex;
     justify-content: center;
 }
-
 .email input{
     border-color: #ab8262;
     text-align: center;
@@ -67,12 +61,10 @@ a{
     border-radius: 5px;
     font-family: 'luckiest guy';
 }
-
 .senha{
     display: flex;
     justify-content: center;
 }
-
 .senha input{
     border-color: #ab8262;
     text-align: center;
@@ -81,7 +73,6 @@ a{
     border-radius: 5px;
     font-family: 'Luckiest Guy';
 }
-
 .esqueci{
     position: absolute;
     right: 35%;
@@ -92,12 +83,10 @@ a{
     text-decoration: underline;
     padding: 5px;
 }
-
 .entrar{
     display: flex;
     justify-content: center;
 }
-
 .entrar button{
   display: inline-block;
   text-align: center;
@@ -115,14 +104,11 @@ a{
   transition: 0.5s; 
   
 }
-
 .entrar button:hover {
   background-color: white;
   color: #ab8262;
   border: 2px solid #ab8262;
 }
-
-
 .conta{
     text-align: center;
     color: #ab8262;
@@ -130,12 +116,10 @@ a{
     font-family: 'montserrat';
     font-weight: bold;
 }
-
 .usuario{
     display: flex;
     justify-content: center;
 }
-
 .usuario a{
     display: inline-block;
     text-align: center;
@@ -152,13 +136,11 @@ a{
     transition: 0.5s;
     
 }
-
 .usuario a:hover {
   background-color: white;
   color: #ab8262;
   border: 2px solid #ab8262;
 }
-
 .ou{
     text-align: center;
     color: #ab8262;
@@ -167,12 +149,10 @@ a{
     font-weight: bold;
     padding: 10px;
 }
-
 .loja{
     display: flex;
     justify-content: center;
 }
-
 .loja a{
     display: inline-block;
     text-align: center;
@@ -189,7 +169,6 @@ a{
     transition: 0.5s;
    
 }
-
 .loja a:hover {
   background-color: white;
   color: #ab8262;
