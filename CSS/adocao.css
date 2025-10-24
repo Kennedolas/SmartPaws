@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.cdnfonts.com/css/signika-sc-2');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+
+/*BODY*/
+body {
+    margin: 0;
+    overflow-x: hidden; /* Medida de segurança para forçar a remoção de qualquer rolagem horizontal */
+}
+
+/*CONFIGURAÇÕES DO TOPO DA PÁGINA*/
+.container_topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px; /* Adicionado um padding para espaçamento */
+    box-sizing: border-box;
+}
+.logo_cima {
+    width: 20%;
+    min-width: 150px;
+}
+#barra_pesquisa {
+    padding: 1%;
+    width: 50%;
+    text-align: left 10px;
+    border: none;
+    background-color: #EEEEEE;
+    border-radius: 100px;
+    font-size: 16px;
+    font-family: "Luckiest Guy", cursive;
+}
+.entre_cadastre {
+    text-decoration: none;
+    color: white;
+    background-color: #ab8262;
+    padding: 1%;
+    border-radius: 100px;
+    text-align: center;
+    font-family: "Luckiest Guy", cursive;
+    border: 2px solid transparent;
+    transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+.entre_cadastre:hover {
+    background-color: white;
+    color: #ab8262;
+    border-color: #ab8262;
+}
+.carrinho_perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.perfil {
+    width: 40px;
+}
+
+/*BARRA DE PÁGINAS DOIDA*/
+.container_paginas {
+    padding: 0.1vw;
+    background-color: #ab8262;
+}
+.container_paginas .paginas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    padding-left: 0; /* Remove padding padrão do ul */
+}
+ul {
+    list-style: none;
+    text-align: center;
+}
+li a {
+    color: white;
+    text-decoration: none;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 20px;
+}
+
+/*MENU PARA BAIXO (DROPDOWN)*/
+.has-dropdown {
+    position: relative;
+}
+.has-dropdown a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.has-dropdown > a::after {
+    content: '▾';
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 30px;
+    transition: transform 0.3s ease;
+}
+.has-dropdown:hover > a::after {
+    transform: rotate(180deg);
+}
+.dropdown-menu {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 1;
+    transform: translateX(0);
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 12px 10px;
+    list-style: none;
+    width: max-content;
+    min-width: 180px;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, top 0.3s ease;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+.dropdown-menu li a {
+    padding: 10px 10px;
+    display: block;
+    white-space: nowrap;
+    font-size: 20px;
+    border-radius: 10px;
+    transition: background-color 0.1s ease, transform 0.1s ease;
+    color: #ab8262;
+}
+.dropdown-menu li a:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.08);
+}
+.has-dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+}
+
+.container_paginas li:not(.has-dropdown) a {
+    position: relative;
+    padding-bottom: 8px; 
+}
+
+.container_paginas li:not(.has-dropdown) li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.container_paginas li:not(.has-dropdown) a:hover::after {
+    width: 100%;
+}
+
+/* --- INÍCIO: ESTILOS DO BOTÃO VOLTAR AO TOPO --- */
+#back-to-top-btn {
+    position: fixed; 
+    bottom: 20px;
+    right: 20px;
+    z-index: 999; 
+
+    /* Estilos Visuais */
+    width: 50px;
+    height: 50px;
+    background-color: #ab8262; 
+    color: white;
+    border: none;
+    border-radius: 50%; 
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+   
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; 
+    transform: translateY(20px); 
+    transition: opacity 0.4s, visibility 0.4s, transform 0.4s;
+}
+
+#back-to-top-btn.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; 
+    transform: translateY(0); 
+}
+/* --- FIM: ESTILOS DO BOTÃO VOLTAR AO TOPO --- */
+
+/*CAIXA DOS CONTEÚDOS DA PÁGINA*/
+.container_conteudos {
+    padding: 20px;
+    text-align: center;
+}
+
+/*IMAGEM GRANDE*/
+.imagem-grande {
+    text-align: center;
+    width: 70%;
+    border-radius: 30px;
+}
+
+/*ESTILIZAÇÃO DO <h3>*/
+.container_titulo {
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
+    text-align: left;
+}
+h3 {
+    font-family: "Luckiest Guy", cursive;
+    font-weight: normal;
+    font-size: 32px;
+    margin-left: 0;
+}
+
+/*PARCEIROS DE ADOÇÃO*/
+.container-parceiros-adocao {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.container-parceiros-adocao img {
+    width: 150px;
+    border-radius: 10px;
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.5); 
+}
+
+/*CONHECER PETS DISPONÍVEIS*/
+.container_titulo-pets {
+    width: 90%;
+    max-width: 1240px;
+    text-align: left;
+    margin-top: -20px;
+}
+.container-pets-disponiveis {
+    margin-left: 120px;
+    margin-right: 120px;
+    padding: 1px 20px 50px 20px;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+.filtro {
+    display: flex;
+    justify-content: right;
+    position: relative;
+    top: -55px;
+}
+.filtro ul {
+    display: flex;
+    gap: 30px;
+}
+.filtro li a {
+    color: black;
+}
+.container-opcoes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    gap: 30px;
+}
+.opcao-pet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 270px;
+    border-radius: 22px;
+    border: solid #9e9e9e;
+    background-color: white;
+}
+.opcao-pet .imagem-pet{
+    border-bottom: solid #9e9e9e;
+}
+.opcao-pet:hover {
+    cursor: pointer;
+}
+.descricao-pet {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.nome-cidade {
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 0;
+}
+.nome-cidade p {
+    font-family: "Luckiest Guy", cursive;
+    font-weight: normal;
+    font-size: 36px;
+    color: #ab8262;
+    line-height: 0.6;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+span {
+    font-family: 'Signika SC', sans-serif;
+    color: black;
+    font-size: 16px;
+}
+.sexo-masculino img {
+    position: absolute;
+    top: 20px;
+    left: 185px;
+    width: 60px;
+}
+.sexo-feminino img {
+    position: absolute;
+    top: 20px;
+    left: 195px;
+    width: 60px;
+}
+
+/*ADOTAR E PROMOVER ADOÇÃO*/
+.adotar-promover {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+}
+.adotar-promover a {
+    text-decoration: none;
+    color: white;
+    background-color: #ab8262;
+    padding: 8px 80px;
+    font-family: "Luckiest Guy", cursive;
+    font-weight: normal;
+    font-size: 24px;
+    border-radius: 10px;
+}
+
+/*POR QUE ADOTAR PETS?*/
+.container-pets-1 {
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+    gap: 20px;
+}
+.imagem-adotar{
+    width: 200px;
+}
+.container-pets-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.container-pets-3 {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-right: 100px;
+    gap: 20px;
+}
+.numero {
+    text-align: center;
+    background-color: #ab8262;
+    font-family: "Luckiest Guy", cursive;
+    font-weight: normal;
+    color: white;
+    font-size: 50px;
+    width: 60px;
+    height: auto;
+    border-radius: 50%;
+}
+.texto {
+    font-family: "Patua One", serif;
+    font-weight: normal;
+    text-align: left;
+    max-width: 300px;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+
+@media (max-width: 768px) {
+    .container_topo {
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 50px; /* Aumenta o espaço no topo para os ícones */
+        padding-right: 0px;
+    }
+    .container_topo img {
+        width: 50%;
+    }
+    #barra_pesquisa {
+        position: static;
+        transform: none;
+        width: 60%;
+        height: 40px;
+        order: 3; /* Muda a ordem para a barra de pesquisa vir por último */
+    }
+    .entre_cadastre {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        height: 40px;
+        order: 2; /* Ordem do botão */
+    }
+    /* ALTERAÇÃO PRINCIPAL APLICADA AQUI */
+    .carrinho_perfil {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        top: 15px;
+        left: 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        gap: 0;
+    }
+    a .carrinho {
+        width: 50px;
+    }
+    a .perfil {
+        width: 35px;
+    }
+    .container_paginas .paginas{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px; /* Diminuído para caber melhor */
+        flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+    }
+}
