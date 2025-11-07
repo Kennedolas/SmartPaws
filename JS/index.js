@@ -44,18 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const trigger = dropdown.querySelector('a'); 
 
         trigger.addEventListener('click', function(event) {
-            
+        
+        if (trigger.getAttribute('href') === '#') {
             event.preventDefault();
 
-        
             document.querySelectorAll('.has-dropdown.is-open').forEach(openDropdown => {
                 if (openDropdown !== dropdown) {
                     openDropdown.classList.remove('is-open');
                 }
             });
 
-            // Adiciona ou remove a classe 'is-open' no item de menu clicado
-            dropdown.classList.toggle('is-open');
+                dropdown.classList.toggle('is-open');
+            }
         });
     });
 
