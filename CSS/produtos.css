@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.cdnfonts.com/css/signika-sc-2');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+
+/*BODY*/
+body {
+    margin: 0;
+    overflow-x: hidden; /* Medida de segurança para forçar a remoção de qualquer rolagem horizontal */
+}
+
+/*CONFIGURAÇÕES DO TOPO DA PÁGINA*/
+.container_topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px; /* Adicionado um padding para espaçamento */
+    box-sizing: border-box;
+}
+.logo_cima {
+    width: 20%;
+    min-width: 150px;
+}
+#barra_pesquisa {
+    padding: 1%;
+    width: 50%;
+    text-align: left 10px;
+    border: none;
+    background-color: #EEEEEE;
+    border-radius: 100px;
+    font-size: 16px;
+    font-family: "Luckiest Guy", cursive;
+}
+.entre_cadastre {
+    text-decoration: none;
+    color: white;
+    background-color: #ab8262;
+    padding: 1%;
+    border-radius: 100px;
+    text-align: center;
+    font-family: "Luckiest Guy", cursive;
+    border: 2px solid transparent;
+    transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+.entre_cadastre:hover {
+    background-color: white;
+    color: #ab8262;
+    border-color: #ab8262;
+}
+.carrinho_perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.perfil {
+    width: 40px;
+}
+
+/*BARRA DE PÁGINAS DOIDA*/
+.container_paginas {
+    padding: 0.1vw;
+    background-color: #ab8262;
+}
+.container_paginas .paginas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    padding-left: 0; /* Remove padding padrão do ul */
+}
+ul {
+    list-style: none;
+    text-align: center;
+}
+li a {
+    color: white;
+    text-decoration: none;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 20px;
+}
+
+/*MENU PARA BAIXO (DROPDOWN)*/
+.has-dropdown {
+    position: relative;
+}
+.has-dropdown a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.has-dropdown > a::after {
+    content: '▾';
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 30px;
+    transition: transform 0.3s ease;
+}
+.has-dropdown:hover > a::after {
+    transform: rotate(180deg);
+}
+.dropdown-menu {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 1;
+    transform: translateX(0);
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 12px 10px;
+    list-style: none;
+    width: max-content;
+    min-width: 180px;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, top 0.3s ease;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+.dropdown-menu li a {
+    padding: 10px 10px;
+    display: block;
+    white-space: nowrap;
+    font-size: 20px;
+    border-radius: 10px;
+    transition: background-color 0.1s ease, transform 0.1s ease;
+    color: #ab8262;
+}
+.dropdown-menu li a:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.08);
+}
+.has-dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+}
+
+.container_paginas li:not(.has-dropdown) a {
+    position: relative;
+    padding-bottom: 8px; 
+}
+
+.container_paginas li:not(.has-dropdown) li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.container_paginas li:not(.has-dropdown) a:hover::after {
+    width: 100%;
+}
+
+/*IMAGEM TOPO*/
+.imagem_topo img {
+    width: 100%;
+}
+
+/*ESTILIZAÇÃO DO <h3>*/
+.container_titulo {
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
+    text-align: left;
+}
+h3 {
+    font-family: "Luckiest Guy", cursive;
+    font-weight: normal;
+    font-size: 32px;
+    margin-left: 0;
+}
+
+/*CATÁLOGO DE PRODUTOS*/
+.container_produtos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.produto {
+    display: flex;
+    justify-content: center;
+    background-color: #eeeeee;
+    padding: 40px 40px 210px;
+    border-radius: 10px;
+    position: relative;
+}
+.produto .tipo_produto {
+    position: absolute;
+    left: 20px;
+    top: 1px;
+    font-family: 'Signika SC', sans-serif;
+    font-size: 14px;
+}
+.produto .nome_produto {
+    max-width: 200px;
+    text-align: left;
+    position: absolute;
+    left: 18px;
+    top: 215px;
+    font-family: 'Signika SC', sans-serif;
+    font-size: 14px;
+}
+.produto .desconto_produto {
+    position: absolute;
+    margin-top: 233px;
+    margin-left: -156px;
+    font-size: 14px;
+    color: #484848;
+    font-family: "Montserrat", sans-serif;
+}
+.produto .preco_produto {
+    position: absolute;
+    margin-top: 260px;
+    margin-left: -156px;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+.produto .porcentagem_desconto {
+    position: absolute;
+    margin-top: 257px;
+    margin-left: 30px;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: #ab8262;
+    background-color: #fefefe;
+    padding: 5px;
+    border-radius: 8px;
+}
+.produto .avaliacao_produto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    gap: 2px;
+    margin-left: 170px;
+    margin-top: 216px;
+}
+.produto .avaliacao_produto img{
+    width: 14px;
+    height: 13px;
+}
+.produto .avaliacao_produto p{
+    font-family: 'Signika SC', sans-serif;
+}
+.produto .peso_produto {
+    position: absolute;
+    left: 17px;
+    bottom: 50px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.produto .peso_produto .opcao_peso {
+    background-color: #fefefe;
+    color: #6a6a6a;
+    border: solid #ab8262;
+    border-radius: 8px;
+    padding: 5px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+}
+.opcao_peso:hover {
+    cursor: pointer;
+}
+.produto .adicionar_carrinho {
+    position: absolute;
+    margin-top: 340px;
+    font-size: 14px;
+    font-family: "Luckiest Guy", cursive;
+    color: white;
+    background-color: #ab8262;
+    padding: 10px 40px;
+    border-radius: 50px;
+    border: none;
+}
+.adicionar_carrinho:hover {
+    cursor: pointer;
+}
+.container_imagem_meio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container_imagem_meio img{
+    width: 90%;
+}
