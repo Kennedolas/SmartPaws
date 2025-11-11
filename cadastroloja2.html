@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPaws</title>
+    <link rel="stylesheet" href="CSS/cadastroloja2.css">
+</head>
+<body>
+
+     <div class="topo">
+        <a class="logo" href="index.html">
+            <img src="IMG/New_Logo_Smart_Paws_20250909_201807_0000.png" alt="logo">
+        </a>
+        <div class="seguranca">
+        <img class="cadeado" src="IMG/cadeado.png.png" alt="cadeado">
+        <h3 class="ambiente-seguro">AMBIENTE SEGURO</h3>
+        </div>
+    </div>
+
+    <div class="titulo">
+        <h2>2-INFORMAÇÕES NECESSÁRIAS</h2>
+    </div>
+
+    <br>
+
+            <div class="titulo2">
+            <h2>Informações para identificação</h2>
+            </div>
+
+            <div class="titulo3">
+            <h2>Informação da loja</h2>
+        </div>
+
+    <div class="container">
+
+        <div class="fundo">
+
+        <form id="cadastroLoja2" enctype="multipart/form-data">
+        
+        <br><br>
+        
+        <div class="mensagem">
+        <p>NOME LOJA</p>
+        </div>
+
+        <div class="nomempresa">
+        <input type="text" id="text" name="nome" placeholder="DIGITE O NOME DO SEU ESTABELECIMENTO" required>
+        </div>
+        
+        <br>
+
+        <div class="mensagem2">
+        <p>CELEULAR PARA CONTATO</p>
+        </div>
+
+        <div class="celular">
+            <input
+                type="cel"
+                id="cel"
+                name="celular"
+                placeholder="DDD + CELULAR"
+                maxlength="11"
+                pattern="\d{11}"
+            >
+        </div>
+
+        <br>
+        
+        <div class="mensagem3">
+        <p>TELEFONE PARA CONTATO</p>
+        </div>
+
+        <div class="telefone">
+        <input type="tel"
+        id="tel"
+        name="telefone"
+        placeholder="DDD + TELEFONE"
+        maxlength="11"
+        pattern="\d{11}"
+        required
+        >
+        </div>
+
+        <br>
+
+        <div class="mensagem4">
+        <p>E-MAIL PARA CONTATO</p>
+        </div>
+
+        <div class="email">
+        <input type="email" id="email" name="email" placeholder="E-MAIL DO ESTABELECIMENTO" required>
+        </div>
+
+        <br>
+
+        <div class="mensagem5">
+        <p>ENDEREÇO</p>
+        </div>
+
+        <div class="endereco">
+        <input type="text" id="rua" name="rua" placeholder="RUA" required>
+        <input type="number" id="numero" name="numero" placeholder="NÚMERO" required>
+
+        <br>
+    
+        <input type="text" id="estado" name="estado" placeholder="ESTADO" required>
+        <input type="text" id="cidade" name="cidade" placeholder="CIDADE" required>
+        </div>
+
+        <br>
+
+        <div class="endereco">
+        <input type="text" id="complemento" name="complemento" placeholder="COMPLEMENTO(OPCIONAL)">
+        </div>
+
+        <br><br>
+
+        <div class="mensagem6">
+        <p>Apresentção institucional</p>
+        </div>
+
+        <br>
+
+        <div class="documento">
+        <label for="documento1" class="button">Selecionar ou Tirar Foto</label>
+        <input type="file" id="documento1" name="documento" accept="image/*" capture="environment" required>
+        <span class="arquivo selecionado"></span>
+        <small>Apresentção institucional</small>
+        </div>
+
+        <br><br>
+
+        <textarea readonly class="mensagem8">
+        Insira aqui um anexo com informações a respeito do seu comércio.
+        Exemplo: segmentação de clientes, tempo que atua no mercado, produtos disponibilizados na loja, entre outros.
+        </textarea>
+        
+        </div>
+
+        
+
+        <div class="fundo2">
+
+        
+
+        <br><br>
+
+        <div class="mensagem9">
+        <p>NOME E SOBRENOME</p>
+        </div>
+
+        <div class="nome">
+        <input type="text" id="nome" name="nome" placeholder="DIGITE SEU NOME E SOBRENOME" required>
+        </div>
+
+        <br>
+
+        <div class="mensagem10">
+        <p>CPF</p>
+        </div>
+
+        <div class="cpf">
+        <input 
+        type="text"
+        id="cpf"
+        name="cpf"
+        placeholder="DIGITE O SEU CPF"
+        maxlength="11"
+        pattern="\d{11}"
+        required
+        >
+        </div>
+
+        <br>
+
+        <div class="mensagem11">
+        <p>NACIONALIDADE</p>
+        </div>
+
+        <div class="nacionalidade">
+        <input type="text" id="nacionalidade" name="nacionalidade" placeholder="DIGITE A SUA NACIONALIDADE" requi >
+        </div>
+
+        <br>
+
+        <div class="mensagem12">
+        <p>DATA DE NASCIMENTO</p>
+        </div>
+
+        <div class="data">
+        <input type="date" id="date" name="data" required>
+        </div>
+        
+        <div class="mensagem13">
+        <p>Documento de identificação</p>
+        </div>
+
+        <br>
+
+        <div class="documento2">
+        <label for="documento2" class="button">Selecionar ou Tirar Foto</label>
+        <input type="file" id="documento2" name="documento" accept="image/*" capture="environment" required>
+        <small>Foto do documento (frente)</small>
+        </div>
+
+        <br>
+
+        <div class="documento3">
+        <label for="documento3" class="button">Selecionar ou Tirar Foto</label>
+        <input type="file" id="documento3" name="documento" accept="image/*" capture="environment" required>
+        <small>Foto do documento (verso)</small>
+        </div>
+
+        <br>
+
+        <div class="mensagem14">
+        <p>Selfie</p>
+        </div>
+
+        <br>
+
+        <div class="documento4">
+        <label for="documento4" class="button">Selecionar ou Tirar Foto</label>
+        <input type="file" id="documento4" name="documento" accept="image/*" capture="environment" required>
+        <small>Selfie</small>
+        </div>
+
+        <br>
+
+        <div class="documento5">
+        <label for="documento5" class="button">Selecionar ou Tirar Foto</label>
+        <input type="file" id="documento5" name="documento" accept="image/*" capture="environment" required>
+        <small>Selfie segurando o documento</small>
+        </div>
+
+    
+
+        </div>
+    
+        </div>
+
+        <div class="botao">
+            <button type="submit">CADASTRAR LOJA</button>
+        </div>
+
+    </form>
+
+    <div class="mensagem15">
+        <h4>Aviso: Para os arquivos enviado serão aceitos somente formatos aceitos: JPG, PNG | Máx: 5 MB</h4>
+    </div>
+
+    <script>
+  
+        document.getElementById("cadastroLoja2").addEventListener("submit", function(e) {
+        e.preventDefault(); 
+
+        const dados = new FormData(this);
+        let mensagem = "✅ Dados enviados com sucesso!\n\n";
+
+        for (const [chave, valor] of dados.entries()) {
+      
+        if (valor instanceof File) continue;
+        mensagem += `${chave}: ${valor}\n`;
+        }
+
+        alert(mensagem);
+        });
+  </script>
+    
+</body>
+</html>

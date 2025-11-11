@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.topo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ab8262;
+  height: 60%;
+  width: 100%;
+  color: white;
+  font-size: 60%;
+  font-family: 'montserrat';
+}
+
+.seguranca{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 10px;
+    gap: 5px;
+}
+
+.cadeado{
+    width: 3%;
+} 
+
+.logo{
+    width: 20%;
+    padding: 5px;
+}
+
+.checkout-container {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    display: flex;
+    
+
+    max-width: 1200px; 
+    width: 90%; 
+    
+    margin: 30px auto; 
+    padding: 30px; 
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.product-summary {
+    flex: 1; 
+    padding-right: 40px;
+    border-right: 1px solid #eee; 
+}
+
+.security-seal {
+    font-size: 1em; 
+    color: #4A3A2C; 
+    font-weight: 700;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.cadeado-segura {
+    width: 16px; 
+    height: auto;
+}
+
+.product-details {
+    width: 180px; 
+    height: 180px;
+    margin: 0 0 15px 0; 
+    background-color: transparent;
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-callout {
+    background-color: #ab8262; 
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    width: 180px; 
+    margin-bottom: 30px;
+    font-size: 0.9em;
+    font-weight: 700;
+    border-radius: 3px;
+}
+
+.price-breakdown {
+    margin-top: 20px;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.separator {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.breakdown-item.total .item-label,
+.breakdown-item.total .item-value {
+    font-weight: 700; 
+}
+
+.payment-form {
+    flex: 2; 
+    padding-left: 40px;
+}
+
+.form-title {
+    font-size: 1.1em; 
+    font-weight: 700; 
+    color: #4A3A2C; 
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9em; 
+    color: #888;
+    margin-bottom: 5px;
+    font-weight: 400; 
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="tel"],
+.input-group select {
+    width: 100%;
+    padding: 8px 0; 
+    border: none;
+    
+    border-bottom: 1px solid #A98765; 
+    
+    border-radius: 0; 
+    box-sizing: border-box; 
+    font-size: 1em; 
+}
+
+.input-group input:focus {
+    outline: none; 
+    border-bottom: 1px solid #A98765; 
+}
+
+.split-group {
+    display: flex;
+    gap: 20px;
+}
+
+.split-group .input-wrapper {
+    flex: 1;
+}
+
+.input-group.card-group {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.card-group .input-wrapper.full-width {
+    flex: 1 1 100%; 
+}
+
+.card-group .input-wrapper.small-width {
+    flex: 1 1 calc(50% - 10px); 
+}
+
+.pre-filled::placeholder {
+    color: #888; 
+    opacity: 1; 
+}
+
+.section-separator {
+    border: none;
+    border-top: 1px solid #A98765; 
+    margin: 20px 0;
+}
+
+.radio-option {
+    margin-bottom: 10px;
+}
+
+.radio-option label {
+    font-size: 1em;
+    color: #4A3A2C;
+    font-weight: 700; 
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px; 
+    background-color: #8D7053; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 400; 
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #745b43; 
+}
+
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+        max-width: 95%;
+        padding: 20px;
+    }
+    .topo {
+        padding: 0 5%;
+    }
+    .product-summary {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+    }
+    .payment-form {
+        padding-left: 0;
+        padding-top: 20px;
+    }
+}
+
+.link-submit-button {
+    display: block; 
+    margin-top: 20px; 
+    text-decoration: none; 
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 0;
+}

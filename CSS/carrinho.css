@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.topo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ab8262;
+  height: 60%;
+  width: 100%;
+  color: white;
+  font-size: 60%;
+  font-family: 'montserrat';
+}
+
+.seguranca{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 10px;
+    gap: 5px;
+}
+
+.cadeado{
+    width: 3%;
+} 
+
+.logo{
+    width: 20%;
+    padding: 5px;
+}
+
+.container-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; 
+}
+
+.titulo-carrinho h1 {
+    color: #000000;
+    font-size: 2em;
+    font-family: "Luckiest Guy";
+    
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 5px;
+    margin-bottom: 20px; 
+}
+
+
+.area-principal-carrinho {
+    font-family: "Montserrat";
+    font-size: 80%;
+    max-width: 100%; 
+    margin: 20px 0;
+    display: flex; 
+    gap: 30px;
+}
+
+.coluna-carrinho {
+    flex: 2; 
+}
+
+.coluna-checkout {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+.produtos-sugeridos {
+    font-family: "Luckiest Guy";
+}
+.cabecalho-itens {
+    font-family: "montserrat";
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #000000;
+    padding: 10px 0;
+    font-size: 80%;
+}
+
+.cab-produto { width: 50%; } 
+.cab-preco { width: 15%; text-align: left; } 
+.cab-quantidade { width: 20%; text-align: center; } 
+.cab-total { width: 15%; text-align: right; } 
+
+.item-carrinho {
+    width: 100%;
+    border: 1px solid #ddd; 
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+}
+
+.col-produto {
+    display: flex;
+    align-items: center;
+    width: 50%; 
+}
+
+.img-item {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-right: 20px;
+}
+
+.nome-produto {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.col-preco {
+    width: 15%; 
+    text-align: center;
+}
+
+.col-quantidade {
+    width: 20%; 
+    text-align: center;
+}
+
+.controle-qtd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px; 
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.btn-qtd {
+    padding: 5px 8px;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #555;
+    border: none;
+    line-height: 1;
+}
+
+.controle-qtd input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    padding: 0;
+    font-family: "Montserrat";
+}
+
+.col-total-remover {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    width: 15%; 
+    font-family: "Montserrat";
+}
+
+.col-total {
+    margin-right: 15px; 
+    font-family: "Montserrat";
+}
+
+.icone-remover {
+    font-size: 1.2em;
+    color: #888;
+    cursor: pointer;
+}
+
+.produtos-sugeridos {
+    margin-top: 40px;
+}
+
+.produtos-sugeridos h2 {
+    color: #000000;
+    font-size: 1.1em;
+    font-family: "Luckiest Guy"; 
+    margin-bottom: 20px;
+    text-transform: uppercase; /
+}
+
+.lista-sugestoes {
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+
+.sugestao-card {
+    border: 1px solid #ddd; 
+    padding: 15px;
+    text-align: center;
+    width: calc(25% - 15px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: space-between;
+    height: 250px; 
+}
+
+.img-sugestao {
+    max-width: 100%;
+    max-height: 100px; 
+    object-fit: contain; 
+    margin-bottom: 10px;
+}
+
+.nome-sugestao {
+    font-size: 0.85em;
+    font-family: "Montserrat";
+    color: #333;
+    margin-bottom: 5px;
+    flex-grow: 1; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.preco-sugestao {
+    font-weight: bold;
+    color: #ab8262; 
+    font-family: "Montserrat";
+    font-size: 0.9em;
+}
+
+.linha-separadora {
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0; 
+}
+
+.bloco-seguranca-resumo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    gap: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #ab8262;
+    margin-bottom: 20px;
+}
+.bloco-seguranca-resumo p {
+    color: #ab8262;
+}
+.cadeado-resumo {
+    width: 15px; 
+}
+
+.titulo-bloco-resumo {
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.linha-separadora-resumo {
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+}
+
+.input-cep-container {
+    display: flex;
+    margin-bottom: 5px;
+}
+.input-cep {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    flex-grow: 1;
+    font-family: 'Luckiest Guy';
+    text-align: center;
+    font-size: 0.9em;
+}
+.btn-aplicar {
+    background-color: #e0e0e0; 
+    color: #ab8262;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+}
+.link-cep {
+    font-size: 0.8em;
+    color: #ab8262;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+    font-weight: bold;
+}
+
+.input-cupom {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Luckiest Guy';
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.linha-resumo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+    color: #333;
+}
+.total-resumo {
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.total-resumo .valor-resumo {
+    color: #ab8262; 
+    font-size: 1.2em;
+}
+
+.bloco-botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.botao-acao {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9em;
+}
+.botao-pagamento {
+    background-color: #ab8262;
+    color: white;
+    border: none;
+}
+.botao-compras {
+    background-color: white;
+    color: #ab8262;
+    border: 1px solid #ab8262;
+}
+
+.bloco-pagamento-info {
+    font-size: 0.8em;
+}
+.icones-pagamento {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+}
+.icones-pagamento img {
+    height: 15px;
+    object-fit: contain;
+}
+.suporte-info, .telefone-suporte {
+    color: #555;
+    margin-top: 5px;
+}

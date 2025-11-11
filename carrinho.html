@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPaws</title>
+    <link rel="stylesheet" href="CSS/carrinho.css"> 
+</head>
+<body>
+
+     <div class="topo">
+        <div class="clique">
+        <a href="index.html">
+            <img class="logo" src="img/New_Logo_Smart_Paws_20250909_201807_0000.png" alt="logo">
+        </a>
+    </div> 
+        <div class="seguranca">
+        <img class="cadeado" src="img/cadeado.png.png" alt="cadeado">
+        <h3>AMBIENTE SEGURO</h3>
+        </div>
+    </div>
+     <br><br>
+    <main class="container-principal">
+        
+        <div class="area-principal-carrinho">
+            
+            <div class="coluna-carrinho">
+                
+                <div class="titulo-carrinho">
+                    <h1>CARRINHO</h1>
+                </div>
+
+                <div class="cabecalho-itens">
+                    <p class="cab-produto">PRODUTOS</p>
+                    <p class="cab-preco">PREÇO</p>
+                    <p class="cab-quantidade">QUANTIDADE</p>
+                    <p class="cab-total">TOTAL</p>
+                </div>
+                
+                <div class="item-carrinho">
+                    
+                    <div class="col-produto">
+                        <img src="IMG/carrinho/racao.png" alt="Kit Petiscos" class="img-item">
+                        <p class="nome-produto">Kit petiscos para cães adultos</p>
+                    </div>
+                    
+                    <p class="col-preco">R$ 27,99</p>
+                    
+                    <div class="col-quantidade">
+                        <div class="controle-qtd">
+                            <span class="btn-qtd">-</span>
+                            <input type="text" value="1" disabled>
+                            <span class="btn-qtd">+</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-total-remover">
+                        <p class="col-total">R$ 27,99</p>
+                        <span class="icone-remover"></span>
+                    </div>
+                    
+                </div>
+                <div class="linha-separadora"></div>
+                
+                <div class="produtos-sugeridos">
+                    <h2>PRODUTOS QUE VOCÊ PODE GOSTAR</h2>
+                    <div class="lista-sugestoes">
+                        
+                        <div class="sugestao-card">
+                            <img src="IMG/carrinho/shampoo smartpaws.png" alt="Shampoo SmartPaws" class="img-sugestao">
+                            <p class="nome-sugestao">Shampoo SmartPaws para Cães 300ml</p>
+                            <p class="preco-sugestao">R$ 30,99</p>
+                        </div>
+                        
+                        <div class="sugestao-card">
+                            <img src="IMG/carrinho/racao 2 smartpaws.png" alt="Snack SmartPaws" class="img-sugestao">
+                            <p class="nome-sugestao">Snack SmartPaws para Cães 50g</p>
+                            <p class="preco-sugestao">R$ 15,99</p>
+                        </div>
+                        
+                        <div class="sugestao-card">
+                            <img src="IMG/carrinho/brinquedo gato smartpaws.png" alt="Brinquedo para Gatos" class="img-sugestao">
+                            <p class="nome-sugestao">Brinquedo para Gatos SmartPaws</p>
+                            <p class="preco-sugestao">R$ 55,99</p>
+                        </div>
+                        
+                        <div class="sugestao-card">
+                            <img src="IMG/carrinho/brinquedo cachorro smartpaws.png" alt="Kit Pelúcia e Osso" class="img-sugestao">
+                            <p class="nome-sugestao">Kit Pelúcia e Osso para Cães Filhotes</p>
+                            <p class="preco-sugestao">R$ 44,99</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            
+            </div> <div class="coluna-checkout">
+                
+                <div class="bloco-cep">
+                    <h3 class="titulo-bloco-resumo">INSIRA O CEP</h3>
+                    <div class="input-cep-container">
+                        <input 
+                            type="text" 
+                            placeholder="00000-000" 
+                            class="input-cep"
+                            maxlength="8"
+                            pattern="\d{5}-\d{3}" 
+                        >
+                        <button class="btn-aplicar">Aplicar</button>
+                    </div>
+                    <a href="#" class="link-cep">NÃO SEI MEU CEP</a>
+                </div>
+
+                <div class="linha-separadora-resumo"></div>
+
+                <div class="bloco-cupom">
+                    <h3 class="titulo-bloco-resumo">CUPOM DE DESCONTO</h3>
+                    <input type="text" placeholder="Digite seu cupom" class="input-cupom">
+                </div>
+
+                <div class="linha-separadora-resumo"></div>
+
+                <div class="bloco-resumo-pedido">
+                    <h3 class="titulo-bloco-resumo">RESUMO DO PEDIDO</h3>
+                    <div class="linha-resumo">
+                        <span class="descricao-resumo">VALOR DOS PRODUTOS (1 ITEM)</span>
+                        <span class="valor-resumo">R$ 27,99</span>
+                    </div>
+                    <div class="linha-resumo total-resumo">
+                        <strong class="descricao-resumo">TOTAL</strong>
+                        <strong class="valor-resumo">R$ 27,99</strong>
+                    </div>
+                </div>
+
+                <div class="linha-separadora-resumo"></div>
+
+                <div class="bloco-botoes">
+                    <a href="checkout.html" class="botao-acao botao-pagamento">IR PARA O PAGAMENTO</a>
+                    <button class="botao-acao botao-compras">ESCOLHER MAIS PRODUTOS</button>
+                </div>
+
+                <div class="linha-separadora-resumo"></div>
+
+                <div class="bloco-pagamento-info">
+                    <h3 class="titulo-bloco-resumo">Formas de pagamento</h3>
+                    <div class="icones-pagamento">
+                        <img src="IMG/carrinho/visa.png" alt="Visa">
+                        <img src="IMG/carrinho/elo.png" alt="Elo">
+                        <img src="IMG/carrinho/american.png" alt="Mastercard">
+                        <img src="IMG/carrinho/master.png" alt="Amex">
+                    </div>
+                    <p class="suporte-info">Suporte</p>
+                    <p class="telefone-suporte">(61) 9422-3844</p>
+                </div>
+
+            </div> </div> </main> <div class="rodape-simulado">
+        </div>
+    
+</body>
+</html>

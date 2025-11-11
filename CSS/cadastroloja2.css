@@ -1,0 +1,530 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px;    
+    background-color: #ab8262;
+    width: 100%;
+    color: white;
+    font-family: 'montserrat';
+    box-sizing: border-box; 
+}
+.seguranca{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 10px;
+    gap: 5px;
+}
+
+.logo img{
+    width: 260px;
+}
+
+.cadeado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    margin-bottom: 2px;
+}
+
+.ambiente-seguro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -15px;
+}
+
+.titulo{
+    text-align: center;
+    margin-top: 15px;
+    color: #ab8262;
+    font-family: 'luckiest guy';
+}
+
+.mensagem{
+    text-align: center;
+    color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+}
+
+.fundo{
+    background-color: #FFF3E6;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    height: auto ;
+    border-radius: 70px;
+}
+
+.titulo2{
+   text-align: left;
+    margin-top: 15px;
+    margin-left: 200px;
+    margin-bottom: -44px;
+    color: #ab8262;
+    font-family: 'luckiest guy'; 
+}
+
+.titulo3{
+   text-align: right;
+    margin-top: 15px;
+    margin-right: 340px;
+    margin-bottom: -30px;
+    color: #ab8262;
+    font-family: 'luckiest guy'; 
+}
+
+.mensagem{
+    color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.nomempresa{
+    display: flex;
+    justify-content: center;
+}
+
+.nomempresa input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+}
+
+.mensagem2{
+    color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 20px;
+} 
+
+.celular{
+    display: flex;
+    justify-content: center;
+}
+
+.celular input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+}
+
+.mensagem3{
+    color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.endereco{
+    display: flex;
+    justify-content: center;
+}
+
+.endereco input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+}
+
+.mensagem4{
+    color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.mensagem5{
+     color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.nomeloja{
+    display: flex;
+    justify-content: center;
+}
+
+.nomeloja input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+}
+
+.mensagem6{
+    color: #ab8262;
+    text-align: left;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+.telefone{
+    display: flex;
+    justify-content: center;
+}
+
+.telefone input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+}
+
+.email{
+    display: flex;
+    justify-content: center;
+}
+
+.email input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+}
+
+.documento{
+    background: none;
+    background: none;     
+    box-shadow: none;
+    text-align: left; 
+    margin-left: 30px; 
+    margin-top: 10px;
+    color: #ab8262;
+    font-family: 'montserrat';
+    font-weight: bold;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.button {
+    display: inline-block;
+    background-color: #ab8262;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-bottom: 5px;
+}
+
+.mensagem8{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: #ab8262;
+    color: #ab8262;
+    text-align: center;
+    margin-left: 30px;
+    margin-bottom: 44px;
+    height: 70px;
+    width: 90%;
+    border-radius: 5px;
+    resize: none;
+    cursor: default;
+    font-family: 'montserrat';
+    font-size: bold;
+}
+
+.mensagem9{
+    color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.nome{
+    display: flex;
+    justify-content: center;
+}
+
+.nome input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+}
+
+.mensagem10{
+    color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.cpf{
+    display: flex;
+    justify-content: center;
+}
+
+.cpf input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+}
+
+.mensagem11{
+    color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.nacionalidade{
+    display: flex;
+    justify-content: center;
+}
+
+.nacionalidade input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+}
+
+.mensagem12{
+    color: #ab8262;
+    font-size: 80%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.data{
+    display: flex;
+    justify-content: center;
+}
+
+.data input{
+    border-color: #ab8262;
+    text-align: center;
+    height: 30px;
+    width: 95%;
+    border-radius: 5px;
+    font-family: 'luckiest guy';
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: nowrap;
+}
+
+.fundo2{
+    background-color: #FFF3E6;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 40%;
+    min-height: 100%; 
+    border-radius: 70px;
+    padding: 0px; /* padding igual nas duas */
+    box-sizing: border-box;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.fundo2 input {
+    width: 95%; 
+    height: 30px; 
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Luckiest Guy';
+}
+
+.mensagem13{
+    color: #ab8262;
+    text-align: left;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+.documento2{
+    background: none;
+    background: none;     
+    box-shadow: none;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 10px;  
+    margin-top: 10px;
+    color: #ab8262;
+    font-family: 'montserrat';
+    font-weight: bold;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.documento3{
+    background: none;
+    background: none;     
+    box-shadow: none;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-top: 10px;
+    color: #ab8262;
+    font-family: 'montserrat';
+    font-weight: bold;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.mensagem14{
+    color: #ab8262;
+    text-align: left;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+.documento4{
+    background: none;
+    background: none;     
+    box-shadow: none;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 10px;  
+    margin-top: 10px;
+    color: #ab8262;
+    font-family: 'montserrat';
+    font-weight: bold;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.documento5{
+    background: none;
+    background: none;  
+    box-shadow: none;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 46px;
+    color: #ab8262;
+    font-family: 'montserrat';
+    font-weight: bold;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.mensagem15{
+   text-align: center;
+    font-family: 'montserrat';
+    margin-top: 20px;
+    margin-bottom: 30px; 
+}
+
+.botao{
+    display: flex;
+    justify-content: right;
+    margin-top: 20px;
+    margin-right: 150px;
+}
+
+.botao button{
+  display: inline-block;
+  text-align: center;
+  font-size: 15px;
+  text-decoration: none;
+  border: none;
+  background-color: #ab8262;
+  color: white;
+  border-radius: 25px;
+  height: 40px;
+  width: 150px;
+  line-height: 40%;
+  font-family: 'montserrat';
+  font-weight: bold;
+  transition: 0.5s; 
+  
+}
+
+.botao button:hover {
+  background-color: white;
+  color: #ab8262;
+  border: 2px solid #ab8262;
+  cursor: pointer;
+}
+
+
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fundo, .fundo2 {
+        width: 90%;
+        margin-bottom: 30px;
+    }
+
+    .titulo2, .titulo3 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

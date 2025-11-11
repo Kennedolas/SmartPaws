@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.topo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ab8262;
+  height: 60%;
+  width: 100%;
+  color: white;
+  font-size: 60%;
+  font-family: 'montserrat';
+}
+
+.seguranca{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 10px;
+    gap: 5px;
+}
+
+.cadeado{
+    width: 3%;
+} 
+
+.logo{
+    width: 20%;
+    padding: 5px;
+}
+
+.status-container {
+    font-family: "montserrat";
+    max-width: 900px; 
+    width: 90%; 
+    margin: 50px auto; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.status-box {
+    background-color: #ab8262; 
+    color: white;
+    padding: 20px 30px 40px;
+    text-align: center;
+}
+
+.pedido-numero {
+    font-size: 0.8em;
+    font-weight: 400;
+    text-align: right;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8); 
+}
+
+.status-box h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.status-box h2 {
+    font-size: 1em;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.timeline-step {
+    flex: 1;
+    position: relative;
+    font-size: 0.75em;
+    color: rgba(255, 255, 255, 0.5); 
+}
+
+.timeline-step i {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.timeline-step.completed {
+    color: white;
+    font-weight: 700;
+}
+.timeline-step.current i {
+    color: #4A3A2C; 
+}
+
+.details-section {
+    background-color: white;
+    padding: 30px;
+}
+
+.greeting p {
+    font-size: 1em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.greeting .subtitle {
+    font-size: 0.9em;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}
+
+.product-info-col {
+    display: flex;
+    gap: 15px;
+}
+
+.product-thumb {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.product-text h3 {
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.product-name {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.delivery-info {
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #007bff; 
+    margin-bottom: 10px;
+}
+
+.track-button {
+    background-color: #ab8262;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.8em;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.track-button:hover {
+    background-color: #947156;
+}
+
+.price-summary-col {
+    width: 250px; 
+    font-size: 0.9em;
+}
+
+.qty-line {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    color: #888;
+    font-size: 0.9em;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.price-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.price-discount {
+    color: red;
+}
+
+.price-separator {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 10px 0;
+}
+
+.total-line {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #333;
+}
+

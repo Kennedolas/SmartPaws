@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px;    
+    background-color: #ab8262;
+    width: 100%;
+    color: white;
+    font-family: 'montserrat';
+    box-sizing: border-box; 
+}
+.seguranca{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 10px;
+    gap: 5px;
+}
+
+.logo img{
+    width: 260px;
+}
+
+.cadeado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    margin-bottom: 2px;
+}
+
+.ambiente-seguro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -15px;
+}
+
+.titulo{
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 15px;
+    color: #ab8262;
+    font-family: 'luckiest guy';
+}
+
+.loja{
+    text-align: center;
+    color: #ab8262;
+    font-family: 'luckiest guy';
+}
+
+.pessoal{
+    display: flex;
+    justify-content: center;
+}
+
+.pessoal a{
+    margin: 50px;
+    display: inline-block;
+    text-align: center;
+    font-size: 25px;
+    text-decoration: none;
+    background-color: #ab8262;
+    color: white;
+    border-radius: 5px;
+    height: 80px;
+    width: 60%;
+    line-height: 75px;
+    font-family: 'montserrat';
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.pessoal a:hover{
+  background-color: white;
+  color: #ab8262;
+  border: 2px solid #ab8262;
+}
+
+.ou{
+    text-align: center;
+    color: #ab8262;
+    font-family: 'montserrat';
+}
+
+.empresarial{
+    display: flex;
+    justify-content: center;
+}
+
+.empresarial a{
+    margin: 50px;
+    display: inline-block;
+    text-align: center;
+    font-size: 25px;
+    text-decoration: none;
+    background-color: #ab8262;
+    color: white;
+    border-radius: 5px;
+    height: 80px;
+    width: 60%;
+    line-height: 75px;
+    font-family: 'montserrat';
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.empresarial a:hover{
+    background-color: white;
+    color: #ab8262;
+    border: 2px solid #ab8262;
+}
