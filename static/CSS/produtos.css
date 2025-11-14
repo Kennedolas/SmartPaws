@@ -1,0 +1,696 @@
+/* ==========================================
+   PRODUTOS.CSS - Smart Paws
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.cdnfonts.com/css/signika-sc-2');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* ========== HERO BANNER ========== */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-content h1 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 48px;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+}
+
+.hero-content p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.hero-content .destaque {
+    background-color: #ab8262;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.hero-content .condicoes {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ========== CONTAINER PRINCIPAL ========== */
+.produtos-page {
+    width: 100%;
+    background-color: #f5f5f5;
+}
+
+.container-produtos {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+}
+
+/* ========== SIDEBAR FILTROS ========== */
+.sidebar-filtros {
+    width: 280px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.filtros-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+.filtros-header h2 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 24px;
+    color: #ab8262;
+    margin: 0;
+}
+
+.limpar-filtros {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    color: #ab8262;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.limpar-filtros:hover {
+    color: #8b6852;
+    text-decoration: underline;
+}
+
+/* ========== FILTRO GRUPO ========== */
+.filtro-grupo {
+    margin-bottom: 25px;
+}
+
+.filtro-grupo h3 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 15px 0;
+}
+
+.filtro-grupo label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.filtro-grupo input[type="text"],
+.filtro-grupo input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.filtro-grupo input:focus {
+    outline: none;
+    border-color: #ab8262;
+    box-shadow: 0 0 0 3px rgba(171, 130, 98, 0.1);
+}
+
+/* ========== LISTA CATEGORIAS ========== */
+.lista-categorias {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-categorias li {
+    margin-bottom: 8px;
+}
+
+.lista-categorias a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.lista-categorias a:hover {
+    background-color: #f8f8f8;
+    color: #ab8262;
+    transform: translateX(5px);
+}
+
+.lista-categorias a.ativo {
+    background-color: #ab8262;
+    color: white;
+    font-weight: 600;
+}
+
+.lista-categorias .badge {
+    background-color: #eeeeee;
+    color: #666;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.lista-categorias a.ativo .badge {
+    background-color: rgba(255,255,255,0.3);
+    color: white;
+}
+
+/* ========== FAIXA DE PREÇO ========== */
+.preco-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.preco-inputs input {
+    width: 100px;
+    padding: 10px;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+}
+
+.preco-inputs span {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+.btn-aplicar-preco {
+    width: 100%;
+    padding: 10px;
+    background-color: #ab8262;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-aplicar-preco:hover {
+    background-color: #8b6852;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* ========== CHECKBOX ========== */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #ab8262;
+}
+
+/* ========== ÁREA PRINCIPAL ========== */
+.area-produtos {
+    flex: 1;
+}
+
+/* ========== TOOLBAR ========== */
+.toolbar {
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.resultados-info h2 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 28px;
+    color: #ab8262;
+    margin: 0 0 5px 0;
+}
+
+.resultados-info .total {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #999;
+}
+
+.toolbar-acoes {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* ========== ORDENAÇÃO ========== */
+.form-ordenacao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-ordenacao label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+}
+
+.form-ordenacao select {
+    padding: 10px 15px;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.form-ordenacao select:focus {
+    outline: none;
+    border-color: #ab8262;
+}
+
+/* ========== VIEW TOGGLE ========== */
+.view-toggle {
+    display: flex;
+    gap: 5px;
+    background-color: #eeeeee;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.btn-view {
+    padding: 8px 12px;
+    border: none;
+    background-color: transparent;
+    color: #999;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.btn-view:hover {
+    color: #ab8262;
+}
+
+.btn-view.active {
+    background-color: white;
+    color: #ab8262;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ========== GRID DE PRODUTOS ========== */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* ========== CARD PRODUTO ========== */
+.card-produto {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ========== BADGES ========== */
+.badge-desconto {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    z-index: 2;
+}
+
+.badge-novo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #28a745;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    z-index: 2;
+}
+
+/* ========== IMAGEM PRODUTO ========== */
+.produto-imagem {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.card-produto:hover .produto-imagem img {
+    transform: scale(1.05);
+}
+
+/* ========== INFO PRODUTO ========== */
+.produto-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.produto-categoria {
+    font-family: 'Signika SC', sans-serif;
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.produto-nome {
+    font-family: 'Signika SC', sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin: 0 0 10px 0;
+    min-height: 40px;
+    line-height: 1.3;
+}
+
+/* ========== AVALIAÇÃO ========== */
+.produto-avaliacao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.estrelas {
+    display: flex;
+    gap: 2px;
+}
+
+.estrelas i {
+    color: #ffa500;
+    font-size: 14px;
+}
+
+.avaliacao-numero {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+}
+
+/* ========== PREÇOS ========== */
+.produto-precos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.preco-antigo {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.preco-atual {
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ab8262;
+}
+
+/* ========== TAMANHO ========== */
+.produto-tamanho {
+    margin-bottom: 15px;
+}
+
+.badge-tamanho {
+    display: inline-block;
+    background-color: #f8f8f8;
+    color: #666;
+    border: 1px solid #ab8262;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ========== AÇÕES ========== */
+.produto-acoes {
+    margin-top: auto;
+}
+
+.btn-adicionar-carrinho {
+    width: 100%;
+    padding: 12px;
+    background-color: #ab8262;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-adicionar-carrinho:hover {
+    background-color: #8b6852;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(171, 130, 98, 0.4);
+}
+
+.btn-indisponivel {
+    width: 100%;
+    padding: 12px;
+    background-color: #ccc;
+    color: #666;
+    border: none;
+    border-radius: 25px;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 14px;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* ========== SEM RESULTADOS ========== */
+.sem-resultados {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.sem-resultados i {
+    font-size: 64px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.sem-resultados h3 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 28px;
+    color: #666;
+    margin: 0 0 10px 0;
+}
+
+.sem-resultados p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    color: #999;
+    margin-bottom: 25px;
+}
+
+.btn-limpar {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #ab8262;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.btn-limpar:hover {
+    background-color: #8b6852;
+    transform: translateY(-2px);
+}
+
+/* ========== PAGINAÇÃO ========== */
+.paginacao {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+.paginacao ul {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.btn-pag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    background-color: white;
+    color: #666;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-pag:hover {
+    background-color: #ab8262;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-pag.ativo {
+    background-color: #ab8262;
+    color: white;
+    pointer-events: none;
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 1024px) {
+    .container-produtos {
+        flex-direction: column;
+    }
+    
+    .sidebar-filtros {
+        width: 100%;
+        position: static;
+    }
+    
+    .produtos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 32px;
+    }
+    
+    .toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .toolbar-acoes {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .produtos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+    }
+}

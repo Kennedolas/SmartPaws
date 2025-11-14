@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/adocao.css' %}">
+    <title>Buscar Pets - Smart Paws</title>
+</head>
+<body>
+    <div class="container_conteudos">
+        <div class="container_titulo">
+            <h3>Resultados da Busca{% if query %}: "{{ query }}"{% endif %}</h3>
+        </div>
+        
+        <div style="margin: 20px auto; max-width: 1200px;">
+            <form action="{% url 'pets:buscar' %}" method="get" style="margin-bottom: 30px;">
+                <input type="text" 
+                       name="q" 
+                       value="{{ query }}" 
+                       placeholder="Buscar por nome, raça..."
+                       style="width: 80%; padding: 10px;">
+                <button type="submit" style="padding: 10px 20px; background-color: #ab8262; color: white; border: none;">
+                    Buscar
+                </button>
+            </form>
+        </div>
+        
+        {% if pets %}
+            <p style="text-align: center; margin-bottom: 30px;">
+                Encontrados {{ pets.count }} pet(s)
+            </p>
+            
+            <div class="container-opcoes">
+                {% for pet in pets %}
+                    <a class="opcao-pet" href="{% url 'pets:detalhe' pet.slug %}">
+                        <img class="imagem-pet" src="{{ pet.foto_principal.url }}" alt="{{ pet.nome }}">
+                        <div class="descricao-pet">
+                            <div class="nome-cidade">
+                                <p>
+                                    {{ pet.nome }} <br>
+                                    <span>{{ pet.get_especie_display }}</span>
+                                </p>
+                            </div>
+                            <div class="sexo-{{ pet.sexo|lower }}">
+                                {% if pet.sexo == 'M' %}
+                                    <img src="{% static 'IMG/adocao/masculino.png' %}" alt="Macho">
+                                {% else %}
+                                    <img src="{% static 'IMG/adocao/feminino.png' %}" alt="Fêmea">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div style="text-align: center; padding: 50px;">
+                <h3>Nenhum pet encontrado{% if query %} para "{{ query }}"{% endif %}</h3>
+                <p><a href="{% url 'pets:adocao' %}">Ver todos os pets disponíveis</a></p>
+            </div>
+        {% endif %}
+        
+        <br><br>
+        <div style="text-align: center;">
+            <a href="{% url 'pets:adocao' %}" style="background-color: #ab8262; color: white; padding: 10px 30px;">
+                Voltar para Adoção
+            </a>
+        </div>
+    </div>
+</body>
+</html>

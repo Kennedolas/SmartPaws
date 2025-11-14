@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Meus Agendamentos - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/servicos.css' %}">
+<link rel="stylesheet" href="{% static 'CSS/meus_agendamentos.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="meus-agendamentos-page">
+    <div class="container-agendamentos">
+        <div class="agendamentos-header">
+            <h1><i class="far fa-calendar-check"></i> Meus Agendamentos</h1>
+            <p>Acompanhe todos os seus agendamentos de serviços</p>
+        </div>
+
+        {% if agendamentos %}
+        <div class="agendamentos-lista">
+            {% for agendamento in agendamentos %}
+            <div class="agendamento-card status-{{ agendamento.status }}">
+                <div class="agendamento-header-card">
+                    <span class="status-badge status-{{ agendamento.status }}">
+                        {% if agendamento.status == 'pendente' %}
+                            <i class="far fa-clock"></i> Pendente
+                        {% elif agendamento.status == 'confirmado' %}
+                            <i class="fas fa-check"></i> Confirmado
+                        {% elif agendamento.status == 'em_andamento' %}
+                            <i class="fas fa-spinner"></i> Em Andamento
+                        {% elif agendamento.status == 'concluido' %}
+                            <i class="fas fa-check-circle"></i> Concluído
+                        {% else %}
+                            <i class="fas fa-times-circle"></i> Cancelado
+                        {% endif %}
+                    </span>
+                    <span class="data-agendamento">
+                        <i class="far fa-calendar"></i>
+                        {{ agendamento.data_agendamento|date:"d/m/Y" }} às {{ agendamento.horario|time:"H:i" }}
+                    </span>
+                </div>
+
+                <div class="agendamento-conteudo">
+                    <div class="servico-info-card">
+                        {% if agendamento.servico.imagem_principal %}
+                            <img src="{{ agendamento.servico.imagem_principal.url }}" alt="{{ agendamento.servico.nome }}">
+                        {% else %}
+                            <div style="width: 150px; height: 100px; background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 8px;">
+                                <i class="fas fa-paw"></i>
+                            </div>
+                        {% endif %}
+                        <div class="servico-detalhes">
+                            <h3>{{ agendamento.servico.nome }}</h3>
+                            <p class="prestador-nome">
+                                <i class="fas fa-building"></i>
+                                {{ agendamento.servico.prestador.nome }}
+                            </p>
+                            <p class="pet-nome">
+                                <i class="fas fa-paw"></i>
+                                Pet: <strong>{{ agendamento.nome_pet }}</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    {% if agendamento.observacoes %}
+                    <div class="observacoes">
+                        <h4><i class="fas fa-comment-dots"></i> Observações</h4>
+                        <p>{{ agendamento.observacoes }}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if agendamento.observacoes_prestador %}
+                    <div class="observacoes prestador">
+                        <h4><i class="fas fa-comment-medical"></i> Resposta do Prestador</h4>
+                        <p>{{ agendamento.observacoes_prestador }}</p>
+                    </div>
+                    {% endif %}
+
+                    <div class="agendamento-acoes">
+                        <a href="{% url 'servicos:detalhe' agendamento.servico.slug %}" class="btn-ver-servico">
+                            <i class="fas fa-eye"></i>
+                            Ver Serviço
+                        </a>
+                        {% if agendamento.servico.prestador.whatsapp %}
+                        <a href="https://wa.me/{{ agendamento.servico.prestador.whatsapp }}" 
+                           target="_blank" 
+                           class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Contato
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="sem-agendamentos">
+            <i class="far fa-calendar-times"></i>
+            <h3>Você ainda não tem agendamentos</h3>
+            <p>Navegue pelos nossos serviços e agende o melhor para seu pet!</p>
+            <a href="{% url 'servicos:lista' %}" class="btn-ver-servicos">
+                <i class="fas fa-search"></i>
+                Ver Serviços Disponíveis
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+

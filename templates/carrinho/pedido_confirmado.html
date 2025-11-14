@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pedido Confirmado - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/pedido.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="pedido-confirmado-page">
+    <div class="container-confirmacao">
+        <div class="confirmacao-header">
+            <i class="fas fa-check-circle"></i>
+            <h1>Pedido Realizado com Sucesso!</h1>
+            <p class="numero-pedido">Pedido #{{ pedido.numero_pedido }}</p>
+        </div>
+        
+        {% if pedido.forma_pagamento == 'pix' %}
+        <div class="pagamento-pix">
+            <h2><i class="fas fa-qrcode"></i> Pagamento via PIX</h2>
+            <p>Escaneie o QR Code abaixo ou copie o código PIX para realizar o pagamento:</p>
+            
+            <div class="qr-code-container">
+                <!-- Aqui você pode gerar um QR Code real com biblioteca Python -->
+                <div class="qr-code-placeholder">
+                    <i class="fas fa-qrcode"></i>
+                    <p>QR Code PIX</p>
+                </div>
+            </div>
+            
+            <div class="pix-codigo">
+                <label>Código PIX Copia e Cola:</label>
+                <div class="codigo-box">
+                    <input type="text" 
+                           id="pix-code" 
+                           value="{{ pedido.qr_code_pix }}" 
+                           readonly>
+                    <button onclick="copyPixCode()" class="btn-copiar">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+            </div>
+            
+            <div class="pix-instrucoes">
+                <h3>Como pagar:</h3>
+                <ol>
+                    <li>Abra o aplicativo do seu banco</li>
+                    <li>Escolha a opção PIX</li>
+                    <li>Escaneie o QR Code ou cole o código acima</li>
+                    <li>Confirme o pagamento de <strong>R$ {{ pedido.total }}</strong></li>
+                </ol>
+            </div>
+            
+            <div class="pix-aviso">
+                <i class="fas fa-info-circle"></i>
+                <p>O pedido será confirmado após a identificação do pagamento (geralmente em até 2 horas).</p>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="pedido-detalhes">
+            <h2>Detalhes do Pedido</h2>
+            
+            <div class="detalhes-grid">
+                <div class="detalhe-secao">
+                    <h3><i class="fas fa-box"></i> Produtos</h3>
+                    <div class="produtos-lista">
+                        {% for item in pedido.itens.all %}
+                        <div class="produto-item">
+                            <span>{{ item.quantidade }}x {{ item.nome_produto }}</span>
+                            <span>R$ {{ item.subtotal }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="detalhe-secao">
+                    <h3><i class="fas fa-map-marker-alt"></i> Endereço de Entrega</h3>
+                    <p>{{ pedido.endereco_entrega }}</p>
+                </div>
+                
+                <div class="detalhe-secao">
+                    <h3><i class="fas fa-credit-card"></i> Forma de Pagamento</h3>
+                    <p>{{ pedido.get_forma_pagamento_display }}</p>
+                </div>
+                
+                <div class="detalhe-secao">
+                    <h3><i class="fas fa-receipt"></i> Resumo do Pedido</h3>
+                    <div class="resumo-valores">
+                        <div class="linha">
+                            <span>Subtotal:</span>
+                            <span>R$ {{ pedido.subtotal }}</span>
+                        </div>
+                        {% if pedido.desconto > 0%}
+                        <div class="linha">
+                            <span>Desconto:</span>
+                            <span>- R$ {{ pedido.desconto }}</span>
+                        </div>
+                        {% endif %}
+                        <div class="linha">
+                            <span>Frete:</span>
+                            <span>R$ {{ pedido.frete }}</span>
+                        </div>
+                        <hr>
+                        <div class="linha total">
+                            <span><strong>Total:</strong></span>
+                            <span><strong>R$ {{ pedido.total }}</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="confirmacao-acoes">
+            <a href="{% url 'carrinho:meus_pedidos' %}" class="btn-meus-pedidos">
+                <i class="fas fa-list"></i>
+                Meus Pedidos
+            </a>
+            <a href="{% url 'produtos:lista' %}" class="btn-continuar-comprando">
+                <i class="fas fa-shopping-bag"></i>
+                Continuar Comprando
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function copyPixCode() {
+    const pixInput = document.getElementById('pix-code');
+    pixInput.select();
+    document.execCommand('copy');
+    
+    const btn = event.target.closest('.btn-copiar');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+    btn.style.backgroundColor = '#28a745';
+    
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.backgroundColor = '';
+    }, 2000);
+}
+</script>
+{% endblock %}

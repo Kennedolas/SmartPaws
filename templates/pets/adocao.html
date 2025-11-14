@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Adoção - Smart Paws{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'CSS/adocao.css' %}"> {% endblock %}
+{% block content %}
+
+<div class="container_conteudos"> <img class="imagem-grande" src="{% static 'IMG/banneradoc.png' %}" alt="Adote um cão">
+text
+<div class="container_titulo">
+    <h3>Conhecer pets disponíveis</h3>
+</div>
+
+<div class="container-pets-disponiveis">
+    <div class="superior">
+        <div class="filtro">
+            <ul>
+                <li><a href="?ordem=recentes">Mais recentes</a></li>
+                <li><a href="?ordem=antigos">Mais antigos</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="container-opcoes">
+        {% for pet in pets %}
+            <a class="opcao-pet" href="{% url 'pets:detalhe' pet.slug %}">
+                {% if pet.foto_principal %}
+                    <img class="imagem-pet" src="{{ pet.foto_principal.url }}" alt="{{ pet.nome }}">
+                {% else %}
+                    <div class="imagem-pet" style="background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                {% endif %}
+                <div class="descricao-pet">
+                    <div class="nome-cidade">
+                        <p>
+                            {{ pet.nome }} <br>
+                            <span>{{ pet.get_especie_display }} - {{ pet.get_porte_display }}</span>
+                        </p>
+                    </div>
+                    <div class="sexo-{{ pet.sexo|lower }}">
+                        {% if pet.sexo == 'M' %}
+                            <img src="{% static 'IMG/adocao/masculino.png' %}" alt="Macho">
+                        {% else %}
+                            <img src="{% static 'IMG/adocao/feminino.png' %}" alt="Fêmea">
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+        {% empty %}
+            <div style="text-align: center; padding: 50px; grid-column: 1/-1;">
+                <i class="fas fa-heart" style="font-size: 4rem; color: #ccc; margin-bottom: 20px;"></i>
+                <h3 style="color: #999;">Nenhum pet disponível para adoção no momento</h3>
+                <p style="color: #666;">Em breve teremos novos amigos esperando por você!</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<br><br><br>
+
+<div class="container_titulo">
+    <h3>Por que adotar pets?</h3>
+</div>
+
+<div class="container-pets">
+    <div class="container-pets-1">
+        <p class="numero">1</p>
+        <img class="imagem-adotar" src="{% static 'IMG/adocao/pets_1.png' %}" alt="Amor e companhia">
+        <p class="texto">Pets oferecem amor e alegria constantes, combatendo a solidão e promovendo o bem-estar emocional.</p>
+    </div>
+    <div class="container-pets-2">
+        <p class="numero">2</p>
+        <img class="imagem-adotar" src="{% static 'IMG/adocao/pets_2.png' %}" alt="Saúde mental">
+        <p class="texto">A interação com animais pode reduzir o estresse e melhorar a saúde mental.</p>
+    </div>
+    <div class="container-pets-3">
+        <p class="numero">3</p>
+        <img class="imagem-adotar" src="{% static 'IMG/adocao/pets_3.png' %}" alt="Salve uma vida">
+        <p class="texto">A adoção oferece um lar amoroso e seguro para animais abandonados.</p>
+    </div>
+</div>
+</div>
+{% if messages %}
+<div class="messages">
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+{{ message }}
+</div>
+{% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}

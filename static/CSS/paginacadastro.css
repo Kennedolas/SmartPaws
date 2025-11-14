@@ -1,0 +1,352 @@
+/* ==========================================
+   PAGINACADASTRO.CSS - Smart Paws
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ========== RESET ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* ========== TOPO (mesmo do login) ========== */
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ab8262;
+    width: 100%;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+    width: 260px;
+}
+
+.seguranca {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cadeado {
+    width: 30px;
+}
+
+.ambiente-seguro {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ========== MENSAGEM ========== */
+.mensagem {
+    text-align: center;
+    color: #ab8262;
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin: 30px 0 20px;
+}
+
+/* ========== LISTA CADASTRO ========== */
+.listacadastro {
+    max-width: 400px;
+    margin: 0 auto 20px;
+    padding: 0;
+}
+
+.listacadastro ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+}
+
+.listacadastro li {
+    color: #999;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.listacadastro li.ativo {
+    color: #ab8262;
+    border-bottom-color: #ab8262;
+}
+
+.listacadastro li:hover {
+    color: #ab8262;
+}
+
+/* ========== LINHA ========== */
+.linha {
+    width: 30%;
+    margin: 20px auto;
+    border: none;
+    border-top: 2px solid #ddd;
+}
+
+/* ========== LABELS ========== */
+.textonome,
+.textoemail,
+.textocpf,
+.textocelular,
+.textosexo,
+.textodata,
+.textosenha,
+.textoconfirmar {
+    max-width: 400px;
+    margin: 20px auto 5px;
+    padding-left: 10px;
+}
+
+.textonome p,
+.textoemail p,
+.textocpf p,
+.textocelular p,
+.textosexo p,
+.textodata p,
+.textosenha p,
+.textoconfirmar p {
+    color: #ab8262;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/* ========== INPUTS ========== */
+.nome,
+.email,
+.cpf,
+.celular,
+.sexo,
+.data,
+.senha,
+.confirmarsenha {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.nome input,
+.email input,
+.cpf input,
+.celular input,
+.sexo select,
+.data input,
+.senha input,
+.confirmarsenha input {
+    border: 2px solid #ab8262;
+    text-align: center;
+    height: 45px;
+    width: 30%;
+    min-width: 400px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+    transition: all 0.3s;
+}
+
+.nome {
+    gap: 10px;
+}
+
+.nome input {
+    width: 14.5%;
+    min-width: 195px;
+}
+
+.sexo select {
+    cursor: pointer;
+}
+
+/* Focus states */
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #8b6852;
+    box-shadow: 0 0 0 3px rgba(171, 130, 98, 0.1);
+}
+
+/* ========== ERROS ========== */
+.erros {
+    max-width: 400px;
+    margin: 5px auto;
+    padding: 8px 15px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    color: #721c24;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.erros ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* ========== LISTA DE REQUISITOS ========== */
+.lista {
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 15px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+}
+
+.lista p {
+    color: #856404;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.lista ul {
+    list-style-position: inside;
+    padding-left: 10px;
+}
+
+.lista li {
+    color: #856404;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    margin: 5px 0;
+}
+
+/* ========== ACEITAR TERMOS ========== */
+.aceitar {
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.aceitar input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #ab8262;
+}
+
+.aceitar label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+}
+
+/* ========== BOTÃO ENTRAR/CRIAR CONTA ========== */
+.entrar {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.entrar button {
+    font-size: 18px;
+    border: none;
+    background-color: #ab8262;
+    color: white;
+    border-radius: 25px;
+    height: 50px;
+    width: 200px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.entrar button:hover {
+    background-color: white;
+    color: #ab8262;
+    border: 2px solid #ab8262;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* ========== NAVEGAÇÃO ========== */
+.conta {
+    text-align: center;
+    color: #ab8262;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin: 20px 0 10px;
+}
+
+.usuario {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.usuario a {
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    text-decoration: none;
+    background-color: #ab8262;
+    color: white;
+    border-radius: 25px;
+    height: 40px;
+    width: 150px;
+    line-height: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.usuario a:hover {
+    background-color: white;
+    color: #ab8262;
+    border: 2px solid #ab8262;
+    transform: scale(1.05);
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 768px) {
+    .nome input,
+    .email input,
+    .cpf input,
+    .celular input,
+    .sexo select,
+    .data input,
+    .senha input,
+    .confirmarsenha input {
+        width: 90%;
+        min-width: unset;
+    }
+    
+    .nome {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nome input {
+        width: 90%;
+        min-width: unset;
+    }
+}

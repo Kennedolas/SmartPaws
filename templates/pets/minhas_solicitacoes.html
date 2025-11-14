@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Minhas Solicitações - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/adocao.css' %}">
+<style>
+    .solicitacoes-page {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .page-header h1 {
+        font-family: "Luckiest Guy", cursive;
+        font-size: 2.5rem;
+        color: #ab8262;
+        margin-bottom: 10px;
+    }
+    
+    .page-header p {
+        color: #666;
+        font-size: 1.125rem;
+    }
+    
+    /* ========== CARDS ========== */
+    .solicitacao-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .solicitacao-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    }
+    
+    .solicitacao-grid {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 0;
+    }
+    
+    .pet-image-container {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .pet-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .card-content {
+        padding: 25px;
+    }
+    
+    .pet-name {
+        font-family: "Luckiest Guy", cursive;
+        font-size: 1.75rem;
+        color: #ab8262;
+        margin-bottom: 15px;
+    }
+    
+    .info-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        color: #666;
+        font-size: 0.95rem;
+    }
+    
+    .info-row i {
+        color: #ab8262;
+        width: 20px;
+    }
+    
+    /* ========== BADGES DE STATUS ========== */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+    
+    .status-pendente {
+        background: #fff3cd;
+        color: #856404;
+    }
+    
+    .status-analise {
+        background: #cfe2ff;
+        color: #084298;
+    }
+    
+    .status-aprovada {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+    
+    .status-recusada {
+        background: #f8d7da;
+        color: #842029;
+    }
+    
+    /* ========== ALERTAS ========== */
+    .alert-custom {
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-top: 15px;
+        border-left: 4px solid;
+    }
+    
+    .alert-success {
+        background: #d1e7dd;
+        border-color: #0f5132;
+        color: #0f5132;
+    }
+    
+    .alert-danger {
+        background: #f8d7da;
+        border-color: #842029;
+        color: #842029;
+    }
+    
+    .alert-info {
+        background: #cfe2ff;
+        border-color: #084298;
+        color: #084298;
+    }
+    
+    /* ========== BOTÕES ========== */
+    .btn-primary {
+        background: #ab8262;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background: #8b6852;
+        transform: scale(1.05);
+    }
+    
+    .btn-secondary {
+        background: white;
+        color: #666;
+        padding: 12px 30px;
+        border: 2px solid #e0e0e0;
+        border-radius: 25px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+        background: #f5f5f5;
+        border-color: #ab8262;
+        color: #ab8262;
+    }
+    
+    /* ========== VAZIO ========== */
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+    
+    .empty-state i {
+        font-size: 5rem;
+        color: #e0e0e0;
+        margin-bottom: 20px;
+    }
+    
+    .empty-state h3 {
+        color: #ab8262;
+        margin-bottom: 10px;
+    }
+    
+    .empty-state p {
+        color: #666;
+        margin-bottom: 30px;
+    }
+    
+    /* ========== RESPONSIVO ========== */
+    @media (max-width: 768px) {
+        .solicitacao-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .pet-image-container {
+            height: 250px;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="solicitacoes-page">
+    <div class="page-header">
+        <h1><i class="fas fa-clipboard-list"></i> Minhas Solicitações de Adoção</h1>
+        <p>Acompanhe o status das suas solicitações de adoção</p>
+    </div>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert-custom alert-{{ message.tags }}">
+                <strong><i class="fas fa-info-circle"></i> {{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    {% if solicitacoes %}
+        <div class="solicitacoes-lista">
+            {% for solicitacao in solicitacoes %}
+                <div class="solicitacao-card">
+                    <div class="solicitacao-grid">
+                        <div class="pet-image-container">
+                            {% if solicitacao.pet.foto_principal %}
+                                <img src="{{ solicitacao.pet.foto_principal.url }}" alt="{{ solicitacao.pet.nome }}">
+                            {% else %}
+                                <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                                    <i class="fas fa-paw"></i>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="card-content">
+                            <h3 class="pet-name">{{ solicitacao.pet.nome }}</h3>
+                            
+                            <div class="info-row">
+                                <i class="fas fa-tag"></i>
+                                <span class="status-badge status-{{ solicitacao.status }}">
+                                    {% if solicitacao.status == 'pendente' %}
+                                        <i class="far fa-clock"></i> Pendente
+                                    {% elif solicitacao.status == 'analise' %}
+                                        <i class="fas fa-search"></i> Em Análise
+                                    {% elif solicitacao.status == 'aprovada' %}
+                                        <i class="fas fa-check-circle"></i> Aprovada
+                                    {% else %}
+                                        <i class="fas fa-times-circle"></i> Recusada
+                                    {% endif %}
+                                </span>
+                            </div>
+                            
+                            <div class="info-row">
+                                <i class="far fa-calendar"></i>
+                                <span>Solicitado em: {{ solicitacao.created_at|date:"d/m/Y às H:i" }}</span>
+                            </div>
+                            
+                            <div class="info-row">
+                                <i class="fas fa-paw"></i>
+                                <span>{{ solicitacao.pet.get_especie_display }} - {{ solicitacao.pet.get_porte_display }}</span>
+                            </div>
+                            
+                            {% if solicitacao.status == 'aprovada' %}
+                                <div class="alert-custom alert-success">
+                                    <strong><i class="fas fa-heart"></i> Parabéns!</strong> Sua solicitação foi aprovada. Entraremos em contato em breve para finalizar a adoção!
+                                </div>
+                            {% elif solicitacao.status == 'recusada' %}
+                                <div class="alert-custom alert-danger">
+                                    <strong><i class="fas fa-exclamation-circle"></i> Solicitação Recusada</strong>
+                                    {% if solicitacao.observacoes_admin %}
+                                        <p style="margin: 10px 0 0 0;">{{ solicitacao.observacoes_admin }}</p>
+                                    {% endif %}
+                                </div>
+                            {% elif solicitacao.status == 'analise' %}
+                                <div class="alert-custom alert-info">
+                                    <strong><i class="fas fa-hourglass-half"></i> Em Análise</strong> Estamos avaliando sua solicitação. Aguarde nosso contato!
+                                </div>
+                            {% endif %}
+                            
+                            <div style="margin-top: 20px;">
+                                <a href="{% url 'pets:detalhe' solicitacao.pet.slug %}" class="btn-primary">
+                                    <i class="fas fa-eye"></i> Ver Pet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <i class="fas fa-heart-broken"></i>
+            <h3>Nenhuma solicitação ainda</h3>
+            <p>Você ainda não fez nenhuma solicitação de adoção. Explore nossos pets disponíveis e encontre seu novo amigo!</p>
+            <a href="{% url 'pets:adocao' %}" class="btn-primary" style="font-size: 1.125rem; padding: 15px 40px;">
+                <i class="fas fa-search"></i> Ver Pets Disponíveis
+            </a>
+        </div>
+    {% endif %}
+    
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="{% url 'pets:adocao' %}" class="btn-secondary">
+            <i class="fas fa-arrow-left"></i> Voltar para Adoção
+        </a>
+    </div>
+</div>
+{% endblock %}

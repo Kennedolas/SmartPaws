@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/adocao.css' %}">
+    <title>Adoção </title>
+</head>
+
+<body>
+    <header>
+        <div class="container_topo">
+            <img class="logo_cima" src="{% static 'img/SP_logo_cima.png' %}" alt="Smart Paws">
+            
+            <form action="{% url 'buscar_pets' %}" method="get" style="width: 50%;">
+                <input type="text" id="barra_pesquisa" name="q" placeholder="PROCURAR PETS PARA ADOÇÃO">
+            </form>
+            
+            {% if user.is_authenticated %}
+                <a class="entre_cadastre" href="{% url 'minhas_solicitacoes' %}">MINHA CONTA</a>
+            {% else %}
+                <a class="entre_cadastre" href="{% url 'login' %}">ENTRE OU CADASTRE-SE</a>
+            {% endif %}
+            
+            <div class="carrinho_perfil">
+                <a href="#">
+                    <img class="carrinho" src="{% static 'img/carrinho.png' %}" alt="Carrinho de compras">
+                </a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'minhas_solicitacoes' %}">
+                        <img class="perfil" src="{% static 'img/perfil.png' %}" alt="Acessar perfil">
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}">
+                        <img class="perfil" src="{% static 'img/perfil.png' %}" alt="Acessar perfil">
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="container_paginas">
+            <ul class="paginas">
+                <li><a href="{% url 'home' %}">PÁGINA INICIAL</a></li>
+                <li class="has-dropdown">
+                    <a href="{% url 'produtos' %}">PRODUTOS</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">RAÇÕES</a></li>
+                        <li><a href="#">ACESSÓRIOS</a></li>
+                        <li><a href="#">ROUPAS</a></li>
+                        <li><a href="#">HIGIENE</a></li>
+                        <li><a href="#">OUTROS</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="#">SERVIÇOS</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">CRECHE PET</a></li>
+                        <li><a href="#">BANHO PET</a></li>
+                        <li><a href="#">DOG WALKER</a></li>
+                        <li><a href="#">VACINAÇÃO</a></li>
+                        <li><a href="#">OUTROS</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'adocao' %}">ADOÇÃO</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container_conteudos">
+        <img class="imagem-grande" src="{% static 'img/adocao/banner_adocao.png' %}" alt="adoteumcão">
+
+        <div class="container_titulo">
+            <h3>Parceiros de adoção</h3>
+        </div>
+        <div class="container-parceiros-adocao">
+            {% for parceiro in parceiros %}
+                <a href="{{ parceiro.site }}" target="_blank" title="{{ parceiro.nome }}">
+                    <img src="{{ parceiro.logo.url }}" alt="{{ parceiro.nome }}">
+                </a>
+            {% empty %}
+                <p>Nenhum parceiro cadastrado no momento.</p>
+            {% endfor %}
+        </div>
+
+        <br><br><br><br>
+
+        <div class="container-pets-disponiveis">
+            <div class="superior">
+                <div class="container_titulo-pets">
+                    <h3>Conhecer pets disponíveis</h3>
+                </div>
+                <div class="filtro">
+                    <ul>
+                        <li><a href="?ordem=recentes">Mais recentes</a></li>
+                        <li><a href="?ordem=antigos">Mais antigos</a></li>
+                        <li><a href="?ordem=mais_vistos">Mais vistos</a></li>
+                        <li><a href="?ordem=menos_vistos">Menos vistos</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="container-opcoes">
+                {% for pet in pets %}
+                    <a class="opcao-pet" href="{% url 'detalhe_pet' pet.id %}">
+                        <img class="imagem-pet" src="{{ pet.foto.url }}" alt="{{ pet.nome }}">
+                        <div class="descricao-pet">
+                            <div class="nome-cidade">
+                                <p>
+                                    {{ pet.nome }} <br>
+                                    <span>{{ pet.cidade }}-{{ pet.estado }}</span>
+                                </p>
+                            </div>
+                            <div class="sexo-{{ pet.sexo|lower }}">
+                                {% if pet.sexo == 'M' %}
+                                    <img src="{% static 'img/adocao/masculino.png' %}" alt="Macho">
+                                {% else %}
+                                    <img src="{% static 'img/adocao/feminino.png' %}" alt="Fêmea">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                {% empty %}
+                    <p>Nenhum pet disponível para adoção no momento.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <br><br><br>
+
+        <div class="adotar-promover">
+            {% if user.is_authenticated %}
+                <div class="quero-adotar">
+                    <a href="{% url 'minhas_solicitacoes' %}">Minhas solicitações</a>
+                </div>
+                <div class="promover-adocao">
+                    <a href="{% url 'promover_adocao' %}">Promover adoção</a>
+                </div>
+            {% else %}
+                <div class="quero-adotar">
+                    <a href="{% url 'login' %}?next={% url 'adocao' %}">Quero adotar</a>
+                </div>
+                <div class="promover-adocao">
+                    <a href="{% url 'login' %}?next={% url 'promover_adocao' %}">Promover adoção</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <br><br><br>
+
+        <div class="container_titulo">
+            <h3>Por que adotar pets?</h3>
+        </div>
+
+        <div class="container-pets">
+            <div class="container-pets-1">
+                <p class="numero">1</p>
+                <img class="imagem-adotar" src="{% static 'img/adocao/pets_1.png' %}" alt="">
+                <p class="texto">Pets oferecem amor e alegria constantes, combatendo a solidão e promovendo o bem-estar emocional.</p>
+            </div>
+            <div class="container-pets-2">
+                <p class="numero">2</p>
+                <img class="imagem-adotar" src="{% static 'img/adocao/pets_2.png' %}" alt="">
+                <p class="texto">A interação com animais pode reduzir o estresse e melhorar a saúde mental, além de estimular a liberação de hormônios associados à felicidade.</p>
+            </div>
+            <div class="container-pets-3">
+                <p class="numero">3</p>
+                <img class="imagem-adotar" src="{% static 'img/adocao/pets_3.png' %}" alt="">
+                <p class="texto">A adoção oferece um lar amoroso e seguro para animais que foram abandonados, vítimas de maus-tratos ou que vivem em abrigos, transformando a vida deles.</p>
+            </div>
+        </div>
+        
+    </div>
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+    
+</html>

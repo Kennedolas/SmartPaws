@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Meus Pedidos - Smart Paws{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'CSS/pedido.css' %}"> {% endblock %}
+{% block content %}
+
+<div class="pedidos-page"> <div class="container-pedidos"> <h1><i class="fas fa-list"></i> Meus Pedidos</h1>
+    {% if pedidos %}
+    <div class="pedidos-lista">
+        {% for pedido in pedidos %}
+        <div class="pedido-card">
+            <div class="pedido-header">
+                <div class="pedido-numero">
+                    <h3>Pedido #{{ pedido.numero_pedido }}</h3>
+                    <span class="pedido-data">
+                        <i class="far fa-calendar"></i>
+                        {{ pedido.created_at|date:"d/m/Y H:i" }}
+                    </span>
+                </div>
+                <span class="status-badge status-{{ pedido.status }}">
+                    {{ pedido.get_status_display }}
+                </span>
+            </div>
+            
+            <div class="pedido-corpo">
+                <div class="pedido-itens">
+                    <h4>Itens do Pedido:</h4>
+                    <ul>
+                        {% for item in pedido.itens.all %}
+                        <li>
+                            <span class="item-qtd">{{ item.quantidade }}x</span>
+                            <span class="item-nome">{{ item.nome_produto }}</span>
+                            <span class="item-preco">R$ {{ item.subtotal }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="pedido-resumo">
+                    <div class="resumo-linha">
+                        <span>Forma de Pagamento:</span>
+                        <strong>{{ pedido.get_forma_pagamento_display }}</strong>
+                    </div>
+                    <div class="resumo-linha">
+                        <span>Subtotal:</span>
+                        <span>R$ {{ pedido.subtotal }}</span>
+                    </div>
+                    <div class="resumo-linha">
+                        <span>Frete:</span>
+                        <span>
+                            {% if pedido.frete == 0%}
+                                <strong style="color: #28a745;">GRÁTIS</strong>
+                            {% else %}
+                                R$ {{ pedido.frete }}
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="resumo-linha total">
+                        <span>Total:</span>
+                        <strong>R$ {{ pedido.total }}</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pedido-acoes">
+                <a href="{% url 'carrinho:detalhe_pedido' pedido.id %}" class="btn-ver-detalhes">
+                    <i class="fas fa-eye"></i>
+                    Ver Detalhes
+                </a>
+                
+                {% if pedido.status == 'pendente' and pedido.forma_pagamento == 'pix' %}
+                <a href="{% url 'carrinho:pedido_confirmado' pedido.id %}" class="btn-pagar">
+                    <i class="fas fa-qrcode"></i>
+                    Ver QR Code PIX
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="sem-pedidos">
+        <i class="fas fa-inbox"></i>
+        <h2>Você ainda não fez nenhum pedido</h2>
+        <p>Comece a comprar agora e veja seus pedidos aqui!</p>
+        <a href="{% url 'produtos:lista' %}" class="btn-comprar">
+        
+            Ver Produtos
+        </a>
+    </div>
+    {% endif %}
+</div>
+</div> {% endblock %} 

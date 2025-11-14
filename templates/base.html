@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Smart Paws{% endblock %}</title>
+    
+    <style>
+
+/*CONFIGURAÇÕES DO TOPO DA PÁGINA*/
+.container_topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px; /* Adicionado um padding para espaçamento */
+    box-sizing: border-box;
+}
+.logo_cima {
+    width: 20%;
+    min-width: 150px;
+}
+#barra_pesquisa {
+    padding: 1%;
+    width: 50%;
+    text-align: left 10px;
+    border: none;
+    background-color: #EEEEEE;
+    border-radius: 100px;
+    font-size: 16px;
+    font-family: "Luckiest Guy", cursive;
+}
+.entre_cadastre {
+    text-decoration: none;
+    color: white;
+    background-color: #ab8262;
+    padding: 1%;
+    border-radius: 100px;
+    text-align: center;
+    font-family: "Luckiest Guy", cursive;
+    border: 2px solid transparent;
+    transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+.entre_cadastre:hover {
+    background-color: white;
+    color: #ab8262;
+    border-color: #ab8262;
+}
+.carrinho_perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.perfil {
+    width: 40px;
+}
+
+.carrinho_perfil {
+    position: relative;
+}
+
+.carrinho_perfil a {
+    position: relative;
+    display: inline-block;
+}
+
+.carrinho-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background:#ab8262;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.carrinho-count.pulse {
+    animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1); 
+    }
+    50% {
+        transform: scale(1.3);
+    }
+}
+    </style>
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="{% static 'CSS/index.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+     <header>
+        <div class="container_topo">
+            <a href="{% url 'core:home' %}">
+                <img class="logo_cima" src="{% static 'IMG/SP_logo_cima.png' %}" alt="Smart Paws">
+            </a>
+            <input type="text" id="barra_pesquisa" name="barra_pesquisa" placeholder="PROCURAR NA SMART PAWS">
+            
+            {% if user.is_authenticated %}
+                <a class="entre_cadastre" href="{% url 'usuarios:logout' %}">OLÁ, {{ user.first_name|upper }}</a>
+            {% else %}
+                <a class="entre_cadastre" href="{% url 'usuarios:login' %}">ENTRE OU CADASTRE-SE</a>
+            {% endif %}
+            
+             <div class="carrinho_perfil">
+                <a href="{% url 'carrinho:visualizar' %}">
+                    <img class="carrinho" src="{% static 'IMG/carrinho.png' %}" alt="Carrinho de compras">
+                    {% if carrinho_total_itens > 0 %}
+                    <span class="carrinho-count">{{ carrinho_total_itens }}</span>
+                    {% endif %}
+                </a> 
+                {% if user.is_authenticated %}
+                    <a href="{% url 'usuarios:perfil' %}">
+                        <img class="perfil" src="{% static 'IMG/perfil.png' %}" alt="Meu perfil">
+                    </a>
+                {% else %}
+                    <a href="{% url 'usuarios:login' %}">
+                        <img class="perfil" src="{% static 'IMG/perfil.png' %}" alt="Acessar perfil">
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="container_paginas">
+            <ul class="paginas">
+                <li><a href="{% url 'core:home' %}">PÁGINA INICIAL</a></li>
+                <li class="has-dropdown">
+                    <a href="{% url 'produtos:lista' %}">PRODUTOS</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'produtos:lista' %}?categoria=1">RAÇÕES</a></li>
+                        <li><a href="{% url 'produtos:lista' %}?categoria=2">ACESSÓRIOS</a></li>
+                        <li><a href="{% url 'produtos:lista' %}?categoria=3">ROUPAS</a></li>
+                        <li><a href="{% url 'produtos:lista' %}?categoria=4">HIGIENE</a></li>
+                        <li><a href="{% url 'produtos:lista' %}">OUTROS</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="{% url 'servicos:lista'%}">SERVIÇOS</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">CRECHE PET</a></li>
+                        <li><a href="#">BANHO PET</a></li>
+                        <li><a href="#">DOG WALKER</a></li>
+                        <li><a href="#">VACINAÇÃO</a></li>
+                        <li><a href="#">OUTROS</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'pets:adocao' %}">ADOÇÃO</a></li>
+            </ul>
+        </div>
+    </header>
+  
+           <!-- Conteúdo da página -->
+        {% block content %}{% endblock %}
+        
+        <!-- JavaScript Global -->
+        <script src="{% static 'JS/main.js' %}"></script>
+        <script src="{% static 'JS/index.js' %}"></script>
+        {% block extra_js %}{% endblock %}
+
+</body>
+</html>

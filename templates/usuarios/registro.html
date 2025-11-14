@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - SmartPaws</title>
+    <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/paginacadastro.css' %}">
+</head>
+<body>
+    <div class="topo">
+        <a class="logo" href="{% url 'core:home' %}">
+            <img src="{% static 'IMG/New_Logo_Smart_Paws_20250909_201807_0000.png' %}" alt="Logo">
+        </a>
+        <div class="seguranca">
+            <img class="cadeado" src="{% static 'IMG/cadeado.png.png' %}" alt="Cadeado">
+            <h3 class="ambiente-seguro">AMBIENTE SEGURO</h3>
+        </div>
+    </div>
+    
+    <br><br>
+    
+    <div class="mensagem">
+        <h1>CRIAR UMA CONTA</h1>
+    </div>
+    
+    <div class="listacadastro">
+        <ul>
+            <li class="ativo">Pessoa Física</li>
+            <li>Pessoa Jurídica</li>
+        </ul>
+    </div>
+    
+    <br><br>
+    <div class="linha">
+        <hr>
+    </div>
+
+    <!-- Mensagens -->
+    {% if messages %}
+        <div class="mensagens">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Formulário de Cadastro -->
+    <form method="post" action="{% url 'usuarios:registro' %}">
+        {% csrf_token %}
+        
+        <div class="textonome">
+            <p>NOME E SOBRENOME</p>
+        </div>
+        <br>
+        <div class="nome">
+            {{ form.first_name }}
+            {{ form.last_name }}
+        </div>
+        
+        {% if form.first_name.errors or form.last_name.errors %}
+            <div class="erros">
+                {{ form.first_name.errors }}
+                {{ form.last_name.errors }}
+            </div>
+        {% endif %}
+        
+        <br>
+        <div class="textoemail">
+            <p>E-MAIL</p>
+        </div>
+        <br>
+        <div class="email">
+            {{ form.email }}
+        </div>
+        
+        {% if form.email.errors %}
+            <div class="erros">{{ form.email.errors }}</div>
+        {% endif %}
+        
+        <br>
+        <div class="textocpf">
+            <p>CPF</p>
+        </div>
+        <br>
+        <div class="cpf">
+            {{ form.cpf }}
+        </div>
+        
+        {% if form.cpf.errors %}
+            <div class="erros">{{ form.cpf.errors }}</div>
+        {% endif %}
+        
+        <br>
+        <div class="textocelular">
+            <p>CELULAR</p>
+        </div>
+        <br>
+        <div class="celular">
+            {{ form.telefone }}
+        </div>
+        
+        {% if form.telefone.errors %}
+            <div class="erros">{{ form.telefone.errors }}</div>
+        {% endif %}
+        
+        <br>
+        <div class="textodata">
+            <p>DATA DE NASCIMENTO</p>
+        </div>
+        <br>
+        <div class="data">
+            {{ form.data_nascimento }}
+        </div>
+        
+        {% if form.data_nascimento.errors %}
+            <div class="erros">{{ form.data_nascimento.errors }}</div>
+        {% endif %}
+        
+        <br>
+        <div class="textosexo">
+            <p>SEXO (OPCIONAL)</p>
+        </div>
+        <br>
+        <div class="sexo">
+            {{ form.sexo }}
+        </div>
+        
+        <br>
+        <div class="textosenha">
+            <p>SENHA</p>
+        </div>
+        <br>
+        <div class="senha">
+            {{ form.password1 }}
+        </div>
+        
+        {% if form.password1.errors %}
+            <div class="erros">{{ form.password1.errors }}</div>
+        {% endif %}
+        
+        <br>
+        <div class="textoconfirmar">
+            <p>CONFIRMAR A SENHA</p>
+        </div>
+        <br>
+        <div class="confirmarsenha">
+            {{ form.password2 }}
+        </div>
+        
+        {% if form.password2.errors %}
+            <div class="erros">{{ form.password2.errors }}</div>
+        {% endif %}
+        
+        <div class="lista">
+            <p>PADRÃO DE SENHA</p>
+            <ul>
+                <li>Mínimo de 8 caracteres.</li>
+                <li>Letras maiúsculas e minúsculas.</li>
+                <li>Números</li>
+            </ul>
+        </div>
+        
+        <br>
+        <div class="aceitar">
+            {{ form.aceita_marketing }}
+            <label for="id_aceita_marketing">Aceito receber ofertas e novidades</label>
+        </div>
+        
+        <br><br><br>
+        <div class="entrar">
+            <button type="submit">CRIAR CONTA</button>
+        </div>
+    </form>
+    
+    <br>
+    <div class="conta">
+        <h6>JÁ POSSUI UMA CONTA?</h6>
+    </div>
+    <br>
+    <div class="usuario">
+        <a href="{% url 'usuarios:login' %}">FAÇA LOGIN</a>
+    </div>
+
+    <script src="{% static 'JS/main.js' %}"></script>
+</body>
+</html>

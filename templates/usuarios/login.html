@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SmartPaws</title>
+    <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/paginalogin.css' %}">
+</head>
+<body>
+    <div class="topo">
+        <a class="logo" href="{% url 'core:home' %}">
+            <img src="{% static 'IMG/New_Logo_Smart_Paws_20250909_201807_0000.png' %}" alt="Logo Smart Paws">
+        </a> 
+        <div class="seguranca">
+            <img class="cadeado" src="{% static 'IMG/cadeado.png.png' %}" alt="Cadeado">
+            <h3 class="ambiente-seguro">AMBIENTE SEGURO</h3>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="mensagem">
+        <br><br>
+        <h1><strong>Bem-Vindo!</strong></h1>
+    </div>
+
+    <br>
+
+    <!-- Mensagens -->
+    {% if messages %}
+        <div class="mensagens">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Formulário de Login -->
+    <form method="post" action="{% url 'usuarios:login' %}">
+        {% csrf_token %}
+        
+        <div class="email">
+            {{ form.username }}
+        </div>
+
+        <br>
+
+        <div class="senha">
+            {{ form.password }}
+        </div>
+
+        <div class="esqueci">
+            <a href="{% url 'usuarios:esqueci_senha' %}">
+                <p>ESQUECI A SENHA</p>
+            </a>
+        </div>
+
+        <br><br>
+
+        <div class="entrar">
+            <button type="submit">ENTRAR</button>
+        </div>
+    </form>
+
+    <br>
+
+    <div class="conta">
+        <h6>AINDA NÃO POSSUI UMA CONTA?</h6>
+    </div>
+
+    <br>
+
+    <div class="usuario">
+        <a href="{% url 'usuarios:registro' %}">CADASTRE-SE</a>
+    </div>
+
+    <script src="{% static 'JS/main.js' %}"></script>
+</body>
+</html>

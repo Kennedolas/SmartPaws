@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Agendar {{ servico.nome }} - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/servicos.css' %}">
+<link rel="stylesheet" href="{% static 'CSS/agendamentos.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="agendamento-page">
+    <div class="container-agendamento">
+        <div class="agendamento-header">
+            <h1><i class="far fa-calendar-check"></i> Agendar Serviço</h1>
+            <p>Preencha os dados abaixo para agendar seu serviço</p>
+        </div>
+
+        <div class="agendamento-grid">
+            <div class="form-agendamento">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    {% if form.errors %}
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Corrija os erros abaixo para continuar.
+                    </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label for="{{ form.data_agendamento.id_for_label }}">
+                            <i class="far fa-calendar"></i>
+                            {{ form.data_agendamento.label }}
+                        </label>
+                        {{ form.data_agendamento }}
+                        {% if form.data_agendamento.errors %}
+                        <span class="erro">{{ form.data_agendamento.errors.0 }}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.horario.id_for_label }}">
+                            <i class="far fa-clock"></i>
+                            {{ form.horario.label }}
+                        </label>
+                        {{ form.horario }}
+                        {% if form.horario.errors %}
+                        <span class="erro">{{ form.horario.errors.0 }}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.nome_pet.id_for_label }}">
+                            <i class="fas fa-paw"></i>
+                            {{ form.nome_pet.label }}
+                        </label>
+                        {{ form.nome_pet }}
+                        {% if form.nome_pet.errors %}
+                        <span class="erro">{{ form.nome_pet.errors.0 }}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.observacoes.id_for_label }}">
+                            <i class="fas fa-comment-dots"></i>
+                            {{ form.observacoes.label }}
+                        </label>
+                        {{ form.observacoes }}
+                        {% if form.observacoes.errors %}
+                        <span class="erro">{{ form.observacoes.errors.0 }}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-confirmar">
+                            <i class="fas fa-check"></i>
+                            Confirmar Agendamento
+                        </button>
+                        <a href="{% url 'servicos:detalhe' servico.slug %}" class="btn-cancelar">
+                            <i class="fas fa-times"></i>
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <aside class="resumo-servico">
+                <h3>Resumo do Serviço</h3>
+                
+                <div class="resumo-card">
+                    {% if servico.imagem_principal %}
+                        <img src="{{ servico.imagem_principal.url }}" alt="{{ servico.nome }}">
+                    {% else %}
+                        <div style="height: 200px; background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="resumo-info">
+                        <h4>{{ servico.nome }}</h4>
+                        <p class="prestador">{{ servico.prestador.nome }}</p>
+                        
+                        <div class="resumo-item">
+                            <i class="fas fa-tag"></i>
+                            <span>{{ servico.preco_formatado }}/{{ servico.get_unidade_tempo_display }}</span>
+                        </div>
+                        
+                        {% if servico.duracao %}
+                        <div class="resumo-item">
+                            <i class="far fa-clock"></i>
+                            <span>{{ servico.duracao }}</span>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="resumo-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>{{ servico.prestador.endereco_completo }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="aviso-agendamento">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Após confirmar, o prestador entrará em contato para confirmar a disponibilidade.</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+{% endblock %}

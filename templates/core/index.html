@@ -1,0 +1,334 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Smart Paws{% endblock %}</title>
+    
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="{% static 'CSS/index.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container_topo">
+            <a href="{% url 'core:home' %}">
+                <img class="logo_cima" src="{% static 'IMG/SP_logo_cima.png' %}" alt="Smart Paws">
+            </a>
+            <input type="text" id="barra_pesquisa" name="barra_pesquisa" placeholder="PROCURAR NA SMART PAWS">
+            
+            {% if user.is_authenticated %}
+                <a class="entre_cadastre" href="{% url 'usuarios:logout' %}">OLÁ, {{ user.first_name|upper }}</a>
+            {% else %}
+                <a class="entre_cadastre" href="{% url 'usuarios:login' %}">ENTRE OU CADASTRE-SE</a>
+            {% endif %}
+            
+             <div class="carrinho_perfil">
+                <a href="{% url 'carrinho:visualizar' %}">
+                    <img class="carrinho" src="{% static 'IMG/carrinho.png' %}" alt="Carrinho de compras">
+                    {% if carrinho_total_itens > 0 %}
+                    <span class="carrinho-count">{{ carrinho_total_itens }}</span>
+                    {% endif %}
+                </a> 
+                {% if user.is_authenticated %}
+                    <a href="{% url 'usuarios:perfil' %}">
+                        <img class="perfil" src="{% static 'IMG/perfil.png' %}" alt="Meu perfil">
+                    </a>
+                {% else %}
+                    <a href="{% url 'usuarios:login' %}">
+                        <img class="perfil" src="{% static 'IMG/perfil.png' %}" alt="Acessar perfil">
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="container_paginas">
+            <ul class="paginas">
+                <li><a href="{% url 'core:home' %}">PÁGINA INICIAL</a></li>
+                <li class="has-dropdown">
+                    <a href="{% url 'produtos:lista' %}">PRODUTOS</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'produtos:lista' %}?categoria=1">RAÇÕES</a></li>
+                        <li><a href="{% url 'produtos:lista' %}?categoria=2">ACESSÓRIOS</a></li>
+                        <li><a href="{% url 'produtos:lista' %}?categoria=3">ROUPAS</a></li>
+                        <li><a href="{% url 'produtos:lista' %}?categoria=4">HIGIENE</a></li>
+                        <li><a href="{% url 'produtos:lista' %}">OUTROS</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="{% url 'servicos:lista'%}">SERVIÇOS</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">CRECHE PET</a></li>
+                        <li><a href="#">BANHO PET</a></li>
+                        <li><a href="#">DOG WALKER</a></li>
+                        <li><a href="#">VACINAÇÃO</a></li>
+                        <li><a href="#">OUTROS</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'pets:adocao' %}">ADOÇÃO</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- CONTEÚDO DINÂMICO -->
+    {% block content %}
+    
+    <div class="container_conteudos">
+        <!-- LOGO GRANDE -->
+        <img class="logo_grande" src="{% static 'IMG/SP_logo_grande.png' %}" alt="Smart Paws">
+        
+        <!-- CAIXAS DE BENEFÍCIOS -->
+        <div class="caixas_pequenas">
+            <p><span>Entrega Expressa</span> <br> em todo o Brasil!</p>
+            <p><span>Frete Grátis</span> <br> *Confira as regras</p>
+            <p><span>Parcelado</span> <br> Parcela mínima de R$60</p>
+            <p><span>CashBack</span> <br> Utilize na sua próxima compra</p>
+            <p><span>Compre e retire 5% de desconto</span> <br> *Confira as regras</p>
+            <p><span>5% Off no PIX</span></p>
+        </div>
+    
+        <!-- MAIS PROCURADOS -->
+        <div class="container_titulo">
+            <h3>Mais Procurados</h3>
+        </div>
+        <div class="container_mais_procurados">
+            <div class="mais_procurado">
+                <a href="{% url 'produtos:lista' %}?especie=cao">
+                    <div class="container_caixa">
+                        <div class="caixa"></div>
+                    </div>
+                    <img class="cachorro1" src="{% static 'IMG/mais procurados/cachorro 1.png' %}" alt="Rações para cachorros">
+                    <p>Rações para cachorros</p>
+                </a>
+            </div>
+            <div class="mais_procurado">
+                <a href="{% url 'produtos:lista' %}?especie=gato">
+                    <div class="container_caixa">
+                        <div class="caixa"></div>
+                    </div>
+                    <img class="gato1" src="{% static 'IMG/mais procurados/gato 1.png' %}" alt="Rações para gatos">
+                    <p>Rações para gatos</p>
+                </a>
+            </div>
+            <div class="mais_procurado">
+                <a href="{% url 'produtos:lista' %}?categoria=acessorios">
+                    <div class="container_caixa">
+                        <div class="caixa"></div>
+                    </div>
+                    <img class="acessorios" src="{% static 'IMG/mais procurados/acessórios.png' %}" alt="Acessórios">
+                    <p>Acessórios</p>
+                </a>
+            </div>
+            <div class="mais_procurado">
+                <a href="{% url 'pets:adocao' %}">
+                    <div class="container_caixa">
+                        <div class="caixa"></div>
+                    </div>
+                    <img class="adocao_pets" src="{% static 'IMG/mais procurados/adoção de pets.png' %}" alt="Adoção de pets">
+                    <p>Adoção de pets</p>
+                </a>
+            </div>
+            <div class="mais_procurado">
+                <a href="{% url 'produtos:lista' %}?categoria=higiene">
+                    <div class="container_caixa">
+                        <div class="caixa"></div>
+                    </div>
+                    <img class="higiene" src="{% static 'IMG/mais procurados/higiene.png' %}" alt="Higiene">
+                    <p>Higiene</p>
+                </a>
+            </div>
+            <div class="mais_procurado">
+                <a href="{% url 'produtos:lista' %}?busca=areia">
+                    <div class="container_caixa">
+                        <div class="caixa"></div>
+                    </div>
+                    <img class="areia" src="{% static 'IMG/mais procurados/areia para gatos.png' %}" alt="Areia para gatos">
+                    <p>Areia para gatos</p>
+                </a>
+            </div>
+        </div>
+    
+       <!-- CARROSSEL -->
+        <div class="container_carrossel">
+            <div class="carrossel-wrapper">
+                <!-- BOTÃO ANTERIOR -->
+                <button class="carrossel-btn anterior" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <!-- CARROSSEL -->
+                            
+                <div class="container_carrossel">
+                    <div class="carrossel-horizontal">
+                        <button class="carrossel-nav anterior" aria-label="Anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div class="carrossel-track">
+                            <div class="carrossel-item">
+                                <a href="{% url 'produtos:lista' %}?especie=cao">
+                                    <img src="{% static 'IMG/carrossel/produtos para o seu caozinho.png' %}" alt="Produtos para cães">
+                                </a>
+                            </div>
+                            <div class="carrossel-item">
+                                <a href="{% url 'produtos:lista' %}?especie=gato">
+                                    <img src="{% static 'IMG/carrossel/produtos para o seu gatinho.png' %}" alt="Produtos para gatos">
+                                </a>
+                            </div>
+                            <div class="carrossel-item">
+                                <a href="{% url 'produtos:lista' %}?especie=ave">
+                                    <img src="{% static 'IMG/carrossel/produtos para o seu passaro.png' %}" alt="Produtos para aves">
+                                </a>
+                            </div>
+                            <div class="carrossel-item">
+                                <a href="{% url 'produtos:lista' %}?especie=peixe">
+                                    <img src="{% static 'IMG/carrossel/produtos para o seu peixe.png' %}" alt="Produtos para peixes">
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <button class="carrossel-nav proximo" aria-label="Próximo">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+    
+        <!-- CATEGORIAS POR ESPÉCIES -->
+        <div class="container_titulo">
+            <h3>Categorias por espécies</h3>
+        </div>
+        <div class="container_categorias">
+            <div class="categoria">
+                <a href="{% url 'produtos:lista' %}?especie=cao">
+                    <div class="container_caixa2">
+                        <div class="caixa2"></div>
+                    </div>
+                    <img class="cachorros" src="{% static 'IMG/categoria por espécies/cachorro 2.png' %}" alt="Cachorros">
+                    <p>Cachorros</p>
+                </a>
+            </div>
+            <div class="categoria">
+                <a href="{% url 'produtos:lista' %}?especie=gato">
+                    <div class="container_caixa2">
+                        <div class="caixa2"></div>
+                    </div>
+                    <img class="gatos" src="{% static 'IMG/categoria por espécies/gato 2.png' %}" alt="Gatos">
+                    <p>Gatos</p>
+                </a>
+            </div>
+            <div class="categoria">
+                <a href="{% url 'produtos:lista' %}?especie=ave">
+                    <div class="container_caixa2">
+                        <div class="caixa2"></div>
+                    </div>
+                    <img class="aves" src="{% static 'IMG/categoria por espécies/passarinho.png' %}" alt="Aves">
+                    <p>Aves</p>
+                </a>
+            </div>
+            <div class="categoria">
+                <a href="{% url 'produtos:lista' %}?especie=peixe">
+                    <div class="container_caixa2">
+                        <div class="caixa2"></div>
+                    </div>
+                    <img class="peixes" src="{% static 'IMG/categoria por espécies/peixe.png' %}" alt="Peixe">
+                    <p>Peixes</p>
+                </a>
+            </div>
+            <div class="categoria">
+                <a href="{% url 'produtos:lista' %}?especie=roedor">
+                    <div class="container_caixa2">
+                        <div class="caixa2"></div>
+                    </div>
+                    <img class="coelhos_roedores" src="{% static 'IMG/categoria por espécies/coelho.png' %}" alt="Coelho">
+                    <p>Coelhos e Roedores</p>
+                </a>
+            </div>
+            <div class="categoria">
+                <a href="{% url 'produtos:lista' %}?especie=reptil">
+                    <div class="container_caixa2">
+                        <div class="caixa2"></div>
+                    </div>
+                    <img class="repteis_anfibios" src="{% static 'IMG/categoria por espécies/gekko.png' %}" alt="Répteis e Anfíbios">
+                    <p>Répteis e Anfíbios</p>
+                </a>
+            </div>
+        </div>
+    
+        <!-- BANNER OFERTA -->
+        <div class="container_oferta">
+            <a href="{% url 'produtos:lista' %}">
+                <img src="{% static 'IMG/oferta.png' %}" alt="Oferta">
+            </a>
+        </div>
+    
+        <!-- SERVIÇOS -->
+        <div class="container_titulo">
+            <h3>Serviços</h3>
+        </div>
+        <div class="container_servicos">
+            <div class="servico">
+                <div class="local_avaliacao">
+                    <img class="local" src="{% static 'IMG/serviços/Hotel para cães 1.png' %}" alt="">
+                    <img class="avaliacao" src="{% static 'IMG/serviços/Design sem nome 3.png' %}" alt="">
+                </div>
+                <div class="descricao">
+                    <p><b>CRECHE PATINHA FELIZ</b></p>
+                    <p>Asa Sul - Quadra 3 Lote 5</p>
+                    <p>A Creche patinha feliz possui o dever de trazer bem-estar para seu pet.</p>
+                </div>
+                <div class="preco_cadastre">
+                    <div class="preco"><p>A partir de <br>R$ 450,00/mês</p></div>
+                    <div class="cadastre"><a href="#">CADASTRE SEU PET</a></div>
+                </div>
+            </div>
+            <div class="servico">
+                <div class="local_avaliacao">
+                    <img class="local" src="{% static 'IMG/serviços/aumigos.png' %}" alt="">
+                    <img class="avaliacao" src="{% static 'IMG/serviços/Design sem nome 3.png' %}" alt="">
+                </div>
+                <div class="descricao">
+                    <p><b>AUMIGOS</b></p>
+                    <p>Candangolândia - Epia Sul, Lote 10</p>
+                    <p>Nossa creche oferece um espaço dedicado ao bem-estar do seu bichinho.</p>
+                </div>
+                <div class="preco_cadastre">
+                    <div class="preco"><p>A partir de <br>R$ 300,00/mês</p></div>
+                    <div class="cadastre"><a href="#">CADASTRE SEU PET</a></div>
+                </div>
+            </div>
+            <div class="servico">
+                <div class="local_avaliacao">
+                    <img class="local" src="{% static 'IMG/serviços/petlandia.png' %}" alt="">
+                    <img class="avaliacao" src="{% static 'IMG/serviços/Design sem nome 3.png' %}" alt="">
+                </div>
+                <div class="descricao">
+                    <p><b>PETLÂNDIA</b></p>
+                    <p>Asa Norte - Quadra 2 Lote 2</p>
+                    <p>Cuidamos do seu bichinho como se fosse da família!</p>
+                </div>
+                <div class="preco_cadastre">
+                    <div class="preco"><p>A partir de <br>R$ 350,00/mês</p></div>
+                    <div class="cadastre"><a href="#">CADASTRE SEU PET</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    {% endblock %}
+
+    <!-- FOOTER -->
+    <hr>
+    
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <button id="back-to-top-btn" title="Voltar ao topo">&uarr;</button>
+
+    <!-- JAVASCRIPT -->
+    <script src="{% static 'JS/main.js' %}"></script>
+    <script src="{% static 'JS/index.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

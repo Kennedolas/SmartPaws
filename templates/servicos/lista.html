@@ -1,0 +1,247 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Serviços - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/servicos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .img-placeholder, .logo-placeholder {
+width: 100%;
+height: 200px;
+background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 3rem;
+}
+
+.logo-placeholder {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+font-size: 1rem;
+}
+
+</style>
+<div class="servicos-page">
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
+        <img src="{% static 'IMG/banner_servicos.webp' %}" alt="Serviços Smart Paws">
+    </section>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container-servicos">
+        <!-- SIDEBAR FILTROS -->
+        <aside class="sidebar-filtros">
+            <div class="filtros-header">
+                <h2>Filtros</h2>
+                <a href="{% url 'servicos:lista' %}" class="limpar-filtros">Limpar tudo</a>
+            </div>
+
+            <!-- BUSCA -->
+            <div class="filtro-grupo">
+                <h3>Buscar</h3>
+                <form method="get" action="{% url 'servicos:lista' %}">
+                    <input type="text" name="q" value="{{ query }}" placeholder="Buscar serviços...">
+                    <button type="submit" class="btn-buscar">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- CATEGORIAS -->
+            <div class="filtro-grupo">
+                <h3>Categorias</h3>
+                <ul class="lista-categorias">
+                    <li>
+                        <a href="{% url 'servicos:lista' %}" class="{% if not categoria_atual %}ativo{% endif %}">
+                            Todas
+                            <span class="badge">{{ servicos.count }}</span>
+                        </a>
+                    </li>
+                    {% for categoria in categorias %}
+                    <li>
+                        <a href="?categoria={{ categoria.slug }}" class="{% if categoria_atual == categoria.slug %}ativo{% endif %}">
+                            {% if categoria.icone %}
+                            <i class="{{ categoria.icone }}"></i>
+                            {% endif %}
+                            {{ categoria.nome }}
+                            <span class="badge">{{ categoria.servicos.count }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- FAIXA DE PREÇO -->
+            <div class="filtro-grupo">
+                <h3>Faixa de Preço</h3>
+                <form method="get">
+                    <div class="preco-inputs">
+                        <input type="number" name="preco_min" placeholder="Min" value="{{ request.GET.preco_min }}">
+                        <span>até</span>
+                        <input type="number" name="preco_max" placeholder="Max" value="{{ request.GET.preco_max }}">
+                    </div>
+                    <button type="submit" class="btn-aplicar-preco">Aplicar</button>
+                </form>
+            </div>
+
+            <!-- PRESTADORES -->
+            <div class="filtro-grupo">
+                <h3>Prestadores</h3>
+                <ul class="lista-categorias">
+                    {% for prestador in prestadores|slice:":10" %}
+                    <li>
+                        <a href="?prestador={{ prestador.slug }}" class="{% if prestador_atual == prestador.slug %}ativo{% endif %}">
+                            {{ prestador.nome }}
+                            {% if prestador.verificado %}
+                            <i class="fas fa-check-circle" style="color: #28a745;"></i>
+                            {% endif %}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </aside>
+
+        <!-- ÁREA PRINCIPAL -->
+        <main class="area-servicos">
+            <!-- TOOLBAR -->
+            <div class="toolbar">
+                <div class="resultados-info">
+                    <h2>Serviços Disponíveis</h2>
+                    <p class="total">{{ servicos.count }} serviço(s) encontrado(s)</p>
+                </div>
+
+                <div class="toolbar-acoes">
+                    <!-- ORDENAÇÃO -->
+                    <form method="get" class="form-ordenacao">
+                        <label for="ordem">Ordenar por:</label>
+                        <select name="ordem" id="ordem" onchange="this.form.submit()">
+                            <option value="-destaque" {% if ordem_atual == '-destaque' %}selected{% endif %}>Destaques</option>
+                            <option value="preco_menor" {% if ordem_atual == 'preco_menor' %}selected{% endif %}>Menor Preço</option>
+                            <option value="preco_maior" {% if ordem_atual == 'preco_maior' %}selected{% endif %}>Maior Preço</option>
+                            <option value="avaliacao" {% if ordem_atual == 'avaliacao' %}selected{% endif %}>Melhor Avaliação</option>
+                            <option value="nome" {% if ordem_atual == 'nome' %}selected{% endif %}>Nome A-Z</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+
+            <!-- GRID DE SERVIÇOS -->
+            <div class="servicos-grid">
+                {% for servico in servicos %}
+                <div class="card-servico">
+                    <!-- BADGES -->
+                    {% if servico.destaque %}
+                    <span class="badge-destaque">
+                        <i class="fas fa-star"></i> Destaque
+                    </span>
+                    {% endif %}
+
+                    <!-- IMAGEM -->
+                    <div class="servico-imagem">
+                        <a href="{% url 'servicos:detalhe' servico.slug %}">
+                            {% if servico.imagem_principal %}
+                                <img src="{{ servico.imagem_principal.url }}" alt="{{ servico.nome }}">
+                            {% else %}
+                                <div class="img-placeholder">
+                                    <i class="fas fa-paw"></i>
+                                </div>
+                            {% endif %}
+                        </a>
+                    </div>
+
+                    <!-- INFO -->
+                    <div class="servico-info">
+                        <div class="prestador-badge">
+                            {% if servico.prestador.logo %}
+                                <img src="{{ servico.prestador.logo.url }}" alt="{{ servico.prestador.nome }}">
+                            {% else %}
+                                <div class="logo-placeholder">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                            {% endif %}
+                            <span>{{ servico.prestador.nome }}</span>
+                            {% if servico.prestador.verificado %}
+                            <i class="fas fa-check-circle verificado"></i>
+                            {% endif %}
+                        </div>
+
+                        <h3 class="servico-nome">
+                            <a href="{% url 'servicos:detalhe' servico.slug %}">
+                                {{ servico.nome }}
+                            </a>
+                        </h3>
+
+                        <p class="servico-categoria">
+                            <i class="{{ servico.categoria.icone }}"></i>
+                            {{ servico.categoria.nome }}
+                        </p>
+
+                        <p class="servico-descricao">{{ servico.descricao_curta|truncatewords:15 }}</p>
+
+                        <!-- AVALIAÇÃO -->
+                        <div class="servico-avaliacao">
+                            <div class="estrelas">
+                                {% for i in "12345" %}
+                                    {% if forloop.counter <= servico.prestador.avaliacao_media %}
+                                        <i class="fas fa-star"></i>
+                                    {% else %}
+                                        <i class="far fa-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <span class="avaliacao-numero">
+                                {{ servico.prestador.avaliacao_media }} ({{ servico.prestador.total_avaliacoes }})
+                            </span>
+                        </div>
+
+                        <!-- DETALHES -->
+                        <div class="servico-detalhes">
+                            {% if servico.duracao %}
+                            <span>
+                                <i class="far fa-clock"></i>
+                                {{ servico.duracao }}
+                            </span>
+                            {% endif %}
+                            <span>
+                                <i class="fas fa-map-marker-alt"></i>
+                                {{ servico.prestador.cidade }}/{{ servico.prestador.estado }}
+                            </span>
+                        </div>
+
+                        <!-- PREÇO -->
+                        <div class="servico-preco">
+                            <span class="preco-valor">{{ servico.preco_formatado }}</span>
+                            <span class="preco-periodo">/{{ servico.get_unidade_tempo_display }}</span>
+                        </div>
+
+                        <!-- AÇÃO -->
+                        <a href="{% url 'servicos:detalhe' servico.slug %}" class="btn-ver-servico">
+                            Ver Detalhes
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="sem-resultados">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Nenhum serviço encontrado</h3>
+                    <p>Tente ajustar os filtros ou buscar por outros termos</p>
+                    <a href="{% url 'servicos:lista' %}" class="btn-limpar">Limpar Filtros</a>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

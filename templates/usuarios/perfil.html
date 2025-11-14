@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Meu Perfil - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/perfil.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="perfil-container">
+    <div class="perfil-header">
+        <div class="perfil-avatar">
+            {% if user.foto_perfil %}
+                <img src="{{ user.foto_perfil.url }}" alt="{{ user.nome_completo }}">
+            {% else %}
+                <div class="avatar-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            {% endif %}
+        </div>
+        <div class="perfil-info">
+            <h1>{{ user.nome_completo }}</h1>
+            <p class="perfil-email">{{ user.email }}</p>
+            {% if user.is_verified %}
+                <span class="badge-verificado">
+                    <i class="fas fa-check-circle"></i> Verificado
+                </span>
+            {% endif %}
+        </div>
+        <div class="perfil-acoes">
+            <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Editar Perfil
+            </a>
+            <a href="{% url 'usuarios:logout' %}" class="btn btn-secondary">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </a>
+        </div>
+    </div>
+
+    <div class="perfil-conteudo">
+        <!-- Dados Pessoais -->
+        <div class="perfil-card">
+            <h2><i class="fas fa-user-circle"></i> Dados Pessoais</h2>
+            <div class="dados-lista">
+                <div class="dado-item">
+                    <span class="dado-label">Nome Completo:</span>
+                    <span class="dado-valor">{{ user.nome_completo }}</span>
+                </div>
+                <div class="dado-item">
+                    <span class="dado-label">CPF:</span>
+                    <span class="dado-valor">{{ user.cpf|default:"Não informado" }}</span>
+                </div>
+                <div class="dado-item">
+                    <span class="dado-label">Telefone:</span>
+                    <span class="dado-valor">{{ user.telefone|default:"Não informado" }}</span>
+                </div>
+                <div class="dado-item">
+                    <span class="dado-label">Data de Nascimento:</span>
+                    <span class="dado-valor">
+                        {% if user.data_nascimento %}
+                            {{ user.data_nascimento|date:"d/m/Y" }} ({{ user.idade }} anos)
+                        {% else %}
+                            Não informado
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="dado-item">
+                    <span class="dado-label">Sexo:</span>
+                    <span class="dado-valor">{{ user.get_sexo_display|default:"Não informado" }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Endereços -->
+        <div class="perfil-card">
+            <div class="card-header-flex">
+                <h2><i class="fas fa-map-marker-alt"></i> Meus Endereços</h2>
+                <a href="{% url 'usuarios:adicionar_endereco' %}" class="btn btn-sm btn-success">
+                    <i class="fas fa-plus"></i> Adicionar
+                </a>
+            </div>
+
+            {% if enderecos %}
+                <div class="enderecos-lista">
+                    {% for endereco in enderecos %}
+                    <div class="endereco-item {% if endereco.is_principal %}endereco-principal{% endif %}">
+                        <div class="endereco-header">
+                            <h3>{{ endereco.nome }}</h3>
+                            {% if endereco.is_principal %}
+                                <span class="badge-principal">Principal</span>
+                            {% endif %}
+                        </div>
+                        <p class="endereco-completo">{{ endereco.endereco_completo }}</p>
+                        <div class="endereco-acoes">
+                            <a href="{% url 'usuarios:editar_endereco' endereco.pk %}" class="btn-link">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a href="{% url 'usuarios:deletar_endereco' endereco.pk %}" class="btn-link btn-danger">
+                                <i class="fas fa-trash"></i> Remover
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="texto-vazio">
+                    <i class="fas fa-inbox"></i> 
+                    Você ainda não cadastrou nenhum endereço.
+                </p>
+            {% endif %}
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="perfil-card">
+            <h2><i class="fas fa-chart-bar"></i> Estatísticas</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="stat-valor">{{ user.created_at|date:"d/m/Y" }}</span>
+                    <span class="stat-label">Membro desde</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="stat-valor">{{ enderecos.count }}</span>
+                    <span class="stat-label">Endereços</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

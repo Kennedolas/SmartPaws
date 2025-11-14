@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Produtos - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/produtos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="produtos-page">
+    <!-- Banner Hero -->
+    <section class="hero-banner">
+        <img src="{% static 'IMG/produtos/BANNER BLACK.png' %}" alt="Banner Produtos">
+    </section>
+
+    <div class="container-produtos">
+        <!-- Sidebar com Filtros -->
+        <aside class="sidebar-filtros">
+            <div class="filtros-header">
+                <h2>Filtrar Produtos</h2>
+                <a href="{% url 'produtos:lista' %}" class="limpar-filtros">Limpar Filtros</a>
+            </div>
+
+            <form method="get" action="{% url 'produtos:lista' %}" id="form-filtros">
+                <!-- Busca -->
+                <div class="filtro-grupo">
+                    <label for="busca-produtos">
+                        <i class="fas fa-search"></i> Buscar
+                    </label>
+                    <input type="text" 
+                           name="busca" 
+                           id="busca-produtos" 
+                           class="input-busca" 
+                           placeholder="Buscar produtos..."
+                           value="{{ request.GET.busca }}">
+                </div>
+
+                <!-- Categorias -->
+                <div class="filtro-grupo">
+                    <h3>Categorias</h3>
+                    <ul class="lista-categorias">
+                        <li>
+                            <a href="{% url 'produtos:lista' %}" 
+                               class="{% if not request.GET.categoria %}ativo{% endif %}">
+                                Todas as categorias
+                                <span class="badge">{{ total_produtos }}</span>
+                            </a>
+                        </li>
+                        {% for categoria in categorias %}
+                        <li>
+                            <a href="?categoria={{ categoria.id }}"
+                               class="{% if request.GET.categoria == categoria.id|stringformat:'s' %}ativo{% endif %}">
+                                {{ categoria.nome }}
+                                <span class="badge">{{ categoria.total_produtos }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Faixa de Preço -->
+                <div class="filtro-grupo">
+                    <h3>Faixa de Preço</h3>
+                    <div class="preco-inputs">
+                        <input type="number" 
+                               name="preco_min" 
+                               class="input-preco" 
+                               placeholder="R$ Min" 
+                               step="0.01"
+                               value="{{ request.GET.preco_min }}">
+                        <span>até</span>
+                        <input type="number" 
+                               name="preco_max" 
+                               class="input-preco" 
+                               placeholder="R$ Max" 
+                               step="0.01"
+                               value="{{ request.GET.preco_max }}">
+                    </div>
+                    <button type="submit" class="btn-aplicar-preco">Aplicar</button>
+                </div>
+
+                <!-- Promoções -->
+                <div class="filtro-grupo">
+                    <label class="checkbox-label">
+                        <input type="checkbox" 
+                               name="em_promocao" 
+                               value="1"
+                               {% if request.GET.em_promocao %}checked{% endif %}>
+                        <span>Somente em Promoção</span>
+                    </label>
+                </div>
+            </form>
+        </aside>
+
+        <!-- Área Principal -->
+        <main class="area-produtos">
+            <!-- Barra de Ferramentas -->
+            <div class="toolbar">
+                <div class="resultados-info">
+                    <h2>Produtos</h2>
+                    <span class="total">{{ total_produtos }} produto{{ total_produtos|pluralize }}</span>
+                </div>
+
+                <div class="toolbar-acoes">
+                    <!-- Ordenação -->
+                    <form method="get" class="form-ordenacao">
+                        <!-- Mantém outros filtros -->
+                        {% if request.GET.busca %}
+                            <input type="hidden" name="busca" value="{{ request.GET.busca }}">
+                        {% endif %}
+                        {% if request.GET.categoria %}
+                            <input type="hidden" name="categoria" value="{{ request.GET.categoria }}">
+                        {% endif %}
+                        {% if request.GET.preco_min %}
+                            <input type="hidden" name="preco_min" value="{{ request.GET.preco_min }}">
+                        {% endif %}
+                        {% if request.GET.preco_max %}
+                            <input type="hidden" name="preco_max" value="{{ request.GET.preco_max }}">
+                        {% endif %}
+                        {% if request.GET.em_promocao %}
+                            <input type="hidden" name="em_promocao" value="1">
+                        {% endif %}
+                        
+                        <label for="ordenar-por">Ordenar por:</label>
+                        <select name="ordenar" id="ordenar-por" onchange="this.form.submit()">
+                            <option value="relevancia" {% if request.GET.ordenar == 'relevancia' or not request.GET.ordenar %}selected{% endif %}>
+                                Mais Relevantes
+                            </option>
+                            <option value="menor_preco" {% if request.GET.ordenar == 'menor_preco' %}selected{% endif %}>
+                                Menor Preço
+                            </option>
+                            <option value="maior_preco" {% if request.GET.ordenar == 'maior_preco' %}selected{% endif %}>
+                                Maior Preço
+                            </option>
+                            <option value="melhor_avaliacao" {% if request.GET.ordenar == 'melhor_avaliacao' %}selected{% endif %}>
+                                Melhor Avaliação
+                            </option>
+                            <option value="nome_az" {% if request.GET.ordenar == 'nome_az' %}selected{% endif %}>
+                                Nome A-Z
+                            </option>
+                        </select>
+                    </form>
+
+                    <!-- Visualização (Grid/Lista) -->
+                    <div class="view-toggle">
+                        <button class="btn-view active" data-view="grid" title="Grade">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="btn-view" data-view="list" title="Lista">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Produtos -->
+            <div class="produtos-grid" id="produtos-container">
+                {% for produto in produtos %}
+                <article class="card-produto" data-produto-id="{{ produto.id }}">
+                    {% if produto.tem_desconto %}
+                    <span class="badge-desconto">-{{ produto.percentual_desconto }}%</span>
+                    {% endif %}
+                    
+                    {% if produto.novidade %}
+                    <span class="badge-novo">NOVO</span>
+                    {% endif %}
+
+                    <a href="{% url 'produtos:detalhe' produto.slug %}" class="produto-link">
+                        <div class="produto-imagem">
+                            {% if produto.imagem_principal %}
+                                <img src="{{ produto.imagem_principal.url }}" 
+                                     alt="{{ produto.nome }}"
+                                     loading="lazy">
+                            {% else %}
+                                <img src="{% static 'IMG/produtos/default.png' %}"
+                                     alt="{{ produto.nome }}"
+                                     loading="lazy">
+                            {% endif %}
+                        </div>
+
+                        <div class="produto-info">
+                            <span class="produto-categoria">{{ produto.categoria.nome }}</span>
+                            <h3 class="produto-nome">{{ produto.nome }}</h3>
+                            
+                            <div class="produto-avaliacao">
+                                <div class="estrelas">
+                                    {% with avaliacao_int=produto.avaliacao|floatformat:0 %}
+                                        {% for _ in "12345"|make_list %}
+                                            {% if forloop.counter <= avaliacao_int|add:"0" %}
+                                                <i class="fas fa-star"></i>
+                                            {% else %}
+                                                <i class="far fa-star"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endwith %}
+                                </div>
+                                <span class="avaliacao-numero">{{ produto.avaliacao }}</span>
+                            </div>
+
+                            <div class="produto-precos">
+                                {% if produto.tem_desconto %}
+                                    <span class="preco-antigo">R$ {{ produto.preco_original|floatformat:2 }}</span>
+                                    <span class="preco-atual">R$ {{ produto.preco_final|floatformat:2 }}</span>
+                                {% else %}
+                                    <span class="preco-atual">R$ {{ produto.preco_final|floatformat:2 }}</span>
+                                {% endif %}
+                            </div>
+
+                            {% if produto.peso_tamanho %}
+                            <div class="produto-tamanho">
+                                <span class="badge-tamanho">{{ produto.peso_tamanho }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </a>
+
+                   <div class="produto-acoes">
+                        {% if produto.em_estoque %}
+                            <form method="POST" action="{% url 'carrinho:adicionar' produto.id %}" class="form-adicionar-carrinho">
+                                {% csrf_token %}
+                                <input type="hidden" name="quantidade" value="1">
+                                <button type="submit" class="btn-adicionar-carrinho">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        {% else %}
+                            <button class="btn-indisponivel" disabled>
+                                <i class="fas fa-times-circle"></i>
+                                Indisponível
+                            </button>
+                        {% endif %}
+                    </div>  
+
+                </article>
+                {% empty %}
+                <div class="sem-resultados">
+                    <i class="fas fa-search"></i>
+                    <h3>Nenhum produto encontrado</h3>
+                    <p>Tente ajustar os filtros ou faça uma nova busca</p>
+                    <a href="{% url 'produtos:lista' %}" class="btn-limpar">Limpar Filtros</a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Paginação -->
+            {% if is_paginated %}
+            <nav class="paginacao">
+                <ul>
+                    {% if page_obj.has_previous %}
+                    <li>
+                        <a href="?page=1{% if request.GET.busca %}&busca={{ request.GET.busca }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.ordenar %}&ordenar={{ request.GET.ordenar }}{% endif %}" class="btn-pag">
+                            <i class="fas fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.busca %}&busca={{ request.GET.busca }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.ordenar %}&ordenar={{ request.GET.ordenar }}{% endif %}" class="btn-pag">
+                            <i class="fas fa-angle-left"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li><span class="btn-pag ativo">{{ num }}</span></li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li><a href="?page={{ num }}{% if request.GET.busca %}&busca={{ request.GET.busca }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.ordenar %}&ordenar={{ request.GET.ordenar }}{% endif %}" class="btn-pag">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li>
+                        <a href="?page={{ page_obj.next_page_number }}{% if request.GET.busca %}&busca={{ request.GET.busca }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.ordenar %}&ordenar={{ request.GET.ordenar }}{% endif %}" class="btn-pag">
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.busca %}&busca={{ request.GET.busca }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.ordenar %}&ordenar={{ request.GET.ordenar }}{% endif %}" class="btn-pag">
+                            <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'JS/produtos.js' %}"></script>
+{% endblock %}

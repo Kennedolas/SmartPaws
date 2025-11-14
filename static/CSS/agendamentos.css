@@ -1,0 +1,309 @@
+/* ==========================================
+   AGENDAMENTO.CSS - Smart Paws
+   ========================================== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========== CONTAINER ========== */
+.agendamento-page {
+    background: #f5f5f5;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+.container-agendamento {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ========== HEADER ========== */
+.agendamento-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.agendamento-header h1 {
+    font-size: 2.5rem;
+    color: #ab8262;
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.agendamento-header p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* ========== GRID ========== */
+.agendamento-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* ========== FORMULÁRIO ========== */
+.form-agendamento {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-group label i {
+    color: #ab8262;
+    margin-right: 8px;
+}
+
+/* IMPORTANTE: Estilizar TODOS os inputs do Django */
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ab8262;
+    box-shadow: 0 0 0 3px rgba(171, 130, 98, 0.1);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ========== ERROS ========== */
+.alert {
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert-error {
+    background: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+}
+
+.erro {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 5px;
+}
+
+/* ========== BOTÕES ========== */
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-confirmar,
+.btn-cancelar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-confirmar {
+    background: #ab8262;
+    color: white;
+}
+
+.btn-confirmar:hover {
+    background: #8b6852;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(171, 130, 98, 0.4);
+}
+
+.btn-cancelar {
+    background: #f5f5f5;
+    color: #666;
+    border: 2px solid #e0e0e0;
+}
+
+.btn-cancelar:hover {
+    background: #e0e0e0;
+}
+
+/* ========== RESUMO ========== */
+.resumo-servico {
+    position: sticky;
+    top: 20px;
+}
+
+.resumo-servico h3 {
+    font-size: 1.5rem;
+    color: #ab8262;
+    margin-bottom: 20px;
+}
+
+.resumo-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+.resumo-card img,
+.resumo-card > div {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.resumo-info {
+    padding: 25px;
+}
+
+.resumo-info h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.resumo-info .prestador {
+    font-size: 0.875rem;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.resumo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.resumo-item:last-child {
+    border-bottom: none;
+}
+
+.resumo-item i {
+    color: #ab8262;
+    margin-top: 3px;
+    width: 18px;
+    flex-shrink: 0;
+}
+
+/* ========== AVISO ========== */
+.aviso-agendamento {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+    border: 2px solid #ffd966;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.aviso-agendamento i {
+    color: #ff9800;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.aviso-agendamento p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 1024px) {
+    .agendamento-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resumo-servico {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .agendamento-header h1 {
+        font-size: 1.75rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .form-agendamento {
+        padding: 25px 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-confirmar,
+    .btn-cancelar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .agendamento-page {
+        padding: 20px 10px;
+    }
+    
+    .form-agendamento {
+        padding: 20px 15px;
+    }
+    
+    .resumo-info {
+        padding: 20px;
+    }
+}

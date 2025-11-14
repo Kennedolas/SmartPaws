@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ pet.nome }} - Adoção - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/adocao.css' %}">
+<style>
+    .pet-detail-container {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 20px;
+    }
+    
+    .pet-main-info {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 40px;
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+    
+    .pet-image {
+        flex: 1;
+        max-width: 500px;
+    }
+    
+    .pet-image img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .pet-info {
+        flex: 1;
+    }
+    
+    .pet-info h1 {
+        font-size: 3rem;
+        color: #ab8262;
+        margin-bottom: 10px;
+    }
+    
+    .pet-location {
+        font-size: 1.25rem;
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    .pet-badges {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .badge {
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+    
+    .badge-sexo {
+        background-color: #e3f2fd;
+        color: #1976d2;
+    }
+    
+    .badge-idade {
+        background-color: #f3e5f5;
+        color: #7b1fa2;
+    }
+    
+    .badge-status {
+        background-color: #e8f5e9;
+        color: #388e3c;
+    }
+    
+    .badge-porte {
+        background-color: #fff3e0;
+        color: #f57c00;
+    }
+    
+    .pet-characteristics {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .pet-characteristics h3 {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        color: #ab8262;
+    }
+    
+    .characteristic-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+    
+    .characteristic-item::before {
+        content: "✓";
+        color: #4caf50;
+        font-weight: bold;
+        margin-right: 10px;
+        font-size: 1.125rem;
+    }
+    
+    .pet-description {
+        line-height: 1.8;
+        margin-bottom: 30px;
+        font-size: 1rem;
+        color: #555;
+    }
+    
+    .adopt-button {
+        display: inline-block;
+        background-color: #ab8262;
+        color: white;
+        padding: 15px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+    }
+    
+    .adopt-button:hover {
+        background-color: white;
+        color: #ab8262;
+        border-color: #ab8262;
+        transform: scale(1.05);
+    }
+    
+    .similar-pets {
+        margin-top: 60px;
+    }
+    
+    @media (max-width: 768px) {
+        .pet-main-info {
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .pet-image {
+            max-width: 100%;
+        }
+        
+        .pet-info h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="pet-detail-container">
+    <div class="pet-main-info">
+        <div class="pet-image">
+            {% if pet.foto_principal %}
+                <img src="{{ pet.foto_principal.url }}" alt="{{ pet.nome }}">
+            {% else %}
+                <div style="width: 100%; height: 500px; background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 5rem; border-radius: 15px;">
+                    <i class="fas fa-paw"></i>
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="pet-info">
+            <h1>{{ pet.nome }}</h1>
+            
+            <div class="pet-badges">
+                <span class="badge badge-sexo">
+                    {% if pet.sexo == 'M' %}
+                        <i class="fas fa-mars"></i> Macho
+                    {% else %}
+                        <i class="fas fa-venus"></i> Fêmea
+                    {% endif %}
+                </span>
+                <span class="badge badge-idade">
+                    <i class="far fa-calendar"></i> {{ pet.idade_completa }}
+                </span>
+                <span class="badge badge-porte">
+                    <i class="fas fa-ruler-vertical"></i> {{ pet.get_porte_display }}
+                </span>
+                <span class="badge badge-status">
+                    <i class="fas fa-check-circle"></i> {{ pet.get_status_display }}
+                </span>
+            </div>
+            
+            <p style="font-size: 1.125rem; margin-bottom: 20px;">
+                <strong>Espécie:</strong> {{ pet.get_especie_display }}<br>
+                {% if pet.raca %}
+                <strong>Raça:</strong> {{ pet.raca }}<br>
+                {% endif %}
+                <strong>Cor:</strong> {{ pet.cor }}
+            </p>
+            
+            <div class="pet-characteristics">
+                <h3><i class="fas fa-heart-pulse"></i> Características</h3>
+                {% if pet.castrado %}
+                <div class="characteristic-item">Castrado</div>
+                {% endif %}
+                {% if pet.vacinado %}
+                <div class="characteristic-item">Vacinado</div>
+                {% endif %}
+                {% if pet.vermifugado %}
+                <div class="characteristic-item">Vermifugado</div>
+                {% endif %}
+                {% if pet.temperamento %}
+                <div class="characteristic-item">{{ pet.temperamento }}</div>
+                {% endif %}
+            </div>
+            
+            <p class="pet-description">{{ pet.descricao }}</p>
+            
+            {% if user.is_authenticated %}
+                <a href="{% url 'pets:solicitar' pet.slug %}" class="adopt-button">
+                    <i class="fas fa-heart"></i> QUERO ADOTAR {{ pet.nome|upper }}
+                </a>
+            {% else %}
+                <a href="{% url 'usuarios:login' %}?next={% url 'pets:solicitar_adocao' pet.slug %}" class="adopt-button">
+                    <i class="fas fa-sign-in-alt"></i> FAÇA LOGIN PARA ADOTAR
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="similar-pets">
+        <div class="container_titulo">
+            <h3>Outros pets disponíveis</h3>
+        </div>
+        <div class="container-opcoes">
+            {% for similar_pet in pets_similares %}
+                <a class="opcao-pet" href="{% url 'pets:detalhe' similar_pet.slug %}">
+                    {% if similar_pet.foto_principal %}
+                        <img class="imagem-pet" src="{{ similar_pet.foto_principal.url }}" alt="{{ similar_pet.nome }}">
+                    {% else %}
+                        <div class="imagem-pet" style="background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                    {% endif %}
+                    <div class="descricao-pet">
+                        <div class="nome-cidade">
+                            <p>
+                                {{ similar_pet.nome }} <br>
+                                <span>{{ similar_pet.get_especie_display }} - {{ similar_pet.get_porte_display }}</span>
+                            </p>
+                        </div>
+                        <div class="sexo-{{ similar_pet.sexo|lower }}">
+                            {% if similar_pet.sexo == 'M' %}
+                                <img src="{% static 'IMG/adocao/masculino.png' %}" alt="Macho">
+                            {% else %}
+                                <img src="{% static 'IMG/adocao/feminino.png' %}" alt="Fêmea">
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,287 @@
+/* ==========================================
+   PAGINALOGIN.CSS - Smart Paws
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ========== RESET ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+a {
+    color: #ab8262;
+    text-decoration: none;
+}
+
+/* ========== TOPO ========== */
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ab8262;
+    width: 100%;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+    width: 260px;
+    transition: transform 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.seguranca {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 10px;
+}
+
+.cadeado {
+    width: 30px;
+    height: 30px;
+}
+
+.ambiente-seguro {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ========== MENSAGEM ========== */
+.mensagem {
+    text-align: center;
+    color: #ab8262;
+    font-size: 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin: 40px 0 20px;
+}
+
+.mensagem p {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* ========== MENSAGENS DE ALERTA ========== */
+.mensagens {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+}
+
+/* ========== INPUTS ========== */
+.email,
+.senha {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.email input,
+.senha input {
+    border: 2px solid #ab8262;
+    text-align: center;
+    height: 45px;
+    width: 30%;
+    min-width: 300px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+    transition: all 0.3s;
+}
+
+.email input:focus,
+.senha input:focus {
+    outline: none;
+    border-color: #8b6852;
+    box-shadow: 0 0 0 3px rgba(171, 130, 98, 0.1);
+    transform: translateY(-2px);
+}
+
+.email input::placeholder,
+.senha input::placeholder {
+    color: #999;
+    font-weight: normal;
+}
+
+/* ========== ESQUECI SENHA ========== */
+.esqueci {
+    text-align: right;
+    width: 35%;
+    margin: 5px auto 20px;
+}
+
+.esqueci a {
+    color: #ab8262;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.esqueci a:hover {
+    color: #8b6852;
+}
+
+/* ========== BOTÃO ENTRAR ========== */
+.entrar {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.entrar button {
+    font-size: 18px;
+    border: none;
+    background-color: #ab8262;
+    color: white;
+    border-radius: 25px;
+    height: 50px;
+    width: 200px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.entrar button:hover {
+    background-color: white;
+    color: #ab8262;
+    border: 2px solid #ab8262;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.entrar button:active {
+    transform: translateY(0);
+}
+
+/* ========== TEXTOS DE NAVEGAÇÃO ========== */
+.conta {
+    text-align: center;
+    color: #ab8262;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin: 20px 0 10px;
+}
+
+.usuario,
+.loja {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.usuario a,
+.loja a {
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    text-decoration: none;
+    background-color: #ab8262;
+    color: white;
+    border-radius: 25px;
+    height: 40px;
+    width: 150px;
+    line-height: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.usuario a:hover,
+.loja a:hover {
+    background-color: white;
+    color: #ab8262;
+    border: 2px solid #ab8262;
+    transform: scale(1.05);
+}
+
+.ou {
+    text-align: center;
+    color: #ab8262;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 768px) {
+    .logo img {
+        width: 180px;
+    }
+    
+    .ambiente-seguro {
+        font-size: 10px;
+    }
+    
+    .mensagem {
+        font-size: 1.8rem;
+        margin: 20px 0;
+    }
+    
+    .email input,
+    .senha input {
+        width: 80%;
+        min-width: unset;
+    }
+    
+    .esqueci {
+        width: 80%;
+    }
+    
+    .entrar button {
+        width: 150px;
+        height: 45px;
+    }
+}

@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ servico.nome }} - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/servicos.css' %}">
+<link rel="stylesheet" href="{% static 'CSS/servico_detalhe.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="detalhe-servico-page">
+    <div class="container-detalhe">
+        <!-- BREADCRUMB -->
+        <nav class="breadcrumb">
+            <a href="{% url 'core:home' %}">Home</a>
+            <span>/</span>
+            <a href="{% url 'servicos:lista' %}">Serviços</a>
+            <span>/</span>
+            <a href="?categoria={{ servico.categoria.slug }}">{{ servico.categoria.nome }}</a>
+            <span>/</span>
+            <span>{{ servico.nome }}</span>
+        </nav>
+
+        <div class="detalhe-grid">
+            <!-- COLUNA ESQUERDA -->
+            <div class="coluna-principal">
+                <!-- IMAGEM PRINCIPAL --> 
+                <div class="imagem-destaque">
+                    {% if servico.imagem_principal %}
+                        <img src="{{ servico.imagem_principal.url }}" alt="{{ servico.nome }}">
+                    {% else %}
+                        <div class="img-placeholder" style="height: 400px;">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                    {% endif %}
+                    {% if servico.destaque %}
+                    <span class="badge-destaque-lg">
+                        <i class="fas fa-star"></i> Serviço em Destaque
+                    </span>
+                    {% endif %}
+                </div>
+
+                <!-- INFO BÁSICA -->
+                <div class="info-basica">
+                    <div class="categoria-tag">
+                        <i class="{{ servico.categoria.icone }}"></i>
+                        {{ servico.categoria.nome }}
+                    </div>
+                    
+                    <h1>{{ servico.nome }}</h1>
+                    
+                    <div class="prestador-info">
+                        {% if servico.prestador.logo %}
+                            <img src="{{ servico.prestador.logo.url }}" alt="{{ servico.prestador.nome }}">
+                        {% else %}
+                            <div class="logo-placeholder">
+                                <i class="fas fa-store"></i>
+                            </div>
+                        {% endif %}
+                        <div>
+                            <p class="prestador-nome">
+                                {{ servico.prestador.nome }}
+                                {% if servico.prestador.verificado %}
+                                <i class="fas fa-check-circle verificado"></i>
+                                {% endif %}
+                            </p>
+                            <div class="prestador-avaliacao">
+                                <div class="estrelas">
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= servico.prestador.avaliacao_media %}
+                                            <i class="fas fa-star"></i>
+                                        {% else %}
+                                            <i class="far fa-star"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <span>{{ servico.prestador.avaliacao_media }} ({{ servico.prestador.total_avaliacoes }} avaliações)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DESCRIÇÃO -->
+                <div class="secao-detalhe">
+                    <h2><i class="fas fa-info-circle"></i> Sobre o Serviço</h2>
+                    <p class="descricao-completa">{{ servico.descricao }}</p>
+                </div>
+
+                <!-- O QUE ESTÁ INCLUÍDO -->
+                {% if servico.inclui %}
+                <div class="secao-detalhe">
+                    <h2><i class="fas fa-check-circle"></i> O que está incluído</h2>
+                    <div class="lista-inclui">
+                        {{ servico.inclui|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- REQUISITOS -->
+                {% if servico.requisitos %}
+                <div class="secao-detalhe">
+                    <h2><i class="fas fa-clipboard-list"></i> Requisitos</h2>
+                    <div class="lista-requisitos">
+                        {{ servico.requisitos|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- PRESTADOR DETALHES -->
+                <div class="secao-detalhe">
+                    <h2><i class="fas fa-building"></i> Sobre o Prestador</h2>
+                    <div class="prestador-card">
+                        <div class="prestador-header">
+                            {% if servico.prestador.logo %}
+                                <img src="{{ servico.prestador.logo.url }}" alt="{{ servico.prestador.nome }}">
+                            {% else %}
+                                <div class="logo-placeholder">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                            {% endif %}
+                            <div>
+                                <h3>{{ servico.prestador.nome }}</h3>
+                                <p>{{ servico.prestador.endereco_completo }}</p>
+                            </div>
+                        </div>
+                        <p class="prestador-desc">{{ servico.prestador.descricao }}</p>
+                        
+                        <div class="prestador-contatos">
+                            {% if servico.prestador.telefone %}
+                            <a href="tel:{{ servico.prestador.telefone }}" class="btn-contato">
+                                <i class="fas fa-phone"></i> {{ servico.prestador.telefone }}
+                            </a>
+                            {% endif %}
+                            {% if servico.prestador.whatsapp %}
+                            <a href="https://wa.me/{{ servico.prestador.whatsapp }}" target="_blank" class="btn-contato whatsapp">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            {% endif %}
+                            {% if servico.prestador.email %}
+                            <a href="mailto:{{ servico.prestador.email }}" class="btn-contato">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                            {% endif %}
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+
+                <!-- SERVIÇOS RELACIONADOS -->
+                {% if servicos_relacionados %}
+                <div class="secao-detalhe">
+                    <h2><i class="fas fa-tags"></i> Outros Serviços do Prestador</h2>
+                    <div class="servicos-relacionados-grid">
+                        {% for servico_rel in servicos_relacionados %}
+                        <a href="{% url 'servicos:detalhe' servico_rel.slug %}" class="servico-mini-card">
+                            {% if servico_rel.imagem_principal %}
+                                <img src="{{ servico_rel.imagem_principal.url }}" alt="{{ servico_rel.nome }}">
+                            {% else %}
+                                <div class="img-placeholder" style="height: 150px; font-size: 2rem;">
+                                    <i class="fas fa-paw"></i>
+                                </div>
+                            {% endif %}
+                            <div class="mini-info">
+                                <h4>{{ servico_rel.nome }}</h4>
+                                <p class="mini-preco">{{ servico_rel.preco_formatado }}</p>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- COLUNA DIREITA - CARD DE AGENDAMENTO -->
+            <aside class="coluna-lateral">
+                <div class="card-agendamento sticky-card">
+                    <div class="preco-destaque">
+                        <span class="preco-valor">{{ servico.preco_formatado }}</span>
+                        <span class="preco-periodo">/{{ servico.get_unidade_tempo_display }}</span>
+                    </div>
+
+                    {% if servico.duracao %}
+                    <div class="info-item">
+                        <i class="far fa-clock"></i>
+                        <span>Duração: {{ servico.duracao }}</span>
+                    </div>
+                    {% endif %}
+
+                    {% if servico.disponibilidade %}
+                    <div class="info-item">
+                        <i class="far fa-calendar"></i>
+                        <span>{{ servico.disponibilidade }}</span>
+                    </div>
+                    {% endif %}
+
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>{{ servico.prestador.cidade }}/{{ servico.prestador.estado }}</span>
+                    </div>
+
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'servicos:agendar' servico.slug %}" class="btn-agendar">
+                            <i class="far fa-calendar-check"></i>
+                            Agendar Serviço
+                        </a>
+                    {% else %}
+                        <a href="{% url 'usuarios:login' %}?next={% url 'servicos:agendar' servico.slug %}" class="btn-agendar">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Faça login para agendar
+                        </a>
+                    {% endif %}
+
+                    <div class="garantias">
+                        <div class="garantia-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Profissionais Verificados</span>
+                        </div>
+                        <div class="garantia-item">
+                            <i class="fas fa-medal"></i>
+                            <span>Qualidade Garantida</span>
+                        </div>
+                        <div class="garantia-item">
+                            <i class="fas fa-headset"></i>
+                            <span>Suporte 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+{% endblock %}

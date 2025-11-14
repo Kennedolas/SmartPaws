@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pedido #{{ pedido.numero_pedido }} - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/pedido.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="detalhe-pedido-page">
+    <div class="container-detalhe-pedido">
+        <div class="breadcrumb">
+            <a href="{% url 'core:home' %}">Home</a>
+            <span>/</span>
+            <a href="{% url 'carrinho:meus_pedidos' %}">Meus Pedidos</a>
+            <span>/</span>
+            <span>Pedido #{{ pedido.numero_pedido }}</span>
+        </div>
+        
+        <div class="pedido-header-detail">
+            <div>
+                <h1>Pedido #{{ pedido.numero_pedido }}</h1>
+                <p class="pedido-data">
+                    <i class="far fa-calendar"></i>
+                    Realizado em {{ pedido.created_at|date:"d/m/Y às H:i" }}
+                </p>
+            </div>
+            <span class="status-badge status-{{ pedido.status }}">
+                {{ pedido.get_status_display }}
+            </span>
+        </div>
+        
+        <div class="pedido-detalhes-grid">
+            <!-- ITENS DO PEDIDO -->
+            <div class="secao-detalhes">
+                <h2><i class="fas fa-box"></i> Itens do Pedido</h2>
+                <div class="itens-lista">
+                    {% for item in pedido.itens.all %}
+                    <div class="item-detalhe">
+                        <div class="item-info">
+                            <strong>{{ item.nome_produto }}</strong>
+                            <span class="item-qtd">Quantidade: {{ item.quantidade }}</span>
+                            <span class="item-preco-unit">Preço unitário: R$ {{ item.preco_unitario }}</span>
+                        </div>
+                        <div class="item-total-detail">
+                            R$ {{ item.subtotal }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- ENTREGA -->
+            <div class="secao-detalhes">
+                <h2><i class="fas fa-map-marker-alt"></i> Endereço de Entrega</h2>
+                <p class="endereco-texto">{{ pedido.endereco_entrega }}</p>
+            </div>
+            
+            <!-- PAGAMENTO -->
+            <div class="secao-detalhes">
+                <h2><i class="fas fa-credit-card"></i> Informações de Pagamento</h2>
+                <div class="pagamento-info">
+                    <p><strong>Forma de Pagamento:</strong> {{ pedido.get_forma_pagamento_display }}</p>
+                    
+                    {% if pedido.pago_em %}
+                    <p class="pagamento-confirmado">
+                        <i class="fas fa-check-circle"></i>
+                        Pagamento confirmado em {{ pedido.pago_em|date:"d/m/Y às H:i" }}
+                    </p>
+                    {% elif pedido.forma_pagamento == 'pix' %}
+                    <a href="{% url 'carrinho:pedido_confirmado' pedido.id %}" class="btn-ver-qrcode">
+                        <i class="fas fa-qrcode"></i>
+                        Ver QR Code PIX
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- RESUMO -->
+            <div class="secao-detalhes resumo-secao">
+                <h2><i class="fas fa-receipt"></i> Resumo do Pedido</h2>
+                <div class="resumo-valores-detail">
+                    <div class="linha-valor">
+                        <span>Subtotal:</span>
+                        <span>R$ {{ pedido.subtotal }}</span>
+                    </div>
+                    {% if pedido.desconto > 0 %}
+                    <div class="linha-valor desconto">
+                        <span>Desconto:</span>
+                        <span>- R$ {{ pedido.desconto }}</span>
+                    </div>
+                    {% endif %}
+                    <div class="linha-valor">
+                        <span>Frete:</span>
+                        <span>R$ {{ pedido.frete }}</span>
+                    </div>
+                    <hr>
+                    <div class="linha-valor total">
+                        <strong>Total:</strong>
+                        <strong>R$ {{ pedido.total }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% if pedido.observacoes %}
+        <div class="secao-detalhes">
+            <h2><i class="fas fa-comment-dots"></i> Observações</h2>
+            <p>{{ pedido.observacoes }}</p>
+        </div>
+        {% endif %}
+        
+        <div class="acoes-pedido">
+            <a href="{% url 'carrinho:meus_pedidos' %}" class="btn-voltar">
+                <i class="fas fa-arrow-left"></i>
+                Voltar para Meus Pedidos
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

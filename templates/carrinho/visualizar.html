@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Meu Carrinho - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/carrinho.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="carrinho-page">
+    <div class="container-carrinho">
+        <h1><i class="fas fa-shopping-cart"></i> Meu Carrinho</h1>
+        
+        {% if itens %}
+        <div class="carrinho-grid">
+            <!-- LISTA DE ITENS -->
+            <div class="itens-carrinho">
+                {% for item in itens %}
+                <div class="item-card" data-item-id="{{ item.id }}">
+                    <div class="item-imagem">
+                        {% if item.produto.imagem_principal %}
+                            <img src="{{ item.produto.imagem_principal.url }}" alt="{{ item.produto.nome }}">
+                        {% else %}
+                            <img src="{% static 'IMG/produtos/default.png' %}" alt="{{ item.produto.nome }}">
+                        {% endif %}
+                    </div>
+
+                    
+                    <div class="item-info">
+                        <h3>{{ item.produto.nome }}</h3>
+                        <p class="item-categoria">{{ item.produto.categoria.nome }}</p>
+                        <p class="item-preco-unit">R$ {{ item.preco_unitario }}</p>
+                    </div>
+                    
+                    <div class="item-quantidade">
+                        <button class="btn-qtd" data-action="decrease" data-item-id="{{ item.id }}">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="number" 
+                               class="qtd-input" 
+                               value="{{ item.quantidade }}" 
+                               min="1" 
+                               data-item-id="{{ item.id }}">
+                        <button class="btn-qtd" data-action="increase" data-item-id="{{ item.id }}">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="item-total">
+                        <p class="label">Total</p>
+                        <p class="valor" id="item-total-{{ item.id }}">R$ {{ item.total }}</p>
+                    </div>
+                    
+                    <button class="btn-remover" data-item-id="{{ item.id }}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                {% endfor %}
+                
+                <div class="carrinho-acoes">
+                    <a href="{% url 'produtos:lista' %}" class="btn-continuar">
+                        <i class="fas fa-arrow-left"></i>
+                        Continuar Comprando
+                    </a>
+                    <form method="post" action="{% url 'carrinho:limpar' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-limpar" onclick="return confirm('Deseja limpar o carrinho?')">
+                            <i class="fas fa-trash-alt"></i>
+                            Limpar Carrinho
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- RESUMO DO PEDIDO -->
+            <aside class="resumo-pedido">
+                <h2>Resumo do Pedido</h2>
+                
+                <div class="resumo-valores">
+                    <div class="valor-linha">
+                        <span>Subtotal</span>
+                        <span id="carrinho-subtotal">R$ {{ carrinho.subtotal }}</span>
+                    </div>
+                    
+                    {% if carrinho.desconto > 0 %}
+                    <div class="valor-linha desconto">
+                        <span>Desconto</span>
+                        <span>- R$ {{ carrinho.desconto }}</span>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="valor-linha">
+                        <span>Frete</span>
+                        <span id="carrinho-frete">
+                            {% if carrinho.frete == 0 %}
+                                <strong style="color: #28a745;">GRÁTIS</strong>
+                            {% else %}
+                                R$ {{ carrinho.frete }}
+                            {% endif %}
+                        </span>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="valor-linha total">
+                        <span>Total</span>
+                        <span id="carrinho-total">R$ {{ carrinho.total }}</span>
+                    </div>
+                </div>
+                
+                {% if carrinho.subtotal < 200 %}
+                <div class="frete-gratis-aviso">
+                    <i class="fas fa-truck"></i>
+                    {% if falta_frete_gratis > 0%}
+                    <p>Faltam <strong>R$ {{ falta_frete_gratis|floatformat:2 }}</strong> para frete grátis!</p>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="frete-gratis-conquistado">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Você ganhou <strong>frete grátis!</strong></p>
+                </div>
+                {% endif %}
+                
+                <a href="{% url 'carrinho:checkout' %}" class="btn-finalizar">
+                    <i class="fas fa-lock"></i>
+                    Finalizar Compra
+                </a>
+                
+                <div class="pagamento-seguro">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Pagamento 100% Seguro</p>
+                </div>
+            </aside>
+        </div>
+        {% else %}
+        <div class="carrinho-vazio">
+            <i class="fas fa-shopping-cart"></i>
+            <h2>Seu carrinho está vazio</h2>
+            <p>Adicione produtos incríveis para seu pet!</p>
+            <a href="{% url 'produtos:lista' %}" class="btn-comprar">
+                <i class="fas fa-shopping-bag"></i>
+                Ver Produtos
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'JS/carrinho.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout - Smart Paws{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="checkout-page">
+    <div class="container-checkout">
+        <h1><i class="fas fa-lock"></i> Finalizar Compra</h1>
+        
+        <form method="post" action="{% url 'carrinho:finalizar' %}" id="checkout-form">
+            {% csrf_token %}
+            
+            <div class="checkout-grid">
+                <!-- FORMULÁRIO -->
+                <div class="checkout-formulario">
+                    <!-- ENDEREÇO DE ENTREGA -->
+                    <div class="checkout-secao">
+                        <h2><i class="fas fa-map-marker-alt"></i> Endereço de Entrega</h2>
+                        
+                        {% if enderecos %}
+                        <div class="enderecos-salvos">
+                            {% for endereco in enderecos %}
+                            <label class="endereco-card">
+                                <input type="radio" name="endereco_id" value="{{ endereco.id }}" required>
+                                <div class="endereco-info">
+                                    <strong>{{ endereco.apelido }}</strong>
+                                    <p>{{ endereco.logradouro }}, {{ endereco.numero }}</p>
+                                    <p>{{ endereco.bairro }} - {{ endereco.cidade }}/{{ endereco.estado }}</p>
+                                    <p>CEP: {{ endereco.cep }}</p>
+                                </div>
+                            </label>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        
+                        <div class="form-group">
+                            <label>Ou digite um novo endereço:</label>
+                            <textarea name="endereco_entrega" 
+                                      rows="4" 
+                                      placeholder="Rua, número, bairro, cidade, estado, CEP"
+                                      {% if not enderecos %}required{% endif %}></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- FORMA DE PAGAMENTO -->
+                    <div class="checkout-secao">
+                        <h2><i class="fas fa-credit-card"></i> Forma de Pagamento</h2>
+                        
+                        <div class="pagamento-opcoes">
+                            <label class="pagamento-card">
+                                <input type="radio" name="forma_pagamento" value="pix" required checked>
+                                <div class="pagamento-info">
+                                    <i class="fas fa-qrcode"></i>
+                                    <span>PIX</span>
+                                    <span class="desconto-badge">5% OFF</span>
+                                </div>
+                            </label>
+                            
+                            <label class="pagamento-card">
+                                <input type="radio" name="forma_pagamento" value="cartao" required>
+                                <div class="pagamento-info">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Cartão de Crédito</span>
+                                </div>
+                            </label>
+                            
+                            <label class="pagamento-card">
+                                <input type="radio" name="forma_pagamento" value="boleto" required>
+                                <div class="pagamento-info">
+                                    <i class="fas fa-barcode"></i>
+                                    <span>Boleto</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- OBSERVAÇÕES -->
+                    <div class="checkout-secao">
+                        <h2><i class="fas fa-comment-dots"></i> Observações (opcional)</h2>
+                        <textarea name="observacoes" 
+                                  rows="3" 
+                                  placeholder="Alguma observação sobre a entrega?"></textarea>
+                    </div>
+                </div>
+                
+                <!-- RESUMO DO PEDIDO -->
+                <aside class="resumo-checkout">
+                    <h2>Resumo do Pedido</h2>
+                    
+                    <div class="itens-resumo">
+                        {% for item in itens %}
+                        <div class="item-resumo">
+                            {% if item.produto.imagem_principal %}
+                                <img src="{{ item.produto.imagem_principal.url }}" alt="{{ item.produto.nome }}">
+                            {% else %}
+                                <img src="{% static 'IMG/produtos/default.png' %}" alt="{{ item.produto.nome }}">
+                            {% endif %}
+                            <div>
+                                <p>{{ item.produto.nome }}</p>
+                                <p class="qtd">Qtd: {{ item.quantidade }}</p>
+                            </div>
+                            <span class="preco">R$ {{ item.total }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="resumo-valores">
+                        <div class="valor-linha">
+                            <span>Subtotal</span>
+                            <span>R$ {{ carrinho.subtotal }}</span>
+                        </div>
+                        
+                        {% if carrinho.desconto > 0 %}
+                        <div class="valor-linha desconto">
+                            <span>Desconto</span>
+                            <span>- R$ {{ carrinho.desconto }}</span>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="valor-linha">
+                            <span>Frete</span>
+                            <span>
+                                {% if carrinho.frete == 0 %}
+                                    <strong style="color: #28a745;">GRÁTIS</strong>
+                                {% else %}
+                                    R$ {{ carrinho.frete }}
+                                {% endif %}
+                            </span>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="valor-linha total">
+                            <span>Total</span>
+                            <span>R$ {{ carrinho.total }}</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-finalizar-pedido">
+                        <i class="fas fa-check"></i>
+                        Finalizar Pedido
+                    </button>
+                    
+                    <div class="seguranca-badges">
+                        <div class="badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Pagamento Seguro</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Dados Protegidos</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

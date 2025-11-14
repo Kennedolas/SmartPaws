@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/adocao.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Minhas Solicitações - Smart Paws</title>
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="mb-4">Minhas Solicitações de Adoção</h1>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        {% if solicitacoes %}
+            <div class="row">
+                {% for solicitacao in solicitacoes %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ solicitacao.pet.foto.url }}" class="img-fluid rounded-start" alt="{{ solicitacao.pet.nome }}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ solicitacao.pet.nome }}</h5>
+                                        <p class="card-text">
+                                            <strong>Status:</strong> 
+                                            {% if solicitacao.status == 'pendente' %}
+                                                <span class="badge bg-warning text-dark">Pendente</span>
+                                            {% elif solicitacao.status == 'aprovada' %}
+                                                <span class="badge bg-success">Aprovada</span>
+                                            {% else %}
+                                                <span class="badge bg-danger">Recusada</span>
+                                            {% endif %}
+                                        </p>
+                                        <p class="card-text">
+                                            <small class="text-muted">
+                                                Solicitado em: {{ solicitacao.data_solicitacao|date:"d/m/Y H:i" }}
+                                            </small>
+                                        </p>
+                                        
+                                        {% if solicitacao.status == 'aprovada' %}
+                                            <div class="alert alert-success mt-2">
+                                                <strong>Parabéns!</strong> Sua solicitação foi aprovada. Entraremos em contato em breve.
+                                            </div>
+                                        {% elif solicitacao.status == 'recusada' %}
+                                            <div class="alert alert-danger mt-2">
+                                                Sua solicitação foi recusada.
+                                                {% if solicitacao.observacoes %}
+                                                    <br><small>{{ solicitacao.observacoes }}</small>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                        
+                                        <a href="{% url 'detalhe_pet' solicitacao.pet.id %}" class="btn btn-sm btn-primary">Ver Pet</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                <h4>Nenhuma solicitação ainda</h4>
+                <p>Você ainda não fez nenhuma solicitação de adoção.</p>
+                <a href="{% url 'adocao' %}" class="btn btn-primary">Ver Pets Disponíveis</a>
+            </div>
+        {% endif %}
+        
+        <div class="mt-4">
+            <a href="{% url 'adocao' %}" class="btn btn-secondary">Voltar para Adoção</a>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/adocao.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Promover Adoção - Smart Paws</title>
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="mb-4">Promover Pet para Adoção</h1>
+        
+        <div class="alert alert-info">
+            <strong>Como funciona?</strong> Preencha o formulário abaixo com as informações do pet que você deseja promover para adoção. Nossa equipe analisará e, se aprovado, o pet aparecerá na nossa página de adoção.
+        </div>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <h3 class="mt-4 mb-3">Dados do Pet</h3>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.nome_pet.label_tag }}
+                    {{ form.nome_pet }}
+                    {{ form.nome_pet.errors }}
+                </div>
+                <div class="col-md-3 mb-3">
+                    {{ form.tipo_pet.label_tag }}
+                    {{ form.tipo_pet }}
+                    {{ form.tipo_pet.errors }}
+                </div>
+                <div class="col-md-3 mb-3">
+                    {{ form.sexo.label_tag }}
+                    {{ form.sexo }}
+                    {{ form.sexo.errors }}
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.idade.label_tag }}
+                    {{ form.idade }}
+                    {{ form.idade.errors }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.raca.label_tag }}
+                    {{ form.raca }}
+                    {{ form.raca.errors }}
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                {{ form.descricao.label_tag }}
+                {{ form.descricao }}
+                {{ form.descricao.errors }}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.foto.label_tag }}
+                {{ form.foto }}
+                {{ form.foto.errors }}
+                <small class="form-text text-muted">Envie uma foto clara e bonita do pet.</small>
+            </div>
+            
+            <h3 class="mt-4 mb-3">Localização do Pet</h3>
+            <div class="row">
+                <div class="col-md-8 mb-3">
+                    {{ form.cidade.label_tag }}
+                    {{ form.cidade }}
+                    {{ form.cidade.errors }}
+                </div>
+                <div class="col-md-4 mb-3">
+                    {{ form.estado.label_tag }}
+                    {{ form.estado }}
+                    {{ form.estado.errors }}
+                </div>
+            </div>
+            
+            <h3 class="mt-4 mb-3">Seus Dados</h3>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.nome_responsavel.label_tag }}
+                    {{ form.nome_responsavel }}
+                    {{ form.nome_responsavel.errors }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                {{ form.telefone.label_tag }}
+                {{ form.telefone }}
+                {{ form.telefone.errors }}
+            </div>
+            
+            <h3 class="mt-4 mb-3">Informações Adicionais</h3>
+            <div class="mb-3">
+                {{ form.motivo.label_tag }}
+                {{ form.motivo }}
+                {{ form.motivo.errors }}
+            </div>
+            
+            <div class="form-check mb-3">
+                {{ form.castrado }}
+                {{ form.castrado.label_tag }}
+                {{ form.castrado.errors }}
+            </div>
+            
+            <div class="form-check mb-3">
+                {{ form.vacinado }}
+                {{ form.vacinado.label_tag }}
+                {{ form.vacinado.errors }}
+            </div>
+            
+            <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn btn-primary btn-lg">Enviar para Análise</button>
+                <a href="{% url 'adocao' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

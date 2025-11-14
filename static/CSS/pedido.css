@@ -1,0 +1,333 @@
+/* ==========================================
+   PEDIDO.CSS - Smart Paws
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* ========== CONFIRMAÇÃO DO PEDIDO ========== */
+.pedido-confirmado-page {
+    background-color: #f5f5f5;
+    padding: 40px 0;
+    min-height: 80vh;
+}
+
+.container-confirmacao {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.confirmacao-header {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.confirmacao-header i {
+    font-size: 80px;
+    color: #28a745;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.confirmacao-header h1 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 32px;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.numero-pedido {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    color: #666;
+    background: #f8f8f8;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* ========== MEUS PEDIDOS ========== */
+.pedidos-page {
+    background-color: #f5f5f5;
+    padding: 40px 0;
+    min-height: 80vh;
+}
+
+.container-pedidos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-pedidos h1 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 36px;
+    color: #ab8262;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pedido-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+}
+
+.pedido-card:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.pedido-numero h3 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 20px;
+    color: #333;
+    margin: 0 0 5px 0;
+}
+
+.pedido-data {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.status-badge {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.status-pendente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-pago {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.status-processando {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.status-enviado {
+    background: #e2e3e5;
+    color: #383d41;
+}
+
+.status-entregue {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-cancelado {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.pedido-corpo {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.pedido-itens h4 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.pedido-itens ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pedido-itens li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pedido-itens li:last-child {
+    border-bottom: none;
+}
+
+.item-qtd {
+    font-weight: 600;
+    color: #ab8262;
+    margin-right: 10px;
+}
+
+.item-nome {
+    flex: 1;
+    color: #666;
+}
+
+.item-preco {
+    font-weight: 600;
+    color: #333;
+}
+
+.pedido-resumo {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+.resumo-linha.total {
+    border-top: 2px solid #ddd;
+    padding-top: 15px;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.pedido-acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-ver-detalhes,
+.btn-pagar {
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-ver-detalhes {
+    background: #ab8262;
+    color: white;
+}
+
+.btn-ver-detalhes:hover {
+    background: #8b6852;
+    transform: translateY(-2px);
+}
+
+.btn-pagar {
+    background: #28a745;
+    color: white;
+}
+
+.btn-pagar:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+/* ========== SEM PEDIDOS ========== */
+.sem-pedidos {
+    text-align: center;
+    padding: 80px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.sem-pedidos i {
+    font-size: 80px;
+    color: #ddd;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.sem-pedidos h2 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 28px;
+    color: #666;
+    margin: 0 0 15px 0;
+}
+
+.sem-pedidos p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    color: #999;
+    margin-bottom: 25px;
+}
+
+.btn-comprar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background: #ab8262;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 18px;
+    transition: all 0.3s;
+}
+
+.btn-comprar:hover {
+    background: #8b6852;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(171, 130, 98, 0.4);
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 768px) {
+    .pedido-corpo {
+        grid-template-columns: 1fr;
+    }
+    
+    .pedido-acoes {
+        flex-direction: column;
+    }
+}
+
+
